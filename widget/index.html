@@ -11,6 +11,7 @@
         header{ background-color: #b021ae; }
         header ul li { height: 50px; line-height: 50px; text-align: center; display: none; color: #ffffff; position: relative;font-size: 18px;  }
         header ul li.active{ display: block;float:left; width:80%}
+        header ul li.activelf{ display: block;float:left; width:10%}
         #footer{  background-color: #f2f2f2; }
         #footer ul li{  padding-top: 36px; padding-bottom: 4px; background: url() no-repeat center 2px; background-size: auto 30px; text-align: center; }
         #footer ul li.active{ color: #6ab494; }
@@ -31,16 +32,16 @@
 <div id="wrap" class="flex-wrap flex-vertical">
     <header>
         <ul>
-            <li class="border-b active" style="width:10%">左边</li>
+            <li class="border-b activelf" id="leftbb">左边</li>
         </ul>
         <ul>
-            <li class="border-b active" >医●寸金-首页</li>
-            <li class="border-b" >医●寸金-手环</li>
-            <li class="border-b" >医●寸金-日历</li>
-            <li class="border-b" >医●寸金-我</li>
+            <li class="border-b active" id="centerbb">医●寸金-首页</li>
+            <li class="border-b" id="centerbb">医●寸金-手环</li>
+            <li class="border-b" id="centerbb">医●寸金-日历</li>
+            <li class="border-b" id="centerbb">医●寸金-我</li>
         </ul>
         <ul>
-            <li class="border-b active" style="width:10%">右边</li>
+            <li class="border-b activelf" id="rightbb">右边</li>
         </ul>
     </header>
     <div id="main" class="flex-con">
@@ -69,7 +70,7 @@
     }
 
     function funIniGroup(){
-        var eHeaderLis = $api.domAll('header li'),
+        var eHeaderLis = $api.domAll('#centerbb'),
             frames = [];
         for (var i = 0,len = eHeaderLis.length; i < len; i++) {
                 frames.push( {
@@ -99,7 +100,7 @@
     function randomSwitchBtn( tag ) {
         if( tag == $api.dom('#footer li.active') )return;
         var eFootLis = $api.domAll('#footer li'),
-            eHeaderLis = $api.domAll('header li'),
+            eHeaderLis = $api.domAll('#centerbb'),
             index = 0;
         for (var i = 0,len = eFootLis.length; i < len; i++) {
             if( tag == eFootLis[i] ){
@@ -109,6 +110,7 @@
                 $api.removeCls(eHeaderLis[i], 'active');
             }
         }
+        // alert(index);
         $api.addCls( eFootLis[index], 'active');
         $api.addCls( eHeaderLis[index], 'active');
         api.setFrameGroupIndex({
