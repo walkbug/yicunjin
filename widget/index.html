@@ -47,17 +47,7 @@
     </style>
 </head>
 <body>
-    <div id="wrap">
-        <div id="header">
-            <h1>医寸金</h1>
-        </div>
-        <div id="main" class="flex-con">
-
-        </div>
-        <div id="footer">
-            <h5>Copyright &copy;<span id="year"></span> </h5>
-        </div>
-    </div>
+    
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
@@ -74,7 +64,7 @@
         api.openFrame({
             name: 'main',
             url: 'html/home_win.html',
-            bounces: true,
+            bounces: false,
             rect: {
                 x: 0,
                 y: headerPos.h,
