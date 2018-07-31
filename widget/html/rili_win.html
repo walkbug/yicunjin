@@ -25,20 +25,12 @@
     </header>
 
     <section class="aui-content" id="user-info" >
-        <div style="position:relative;width:100%;margin：0 auto;height:450px;">
-          <div style="width:100%;text-align:center;height:450px;">
-            <span tapmode="hover" onclick="fnOpen()">open()</span>
-      			<span tapmode="hover" onclick="fnSetSpecialDates()">setSpecialDates()</span>
-      			<span tapmode="hover" onclick="fnCancelSpecialDates()">cancelSpecialDates()</span>
-      			<span tapmode="hover" onclick="fnClose()">close()</span>
-      			<span tapmode="hover" onclick="fnShow()">show()</span>
-      			<span tapmode="hover" onclick="fnHide()">hide()</span>
-      			<span tapmode="hover" onclick="fnNextMonth()">nextMonth()</span>
-      			<span tapmode="hover" onclick="fnPrevMonth()">prevMonth()</span>
-      			<span tapmode="hover" onclick="fnNextYear()">nextYear()</span>
-      			<span tapmode="hover" onclick="fnPrevYear()">prevYear()</span>
-      			<span tapmode="hover" onclick="fnSetDate()">setDate()</span>
-      			<span tapmode="hover" onclick="fnTurnPage()">turnPage()</span>
+        <div style="position:relative;width:100%;margin：0 auto;height:150px;">
+          <div style="width:100%;height:150px;">
+            <span style="color:#ffffff;" id="mmshow"></span>
+            <span class="aui-iconfont aui-icon-left" style="font-size: 20px;color:#ffffff;margin-right:20px;"></span>
+            <span style="color:#ffffff;font-size: 50px;" id="dateshow"></span>
+            <span class="aui-iconfont aui-icon-right" style="font-size: 20px;color:#ffffff;margin-left:20px"></span>
           </div>
         </div>
     </section>
@@ -67,13 +59,14 @@
 var UICalendar;
 apiready = function() {
   UICalendar = api.require('UICalendar');
+  fnOpen();
 };
 
 function fnOpen(){
   UICalendar.open({
       rect: {
           x: 30,
-          y: 30,
+          y: 180,
           w: api.frameWidth - 60,
           h: 340
       },
@@ -148,8 +141,9 @@ function fnNextMonth(){
   UICalendar.nextMonth(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
+          $api.text(mmshow,ret.year+"年"+ret.month+"月");
       }else{
-          alert( JSON.stringify( err ) );
+          // alert( JSON.stringify( err ) );
       }
   });
 }
@@ -158,8 +152,9 @@ function fnPrevMonth(){
   UICalendar.prevMonth(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
+          $api.text(mmshow,ret.year+"年"+ret.month+"月");
       }else{
-          alert( JSON.stringify( err ) );
+          // alert( JSON.stringify( err ) );
       }
   });
 }
@@ -168,8 +163,9 @@ function fnNextYear(){
   UICalendar.nextYear(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
+          $api.text(mmshow,ret.year+"年"+ret.month+"月");
       }else{
-          alert( JSON.stringify( err ) );
+          // alert( JSON.stringify( err ) );
       }
   });
 }
@@ -178,8 +174,9 @@ function fnPrevYear(){
   UICalendar.prevYear(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
+          $api.text(mmshow,ret.year+"年"+ret.month+"月");
       }else{
-          alert( JSON.stringify( err ) );
+          // alert( JSON.stringify( err ) );
       }
   });
 }
