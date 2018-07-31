@@ -76,7 +76,7 @@ $api.text(dateshow,date);
 
 var mmshow = document.getElementById('mmshow');
 $api.text(mmshow,year+"年"+month+"月");
-alert('UICalendar');
+// alert('UICalendar');
 var UICalendar;
 apiready = function() {
   UICalendar = api.require('UICalendar');
@@ -119,12 +119,15 @@ function fnOpen(){
       fixed: false
   }, function(ret, err){
       if( ret ){
-           alert( JSON.stringify( ret )+'fnOpen' );
+          //  alert( JSON.stringify( ret )+'fnOpen' );
            var obj = $api.strToJson(ret);
            $api.text(mmshow,ret.year+"年"+ret.month+"月");
-           $api.text(dateshow,ret.day);
+           if(ret.day){
+             $api.text(dateshow,ret.day);
+           }
+
       }else{
-           alert( JSON.stringify( err ) );
+          //  alert( JSON.stringify( err ) );
       }
   });
 }
