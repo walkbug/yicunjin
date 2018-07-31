@@ -56,6 +56,27 @@
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
+
+var myDate = new Date();
+        //时间 2016/3/29/00:20
+var year = myDate.getFullYear();
+        //获取完整的年份(4位,1970-????)  2016
+var month = myDate.getMonth()+1;
+        //获取当前月份(0-11,0代表1月)  2
+var date = myDate.getDate();
+        //获取当前日(1-31) 29
+var hours = myDate.getHours();
+        //获取当前小时数(0-23)  0
+var minutes = myDate.getMinutes();
+        //获取当前分钟数(0-59)  20
+var seconds = myDate.getSeconds();
+// alert(date);
+var dateshow = document.getElementById('dateshow');
+$api.text(dateshow,date);
+
+var mmshow = document.getElementById('mmshow');
+$api.text(mmshow,year+"年"+month+"月");
+
 var UICalendar;
 apiready = function() {
   UICalendar = api.require('UICalendar');
@@ -199,28 +220,6 @@ function fnTurnPage(){
       date: '2015-08'
   });
 }
-
-
-    var myDate = new Date();
-            //时间 2016/3/29/00:20
-    var year = myDate.getFullYear();
-            //获取完整的年份(4位,1970-????)  2016
-    var month = myDate.getMonth();
-            //获取当前月份(0-11,0代表1月)  2
-    var date = myDate.getDate();
-            //获取当前日(1-31) 29
-    var hours = myDate.getHours();
-            //获取当前小时数(0-23)  0
-    var minutes = myDate.getMinutes();
-            //获取当前分钟数(0-59)  20
-    var seconds = myDate.getSeconds();
-    // alert(date);
-    var dateshow = document.getElementById('dateshow');
-    $api.text(dateshow,date);
-
-    var mmshow = document.getElementById('mmshow');
-    $api.text(mmshow,year+"年"+month+"月");
-
 
     // 打开手环Window
     function fnOpenshouhuanWin () {
