@@ -161,8 +161,8 @@ function fnHide(){
 function fnNextMonth(){
   UICalendar.nextMonth(function(ret, err){
       if( ret ){
-          alert( JSON.stringify( ret ) );
-          alert('fnNextMonth');
+          alert( JSON.stringify( ret )+'fnNextMonth' );
+
           var obj = $api.strToJson(ret);
           $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
@@ -174,8 +174,8 @@ function fnNextMonth(){
 function fnPrevMonth(){
   UICalendar.prevMonth(function(ret, err){
       if( ret ){
-          alert( JSON.stringify( ret ) );
-          alert('fnPrevMonth');
+          alert( JSON.stringify( ret )+'fnPrevMonth' );
+          
           var obj = $api.strToJson(ret);
           $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
