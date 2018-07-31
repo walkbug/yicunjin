@@ -48,9 +48,7 @@
 </head>
 <body>
     <div id="wrap">
-        <div id="header">
-            <h1>医寸金</h1>
-        </div>
+
         <div id="main" class="flex-con">
 
         </div>
@@ -62,11 +60,11 @@
     apiready = function(){
 		console.log("Hello APICloud");
 
-        var header = $api.byId('header');
+        // var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        $api.fixStatusBar(header);
+        // $api.fixStatusBar(header);
 
-        var headerPos = $api.offset(header);
+        // var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
         api.openFrame({
@@ -75,7 +73,7 @@
             bounces: false,
             rect: {
                 x: 0,
-                y: headerPos.h,
+                y: 0,
                 w: 'auto',
                 h: mainPos.h
             }
