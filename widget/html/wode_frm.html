@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>AUI快速完成布局</title>
+    <title>医寸金</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <style type="text/css">
         .text-white {
@@ -15,111 +15,161 @@
         }
     </style>
 </head>
-<body>
+<body style="display：inline;background-color:#291633;">
     <!-- 顶部 -->
-    <section class="aui-content" id="user-info">
-        <div class="aui-list aui-media-list aui-list-noborder aui-bg-info">
-            <div class="aui-list-item aui-list-item-middle">
-                <div class="aui-media-list-item-inner ">
-                    <div class="aui-list-item-media" style="width:3rem;">
-                        <img src="../image/demo1.png" class="aui-img-round" >
-                    </div>
-                    <div class="aui-list-item-inner aui-list-item-arrow">
-                        <div class="aui-list-item-text text-white aui-font-size-18">38dd4ef6d</div>
-                        <div class="aui-list-item-text text-white">
-                           <div><i class="aui-iconfont aui-icon-mobile aui-font-size-14"></i>152****0989</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="aui-content" id="user-info" >
+        <div style="position:relative;width:100%;margin：0 auto;height:auto;">
+          <div style="width:100%;text-align:center;height:auto;">
+              <img src="../image/head.png" width="20%" height="auto" style="margin：0 auto;display: inline-block;" />
+          </div>
         </div>
     </section>
-    <section class="aui-content aui-grid aui-margin-b-15">
-        <div class="aui-row">
-            <div class="aui-col-xs-4 aui-border-r">
-                <big class="aui-text-warning">0.00<small> 元</small></big>
-                <div class="aui-gird-lable aui-font-size-12">余额</div>
-            </div>
-            <div class="aui-col-xs-4 aui-border-r">
-                <big class="aui-text-danger">0.00<small> 个</small></big>
-                <div class="aui-gird-lable aui-font-size-12">优惠</div>
-            </div>
-            <div class="aui-col-xs-4">
-                <big class="aui-text-success">0.00<small> 分</small></big>
-                <div class="aui-gird-lable aui-font-size-12">积分</div>
-            </div>
+    <section style="height:30px;">
+        <div >
+
         </div>
     </section>
     <section class="aui-content">
-        <ul class="aui-list aui-list-in aui-margin-b-15">
+        <ul class="aui-list aui-list-in aui-margin-b-15" style="background-color:#9459b2;">
             <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
-                    <i class="aui-iconfont aui-icon-location aui-text-info"></i>
+
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">收货地址</div>
+                    <div class="aui-list-item-title">修改密码</div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
-                    <i class="aui-iconfont aui-icon-like aui-text-danger"></i>
+
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">我的收藏</div>
+                    <div class="aui-list-item-title">更换头像</div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
-                    <i class="aui-iconfont aui-icon-image aui-text-info"></i>
+
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">美食相册</div>
-                </div>
-            </li>
-        </ul>
-        <ul class="aui-list aui-list-in">
-            <li class="aui-list-item">
-                <div class="aui-list-item-label-icon">
-                    <i class="aui-iconfont aui-icon-cart aui-text-info"></i>
-                </div>
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">积分商城</div>
-                    <div class="aui-list-item-right">0元好物在这里</div>
+                    <div class="aui-list-item-title">手环使用人</div>
                 </div>
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
-                    <i class="aui-iconfont aui-icon-cert aui-text-warning"></i>
+
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">会员卡</div>
-                    <div class="aui-list-item-right">未开通</div>
+                    <div class="aui-list-item-title">协助人</div>
                 </div>
             </li>
         </ul>
+
     </section>
-    <footer class="aui-bar aui-bar-tab">
-        <div class="aui-bar-tab-item">
+    
+    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;">
+        <div class="aui-bar-tab-item" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont aui-icon-paper"></i>
-            <div class="aui-bar-tab-label">外卖</div>
+            <div class="aui-bar-tab-label">首页</div>
         </div>
-        <div class="aui-bar-tab-item">
+        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
             <i class="aui-iconfont aui-icon-menu"></i>
-            <div class="aui-bar-tab-label">订单</div>
+            <div class="aui-bar-tab-label">手环</div>
         </div>
-        <div class="aui-bar-tab-item">
+        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
             <i class="aui-iconfont aui-icon-location"></i>
-            <div class="aui-bar-tab-label">发现</div>
+            <div class="aui-bar-tab-label">日历</div>
         </div>
         <div class="aui-bar-tab-item aui-active">
             <i class="aui-iconfont aui-icon-my"></i>
-            <div class="aui-bar-tab-label">我的</div>
+            <div class="aui-bar-tab-label">我</div>
         </div>
     </footer>
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
+// alert('date');
     apiready = function () {
+
     }
+
+
+    var myDate = new Date();
+            //时间 2016/3/29/00:20
+    var year = myDate.getFullYear();
+            //获取完整的年份(4位,1970-????)  2016
+    var month = myDate.getMonth()+1;
+            //获取当前月份(0-11,0代表1月)  2
+    var date = myDate.getDate();
+            //获取当前日(1-31) 29
+    var hours = myDate.getHours();
+            //获取当前小时数(0-23)  0
+    var minutes = myDate.getMinutes();
+            //获取当前分钟数(0-59)  20
+    var seconds = myDate.getSeconds();
+    // alert(date);
+    var dateshow = document.getElementById('dateshow');
+    $api.text(dateshow,date);
+
+    var mmshow = document.getElementById('mmshow');
+    $api.text(mmshow,year+"年"+month+"月");
+
+
+    // 打开手环Window
+    function fnOpenshouhuanWin () {
+        api.openWin({
+            name: 'shouhuan',
+            url: './shouhuan_win.html',
+            pageParam: {
+                name: 'shouhuan'
+            }
+        });
+    }
+
+    // 打开日历Window
+    function fnOpenriliWin () {
+        api.openWin({
+            name: 'rili',
+            url: './rili_win.html',
+            pageParam: {
+                name: 'rili'
+            }
+        });
+    }
+
+    // 打开我Window
+    function fnOpenwoWin () {
+        api.openWin({
+            name: 'wode',
+            url: './wode_win.html',
+            pageParam: {
+                name: 'wode'
+            }
+        });
+    }
+
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            pageParam: {
+                name: 'home'
+            }
+        });
+    }
+
+    // 打开添加提醒Window
+    function fnOpenaddWin () {
+        api.openWin({
+            name: 'addmessage',
+            url: './addmessage_win.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+
 </script>
 </html>

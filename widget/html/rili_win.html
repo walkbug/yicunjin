@@ -72,11 +72,11 @@
     </section>
 
     <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;">
-        <div class="aui-bar-tab-item">
+        <div class="aui-bar-tab-item" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont aui-icon-paper"></i>
             <div class="aui-bar-tab-label">首页</div>
         </div>
-        <div class="aui-bar-tab-item">
+        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
             <i class="aui-iconfont aui-icon-menu"></i>
             <div class="aui-bar-tab-label">手环</div>
         </div>
@@ -312,7 +312,16 @@ function fnTurnPage(){
             }
         });
     }
-
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            pageParam: {
+                name: 'home'
+            }
+        });
+    }
 
 </script>
 </html>
