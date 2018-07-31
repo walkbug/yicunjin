@@ -120,6 +120,9 @@ function fnOpen(){
   }, function(ret, err){
       if( ret ){
            alert( JSON.stringify( ret )+'fnOpen' );
+           var obj = $api.strToJson(ret);
+           $api.text(mmshow,obj.year+"年"+obj.month+"月");
+           $api.text(dateshow,obj.day);
       }else{
            alert( JSON.stringify( err ) );
       }
