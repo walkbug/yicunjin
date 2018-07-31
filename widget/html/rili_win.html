@@ -113,7 +113,7 @@ function fnOpen(){
           }
       },
       specialDate: [{
-          date: '2016-06-30'
+          date: '2018-06-30'
       }],
       switchMode: 'vertical',
       fixed: false
@@ -129,11 +129,11 @@ function fnOpen(){
 function fnSetSpecialDates(){
   UICalendar.setSpecialDates({
       specialDates:[{
-         date: '2016-05-29',
+         date: '2018-06-29',
          color: '#fff',
          bg: '#0f0'
       },{
-         date: '2016-05-31',
+         date: '2018-06-30',
          color: '#fff',
          bg: '#0f0'
       }]
@@ -142,7 +142,7 @@ function fnSetSpecialDates(){
 
 function fnCancelSpecialDates(){
   UICalendar.cancelSpecialDates({
-      specialDates:['2016-05-29','2016-05-31']
+      specialDates:['2018-06-29','2018-06-30']
   });
 }
 
@@ -162,7 +162,9 @@ function fnNextMonth(){
   UICalendar.nextMonth(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
-          $api.text(mmshow,ret.year+"年"+ret.month+"月");
+          alert('fnNextMonth');
+          var obj = $api.strToJson(ret);
+          $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
           // alert( JSON.stringify( err ) );
       }
@@ -173,7 +175,9 @@ function fnPrevMonth(){
   UICalendar.prevMonth(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
-          $api.text(mmshow,ret.year+"年"+ret.month+"月");
+          alert('fnPrevMonth');
+          var obj = $api.strToJson(ret);
+          $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
           // alert( JSON.stringify( err ) );
       }
@@ -184,7 +188,8 @@ function fnNextYear(){
   UICalendar.nextYear(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
-          $api.text(mmshow,ret.year+"年"+ret.month+"月");
+          var obj = $api.strToJson(ret);
+          $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
           // alert( JSON.stringify( err ) );
       }
@@ -195,7 +200,8 @@ function fnPrevYear(){
   UICalendar.prevYear(function(ret, err){
       if( ret ){
           alert( JSON.stringify( ret ) );
-          $api.text(mmshow,ret.year+"年"+ret.month+"月");
+          var obj = $api.strToJson(ret);
+          $api.text(mmshow,obj.year+"年"+obj.month+"月");
       }else{
           // alert( JSON.stringify( err ) );
       }
