@@ -19,10 +19,11 @@
     <!-- 顶部 -->
     <section class="aui-content" id="user-info" style="height:">
         <div>
-          <div style="width:100%;float:center;text-align:center;height:350px;line-height:150px;">
-              <span class="aui-iconfont aui-icon-left" style="color:#ffffff;"></span>
-              <span style="color:#ffffff;font-size: 100px;" id="dateshow"></span>
-              <span class="aui-iconfont aui-icon-right" style="color:#ffffff;"></span>
+          <div style="width:100%;float:center;text-align:center;height:450px;">
+              <span class="aui-iconfont aui-icon-left" style="font-size: 40px;color:#ffffff;margin-right:20px;"></span>
+              <span style="color:#ffffff;font-size: 120px;" id="dateshow"></span>
+              <span class="aui-iconfont aui-icon-right" style="font-size: 40px;color:#ffffff;margin-left:20px"></span>
+              <br/><span style="width:100%;text-align:center;color:#ffffff;font-size: 24px;" id="mmshow"></span>
           </div>
         </div>
     </section>
@@ -112,6 +113,9 @@
     // alert(date);
     var dateshow = document.getElementById('dateshow');
     $api.text(dateshow,date);
+
+    var mmshow = document.getElementById('mmshow');
+    $api.text(mmshow,year+"年"+month+"月");
 
 
     // 打开手环Window
