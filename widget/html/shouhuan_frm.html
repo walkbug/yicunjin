@@ -25,7 +25,7 @@
         </div>
     </section>
     <section style="height:30px;">
-        <div onclick="checkBleIsOpen();">
+        <div onclick="euowo();">
           连接手环
         </div>
     </section>
@@ -75,43 +75,38 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
 // alert('date');
-    apiready = function () {
-      var ble = api.require('ble');
-      ble.initManager(function(ret) {
-        if (ret.state == "poweredOn") {
-          console.log("蓝牙初始化成功");
-
-        }else if(ret.state == "poweredOff"){
-          errorWarning("蓝牙未开启,请先开启蓝牙");
-        }else{
-      //    console.log("请确认手机是否支持蓝牙4.0,再次尝试");
-          errorWarning("请确认手机是否支持蓝牙4.0,再次尝试");
-        }
-      });
-
-      ble.scan(function(ret) {
+apiready = function() {
+var ble = api.require('ble');
+  ble.initManager(function(ret) {
+      if (ret.state == "poweredOn") {
+          api.alert({ msg: "初始化成功" });
+      }
+  });
+};
+function euowo(){
+  var ble = api.require('ble');
+    ble.scan({
+    }, function(ret) {
         if (ret.status) {
-         console.log("正在扫描可连接的蓝牙设备");
-          //getAllBraceletList();//搜索设备列表
-        }else{
-      //    console.log("蓝牙扫描失败");
-          errorWarning("蓝牙扫描失败");
+          ble.getPeripheral(function(ret) {
+              if (ret) {
+                  api.alert({ msg: JSON.stringify(ret) });
+              }
+          });
         }
-      });
+    });
+}
+function sadfasd(){
+  var ble = api.require('ble');
+  ble.isScanning(function(ret) {
+    api.alert({ msg: JSON.stringify(ret) });
+  })
+}
 
-      ble.getPeripheral(function(ret,err) {
-         console.log("parent32:"+JSON.stringify(ret))
-          if (ret) {
-            //找到了蓝牙设备信息
-            api.sendEvent({
-                name: 'searchSuccess',
-                extra: {
-                    peripherals: JSON.stringify(ret.peripherals)
-                }
-            });
-          }
-      });
-    }
+function sadkf(){
+  var ble = api.require('ble');
+  ble.stopScan();
+}
 
 
     var myDate = new Date();
