@@ -1,7 +1,7 @@
  <widget id="A6087866889564"  version="0.0.1">
     <name>医寸金</name>
     <description>
-        医寸金 For APICloud.
+        医寸金
     </description>
     <author email="developer@apicloud.com" href="http://www.apicloud.com">
         walkbug
@@ -19,7 +19,7 @@
 	<preference name="autoUpdate" value="true" />
 	<preference name="smartUpdate" value="false" />
 	<preference name="debug" value="true"/>
-	<preference name="statusBarAppearance" value="true"/>
+	<preference name="statusBarAppearance" value="true"/>  <preference name="backgroundMode" value="bluetooth-central | bluetooth-peripheral"/>
 	<permission name="readPhoneState" />
 	<permission name="camera" />
 	<permission name="record" />

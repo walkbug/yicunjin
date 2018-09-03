@@ -25,8 +25,8 @@
         </div>
     </section>
     <section style="height:30px;">
-        <div >
-
+        <div onclick="checkBleIsOpen();">
+          连接手环
         </div>
     </section>
     <section class="aui-content">
@@ -154,6 +154,49 @@
             }
         });
     }
+
+
+    function checkBleIsOpen(){
+  ble.initManager(function(ret) {
+    if (ret.state == "poweredOn") {
+      console.log("1、蓝牙初始化成功");
+      scanBleBracelet();
+    }else if(ret.state == "poweredOff"){
+      errorWarning("蓝牙未开启,请先开启蓝牙");
+    }else{
+  //    console.log("请确认手机是否支持蓝牙4.0,再次尝试");
+      errorWarning("请确认手机是否支持蓝牙4.0,再次尝试");
+    }
+  });
+}
+
+
+  function scanBleBracelet(){
+  ble.scan(function(ret) {
+    if (ret.status) {
+     console.log("2、正在扫描可连接的蓝牙设备");
+      getAllBraceletList();//搜索设备列表
+    }else{
+  //    console.log("蓝牙扫描失败");
+      errorWarning("蓝牙扫描失败");
+    }
+  });
+}
+
+function getAllBraceletList(){
+  ble.getPeripheral(function(ret,err) {
+     console.log("parent32:"+JSON.stringify(ret))
+      if (ret) {
+        //找到了蓝牙设备信息
+        api.sendEvent({
+            name: 'searchSuccess',
+            extra: {
+                peripherals: JSON.stringify(ret.peripherals)
+            }
+        });
+      }
+  });
+}
 
 </script>
 </html>
