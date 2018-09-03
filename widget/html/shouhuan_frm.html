@@ -88,6 +88,29 @@
           errorWarning("请确认手机是否支持蓝牙4.0,再次尝试");
         }
       });
+
+      ble.scan(function(ret) {
+        if (ret.status) {
+         console.log("正在扫描可连接的蓝牙设备");
+          //getAllBraceletList();//搜索设备列表
+        }else{
+      //    console.log("蓝牙扫描失败");
+          errorWarning("蓝牙扫描失败");
+        }
+      });
+
+      ble.getPeripheral(function(ret,err) {
+         console.log("parent32:"+JSON.stringify(ret))
+          if (ret) {
+            //找到了蓝牙设备信息
+            api.sendEvent({
+                name: 'searchSuccess',
+                extra: {
+                    peripherals: JSON.stringify(ret.peripherals)
+                }
+            });
+          }
+      });
     }
 
 
@@ -173,30 +196,11 @@
 
 
   function scanBleBracelet(){
-  ble.scan(function(ret) {
-    if (ret.status) {
-     console.log("2、正在扫描可连接的蓝牙设备");
-      getAllBraceletList();//搜索设备列表
-    }else{
-  //    console.log("蓝牙扫描失败");
-      errorWarning("蓝牙扫描失败");
-    }
-  });
+
 }
 
 function getAllBraceletList(){
-  ble.getPeripheral(function(ret,err) {
-     console.log("parent32:"+JSON.stringify(ret))
-      if (ret) {
-        //找到了蓝牙设备信息
-        api.sendEvent({
-            name: 'searchSuccess',
-            extra: {
-                peripherals: JSON.stringify(ret.peripherals)
-            }
-        });
-      }
-  });
+
 }
 
 </script>
