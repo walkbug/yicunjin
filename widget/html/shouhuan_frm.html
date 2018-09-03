@@ -78,9 +78,15 @@
     apiready = function () {
       var ble = api.require('ble');
       ble.initManager(function(ret) {
-          if (ret.state == "poweredOn") {
-              api.alert({ msg: "初始化成功" });
-          }
+        if (ret.state == "poweredOn") {
+          console.log("蓝牙初始化成功");
+
+        }else if(ret.state == "poweredOff"){
+          errorWarning("蓝牙未开启,请先开启蓝牙");
+        }else{
+      //    console.log("请确认手机是否支持蓝牙4.0,再次尝试");
+          errorWarning("请确认手机是否支持蓝牙4.0,再次尝试");
+        }
       });
     }
 
@@ -162,18 +168,8 @@
 
 
     function checkBleIsOpen(){
-  ble.initManager(function(ret) {
-    if (ret.state == "poweredOn") {
-      console.log("1、蓝牙初始化成功");
       scanBleBracelet();
-    }else if(ret.state == "poweredOff"){
-      errorWarning("蓝牙未开启,请先开启蓝牙");
-    }else{
-  //    console.log("请确认手机是否支持蓝牙4.0,再次尝试");
-      errorWarning("请确认手机是否支持蓝牙4.0,再次尝试");
     }
-  });
-}
 
 
   function scanBleBracelet(){
