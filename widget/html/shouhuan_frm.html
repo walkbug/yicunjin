@@ -93,11 +93,11 @@ function euowo(){
         if (ret.status) {
           ble.getPeripheral(function(ret) {
               if (ret) {
-                  api.alert({ msg: JSON.stringify(ret.peripherals[0].uuid) });
+                  api.alert({ msg: JSON.stringify(ret) });
                   var uuid = ret.peripherals[0].uuid;
-                  //ssid = ret.characteristics[0].serviceUUID;
+                  ssid = ret.characteristics[0].serviceUUID;
                   api.alert({ msg: "uuid:"+uuid });
-                  //api.alert("serviceUUID:"+ssid);
+                  api.alert({ msg: "ssid:"+ssid });
               }
           });
         }
