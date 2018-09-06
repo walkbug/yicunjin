@@ -84,7 +84,7 @@ var ble = api.require('ble');
   });
 };
 
-var uuid = "";
+//var uuid = "";
 var ssid = "";
 function euowo(){
   var ble = api.require('ble');
@@ -94,7 +94,7 @@ function euowo(){
           ble.getPeripheral(function(ret) {
               if (ret) {
                   api.alert({ msg: JSON.stringify(ret) });
-                  uuid = ret.peripherals[0].uuid;
+                  var uuid = ret.peripherals[0].uuid;
                   //ssid = ret.characteristics[0].serviceUUID;
                   api.alert("uuid:"+uuid);
                   //api.alert("serviceUUID:"+ssid);
