@@ -93,16 +93,30 @@ function euowo(){
         if (ret.status) {
           ble.getPeripheral(function(ret) {
               if (ret) {
-                  api.alert({ msg: JSON.stringify(ret) });
+                  //api.alert({ msg: JSON.stringify(ret) });
                   var uuid = ret.peripherals[0].uuid;
-                  ssid = ret.characteristics[0].serviceUUID;
-                  api.alert({ msg: "uuid:"+uuid });
-                  api.alert({ msg: "ssid:"+ssid });
+                  //ssid = ret.characteristics[0].serviceUUID;
+
+                  //api.alert({ msg: "ssid:"+ssid });
+                  getServiceid(uuid);
               }
           });
         }
     });
 }
+
+function getServiceid(uuid){
+  api.alert({ msg: "uuid:"+uuid });
+  var ble = api.require('ble');
+  ble.discoverService({
+    peripheralUUID: uuid
+  }, function(ret) {
+      if (ret) {
+          api.alert({ msg: JSON.stringify(ret) });
+      }
+  });
+}
+
 function sadfasd(){
   var ble = api.require('ble');
   ble.isScanning(function(ret) {
