@@ -104,7 +104,16 @@
 <script type="text/javascript">
 // alert('date');
     apiready = function () {
-
+      api.readFile({
+        path: 'fs://user.txt'
+      }, function(ret, err) {
+          if (ret.status) {
+              var data = ret.data;
+          } else {
+              //alert(err.msg);
+              fnLoginWin();
+          }
+      });
     }
 
 
@@ -167,6 +176,18 @@
         api.openWin({
             name: 'addmessage',
             url: './addmessage_win.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+
+    // 打开登录
+    function fnLoginWin () {
+        api.openWin({
+            name: 'login',
+            url: './login_win.html',
             pageParam: {
                 name: 'test'
             }
