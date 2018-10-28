@@ -66,8 +66,8 @@
 
     // 登录
     function loginsend () {
-        var mobilephone = $api.byId("mobilephone");
-        var pwd = $api.byId("pwd");
+        var mobilephone = $api.val($api.byId("mobilephone"));
+        var pwd = $api.val($api.byId("pwd"));
         api.alert({ msg: mobilephone });
         api.alert({ msg: pwd });
         api.ajax({
