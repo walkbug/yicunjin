@@ -68,7 +68,7 @@
     function loginsend () {
         var mobilephone = $api.val($api.byId("mobilephone"));
         var pwd = $api.val($api.byId("pwd"));
-        api.alert({ msg: mobilephone });
+        api.alert({ msg: "mobilephone"+mobilephone });
         api.alert({ msg: pwd });
         api.ajax({
           url: 'http://47.105.67.225/public/index/index/userlogin',
@@ -81,6 +81,7 @@
               pwd: pwd
             }
           }, function(ret, err) {
+            api.alert({ msg: "pwd" });
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
              }else{
