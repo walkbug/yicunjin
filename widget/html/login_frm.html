@@ -82,11 +82,7 @@
             }
           }, function(ret, err) {
             api.alert({ msg: "pwd" });
-             if (ret) {
-               api.alert({ msg: JSON.stringify(ret) });
-             }else{
-               api.alert({ msg: JSON.stringify(err) });
-             }
+             
           }
         });
     }
