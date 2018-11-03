@@ -80,11 +80,10 @@
               mobilephone: mobilephone,
               pwd: pwd
             }
-          }, function(ret, err) {
+          }, function(ret) {
+            api.alert({ msg: "aaaaaaaa!" });
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
-             }else{
-               api.alert({ msg: JSON.stringify(err) });
              }
           }
         });
