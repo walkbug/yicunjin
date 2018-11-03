@@ -74,19 +74,22 @@
           url: 'http://47.105.67.225/public/index/index/userlogin',
           method: 'post',
           dataType:'json',
-          cache: false,
+          //cache: false,
           data: {
             values: {
               mobilephone: mobilephone,
               pwd: pwd
             }
-          }, function(ret) {
-            api.alert({ msg: "aaaaaaaa!" });
+          }
+        }, function(ret, err) {
+            api.alert({ msg: "aaaaaaaa" });
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
+             }else{
+               api.alert({ msg: JSON.stringify(err) });
              }
           }
-        });
+        );
     }
 </script>
 </html>
