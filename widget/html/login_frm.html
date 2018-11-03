@@ -80,11 +80,12 @@
               mobilephone: mobilephone,
               pwd: pwd
             }
-          }, function(ret) {
-            api.alert({ msg: "pwd" });
+          }, function(ret, err) {
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
-             
+             }else{
+               api.alert({ msg: JSON.stringify(err) });
+             }
           }
         });
     }
