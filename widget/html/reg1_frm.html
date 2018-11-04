@@ -140,10 +140,16 @@
              if(ret.status=="ok"){
                $api.setStorage("username",username);
                $api.setStorage("mobilephone",mobilephone);
+               api.alert({
+                    title: '',
+                    msg: '注册成功！',
+                }, function(ret, err) {
+                  fnOpenhomeWin ();
+                });
              }else{
                api.alert({ msg: ret.msg });
              }
-             fnOpenhomeWin ();
+
            }
         }
       );
