@@ -105,7 +105,6 @@
                     name: '医寸金'
                 }
             });
-            api.closeWin();
         } else {
             // 没有登录，打开登录Window
             api.openWin({
@@ -122,8 +121,10 @@
                   name: '医寸金'
               }
             });
-            api.closeWin();
+
         }
+
+        api.closeWin();
     }
 </script>
 </html>
