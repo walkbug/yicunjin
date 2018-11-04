@@ -108,18 +108,18 @@
         } else {
             // 没有登录，打开登录Window
             api.openWin({
-                name: 'login',
-                url: 'html/login_win.html',
-                bounces: false,
-                rect: {
-                    x: 0,
-                    y: 0,
-                    w: 'auto',
-                    //h: mainPos.h
-                },
-                pageParam: {
-                    name: 'test'
-                }
+              name: 'main',
+              url: 'html/home_win.html',
+              bounces: false,
+              rect: {
+                  x: 0,
+                  y: 0,
+                  w: 'auto',
+                  //h: mainPos.h
+              },
+              pageParam: {
+                  name: '医寸金'
+              }
             });
         }
     }
