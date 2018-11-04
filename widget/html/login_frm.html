@@ -39,7 +39,7 @@
         </ul>
     </section>
     <section class="aui-content-padded">
-        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="loginsend();">登录</div>
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="loginsend();" style="background-color:#9459b2;">登录</div>
     </section>
     <!-- <section class="aui-content-padded login-third">
         <p class="aui-font-size-12 aui-text-center aui-margin-b-15">第三方账号登录</p>
@@ -64,6 +64,7 @@
         api.parseTapmode();
     };
 
+
     // 登录
     function loginsend () {
         var mobilephone = $api.val($api.byId("mobilephone"));
@@ -85,11 +86,21 @@
             api.alert({ msg: "aaaaaaaa" });
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
-             }else{
-               api.alert({ msg: JSON.stringify(err) });
              }
           }
         );
     }
+</script>
+<script type="text/javascript">
+if (localStorage.user)
+  {
+          //已登录
+  location.href="index.html";
+  }
+else
+  {
+          //未登录
+  location.href="login.html"
+  }
 </script>
 </html>

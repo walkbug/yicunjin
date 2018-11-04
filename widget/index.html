@@ -58,7 +58,7 @@
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
     apiready = function(){
-		console.log("Hello APICloud");
+		//console.log("Hello");
 
         // var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
@@ -67,17 +67,18 @@
         // var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
-        api.openFrame({
-            name: 'main',
-            url: 'html/home_win.html',
-            bounces: false,
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: mainPos.h
-            }
-        });
+        fnOpenPersonalCenterWin();
+        // api.openFrame({
+        //     name: 'main',
+        //     url: 'html/home_win.html',
+        //     bounces: false,
+        //     rect: {
+        //         x: 0,
+        //         y: 0,
+        //         w: 'auto',
+        //         h: mainPos.h
+        //     }
+        // });
 
         // var year = $api.byId('year');
         // year.innerHTML = new Date().getFullYear();
@@ -92,19 +93,32 @@
         if (userInfo && userInfo.id) {
             // 登录成功，打开个人中心Window
             api.openWin({
-                name: 'personalcenter',
-                url: './personalcenter.html',
+                name: 'main',
+                url: 'html/home_win.html',
+                bounces: false,
+                rect: {
+                    x: 0,
+                    y: 0,
+                    w: 'auto',
+                    h: mainPos.h
+                },
                 pageParam: {
-                    name: 'test'
+                    name: '医寸金'
                 }
             });
         } else {
             // 没有登录，打开登录Window
             api.openWin({
                 name: 'login',
-                url: './login.html',
+                url: 'html/login.html',
+                rect: {
+                    x: 0,
+                    y: 0,
+                    w: 'auto',
+                    h: mainPos.h
+                },
                 pageParam: {
-                    name: 'test'
+                    name: 'login'
                 }
             });
         }
