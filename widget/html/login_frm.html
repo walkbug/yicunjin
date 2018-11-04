@@ -89,11 +89,11 @@
             //api.alert({ msg: "aaaaaaaa" });
              if (ret) {
                //api.alert({ msg: JSON.stringify(ret) });
-               if(obj.status=="ok"){
-                 $api.setStorage("username",obj.username);
-                 $api.setStorage("mobilephone",obj.mobilephone);
+               if(ret.status=="ok"){
+                 $api.setStorage("username",ret.username);
+                 $api.setStorage("mobilephone",ret.mobilephone);
                }else{
-                 api.alert({ msg: obj.msg });
+                 api.alert({ msg: ret.msg });
                }
                fnOpenhomeWin ();
              }

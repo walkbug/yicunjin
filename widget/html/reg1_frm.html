@@ -136,12 +136,12 @@
            if (ret) {
              //api.alert({ msg: "bbbbbbb" });
 
-             var obj = $api.strToJson(ret);
-             if(obj.status=="ok"){
+             //var obj = $api.strToJson(ret);
+             if(ret.status=="ok"){
                $api.setStorage("username",username);
                $api.setStorage("mobilephone",mobilephone);
              }else{
-               api.alert({ msg: obj.msg });
+               api.alert({ msg: ret.msg });
              }
 
            }
