@@ -30,7 +30,7 @@
                   <div class="aui-list-item-label aui-border-r color-orange">
                       请输入密码：
                   </div>
-                    <div class="aui-list-item-input" style="width: auto;">
+                    <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="password" placeholder="输入密码" id="pwd">
                     </div>
@@ -44,7 +44,7 @@
                   <div class="aui-list-item-label aui-border-r color-orange">
                       再次输入密码：
                   </div>
-                    <div class="aui-list-item-input" style="width: auto;">
+                    <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="password" placeholder="再次输入密码" id="pwd2">
                     </div>
@@ -58,7 +58,7 @@
                   <div class="aui-list-item-label aui-border-r color-orange">
                       请输入姓名：
                   </div>
-                    <div class="aui-list-item-input" style="width: auto;">
+                    <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="text" placeholder="请输入姓名" id="username">
                     </div>
@@ -117,7 +117,7 @@
       var pwd2 = $api.val($api.byId("pwd2"));
       var username = $api.val($api.byId("username"));
       //api.alert({ msg: "mobilephone"+mobilephone });
-      api.alert({ msg: username });
+      //api.alert({ msg: username });
       api.ajax({
         url: 'http://47.105.67.225/public/index/index/userReg',
         method: 'post',
@@ -127,6 +127,7 @@
           values: {
             mobilephone: mobilephone,
             pwd: pwd,
+            pwd2: pwd2,
             username: username
           }
         }
