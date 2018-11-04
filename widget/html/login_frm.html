@@ -89,12 +89,13 @@
             api.alert({ msg: "aaaaaaaa" });
              if (ret) {
                api.alert({ msg: JSON.stringify(ret) });
+               fnOpenhomeWin ();
              }
           }
         );
     }
 
-    // 打开登录
+    // 打开注册
     function regsend () {
         api.openWin({
             name: 'reg',
@@ -103,6 +104,19 @@
                 name: 'test'
             }
         });
+    }
+
+
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            pageParam: {
+                name: 'home'
+            }
+        });
+        api.closeWin();
     }
 </script>
 </html>

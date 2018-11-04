@@ -218,6 +218,18 @@ function fnTurnPage(){
     $api.text(mmshow,year+"年"+month+"月");
 
 
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            pageParam: {
+                name: 'home'
+            }
+        });
+    }
+
+
     // 打开手环Window
     function fnOpenshouhuanWin () {
         api.openWin({
