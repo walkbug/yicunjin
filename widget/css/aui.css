@@ -629,8 +629,7 @@ button, .aui-btn {
 	text-decoration: none;
 	text-align: center;
 	margin: 0;
-	/*background: #dddddd;*/
-	background: #9459b2;
+	background: #dddddd;
 	padding: 0 0.6rem;
 	height: 1.5rem;
 	line-height: 1.5rem;
@@ -665,11 +664,13 @@ button, .aui-btn {
 }
 .aui-btn-info {
 	color: #ffffff !important;
-	background-color: #03a9f4 !important;
+	/*background-color: #03a9f4 !important;*/
+	background-color: #9459b2 !important;
 }
 .aui-btn-info.aui-active, .aui-btn-info:active {
 	color: #fff !important;
-	background-color: #039be5 !important;
+	/*background-color: #03a9f4 !important;*/
+	background-color: #9459b2 !important;
 }
 .aui-btn-warning {
 	color: #ffffff !important;
