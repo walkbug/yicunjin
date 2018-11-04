@@ -86,9 +86,17 @@
             }
           }
         }, function(ret, err) {
-            api.alert({ msg: "aaaaaaaa" });
+            //api.alert({ msg: "aaaaaaaa" });
              if (ret) {
-               api.alert({ msg: JSON.stringify(ret) });
+               //api.alert({ msg: JSON.stringify(ret) });
+               if(){
+                 if(obj.status=="ok"){
+                   $api.setStorage("username",obj.username);
+                   $api.setStorage("mobilephone",obj.mobilephone);
+                 }else{
+                   api.alert({ msg: obj.msg });
+                 }
+               }
                fnOpenhomeWin ();
              }
           }

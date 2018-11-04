@@ -134,8 +134,16 @@
       }, function(ret, err) {
 
            if (ret) {
-             api.alert({ msg: "bbbbbbb" });
-             api.alert({ msg: JSON.stringify(ret) });
+             //api.alert({ msg: "bbbbbbb" });
+
+             var obj = $api.strToJson(ret);
+             if(obj.status=="ok"){
+               $api.setStorage("username",username);
+               $api.setStorage("mobilephone",mobilephone);
+             }else{
+               api.alert({ msg: obj.msg });
+             }
+
            }
         }
       );
