@@ -27,9 +27,12 @@
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
+                  <div class="aui-list-item-label aui-border-r color-orange">
+                      请输入密码：
+                  </div>
                     <div class="aui-list-item-input" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
-                        请输入密码：<input type="password" placeholder="输入密码" id="pwd">
+                        <input type="password" placeholder="输入密码" id="pwd">
                     </div>
                     <!-- <div class="aui-list-item-label aui-margin-r-15" style="width: 6rem;">
                         <div class="aui-btn aui-btn-info" style="width: 6rem;">获取验证码</div>
@@ -38,9 +41,12 @@
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
+                  <div class="aui-list-item-label aui-border-r color-orange">
+                      再次输入密码：
+                  </div>
                     <div class="aui-list-item-input" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
-                        再次输入密码：<input type="password" placeholder="再次输入密码" id="pwd2">
+                        <input type="password" placeholder="再次输入密码" id="pwd2">
                     </div>
                     <!-- <div class="aui-list-item-label aui-margin-r-15" style="width: 6rem;">
                         <div class="aui-btn aui-btn-info" style="width: 6rem;">获取验证码</div>
@@ -49,10 +55,12 @@
             </li>
             <li class="aui-list-item">
                 <div class="aui-list-item-inner">
-
+                  <div class="aui-list-item-label aui-border-r color-orange">
+                      请输入姓名：
+                  </div>
                     <div class="aui-list-item-input" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
-                        请输入姓名：<input type="text" placeholder="请输入姓名" id="username">
+                        <input type="text" placeholder="请输入姓名" id="username">
                     </div>
                     <!-- <div class="aui-list-item-label aui-margin-r-15" style="width: 6rem;">
                         <div class="aui-btn aui-btn-info" style="width: 6rem;">获取验证码</div>
@@ -108,8 +116,8 @@
       var pwd = $api.val($api.byId("pwd"));
       var pwd2 = $api.val($api.byId("pwd2"));
       var username = $api.val($api.byId("username"));
-      api.alert({ msg: "mobilephone"+mobilephone });
-      api.alert({ msg: pwd });
+      //api.alert({ msg: "mobilephone"+mobilephone });
+      api.alert({ msg: username });
       api.ajax({
         url: 'http://47.105.67.225/public/index/index/userReg',
         method: 'post',
@@ -123,8 +131,9 @@
           }
         }
       }, function(ret, err) {
-          api.alert({ msg: "aaaaaaaa" });
+
            if (ret) {
+             api.alert({ msg: "bbbbbbb" });
              api.alert({ msg: JSON.stringify(ret) });
            }
         }
