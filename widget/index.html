@@ -86,10 +86,10 @@
 
     function fnOpenPersonalCenterWin() {
         // 从缓存中获取用户信息
-        var userInfo = $api.getStorage('userInfo');
+        var username = $api.getStorage('username');
 
         // 判断当前用户是否登录了
-        if (userInfo && userInfo.id) {
+        if (username) {
             // 登录成功，打开个人中心Window
             api.openWin({
                 name: 'main',

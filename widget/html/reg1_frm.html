@@ -143,10 +143,35 @@
              }else{
                api.alert({ msg: ret.msg });
              }
-
+             fnOpenhomeWin ();
            }
         }
       );
+    }
+
+    // 打开注册
+    function loginsend () {
+        api.openWin({
+            name: 'reg',
+            url: './reg1_win.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+        api.closeWin();
+    }
+
+
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            pageParam: {
+                name: 'home'
+            }
+        });
+        api.closeWin();
     }
 </script>
 </html>
