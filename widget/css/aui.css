@@ -629,7 +629,8 @@ button, .aui-btn {
 	text-decoration: none;
 	text-align: center;
 	margin: 0;
-	background: #dddddd;
+	/*background: #dddddd;*/
+	background: #9459b2;
 	padding: 0 0.6rem;
 	height: 1.5rem;
 	line-height: 1.5rem;
