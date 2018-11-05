@@ -113,6 +113,8 @@
       //         fnLoginWin();
       //     }
       // });
+
+      getAllAlert();
     }
 
 
@@ -192,6 +194,21 @@
                 name: 'test'
             }
         });
+    }
+
+
+    function getAllAlert(){
+      api.ajax({
+          url: 'http://47.105.67.225/public/index/useraudio/index/userid/5',
+          method: 'get',
+      },function(ret, err){
+          if (ret) {
+              alert( JSON.stringify( ret ) );
+          } else {
+              alert( JSON.stringify( err ) );
+          }
+      });
+
     }
 
 
