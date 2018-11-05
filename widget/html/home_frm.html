@@ -209,7 +209,7 @@
           method: 'get',
       },function(ret, err){
           if (ret) {
-              alert( JSON.stringify( ret ) );
+              //alert( JSON.stringify( ret ) );
               if(ret.status=="err"){
                 var htmlStr = htmlStr1+ret.msg+htmlStr2;
                 var el = document.getElementById('alertlist');

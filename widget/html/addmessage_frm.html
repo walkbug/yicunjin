@@ -16,19 +16,19 @@
     <section class="aui-content " style="background-color: #711173 !important">
         <div class="aui-grid aui-bg-info" style="background-color: #711173 !important">
             <div class="aui-row" id="classify">
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-3" onclick="selectType(1);" id="type1">
                     <i class="aui-iconfont aui-icon-image"></i>
                     <div class="aui-grid-label">日程</div>
                 </div>
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-3" onclick="selectType(2);" id="type1">
                     <i class="aui-iconfont aui-icon-camera"></i>
                     <div class="aui-grid-label">生日</div>
                 </div>
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-3" onclick="selectType(3);" id="type1">
                     <i class="aui-iconfont aui-icon-pencil"></i>
                     <div class="aui-grid-label">纪念日</div>
                 </div>
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-3" onclick="selectType(4);" id="type1">
                     <i class="aui-iconfont aui-icon-date"></i>
                     <div class="aui-grid-label">倒数日</div>
                 </div>
@@ -45,7 +45,8 @@
         <div class="aui-card-list">
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
               <div class="aui-card-list-user-name">
-                  <div style="color:#ffffff;">请输入事件标题</div>
+                <input type="text" placeholder="请输入事件标题" id="audiotitle">
+                  <!-- <div style="color:#ffffff;">请输入事件标题</div> -->
               </div>
           </div>
 
@@ -55,8 +56,8 @@
           </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;">提醒时间</div>
+                <div class="aui-card-list-user-name" onclick="opentimeSelector();">
+                    <div style="color:#ffffff;" id="alerttime">提醒时间</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
             </div>
@@ -67,7 +68,7 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name">
+                <div class="aui-card-list-user-name" id="alerttype">
                     <div style="color:#ffffff;">重复方式</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
@@ -79,7 +80,7 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name">
+                <div class="aui-card-list-user-name" id="ringtype">
                     <div style="color:#ffffff;">提醒方式</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
@@ -102,6 +103,55 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     apiready = function () {
+    }
+
+    var sType = 0;
+    function selectType (id) {
+        sType = id;
+        switch(id){
+          case 1:
+            document.getElementById("type1").style.background-color="#a33fad";
+            document.getElementById("type2").style.background-color="#711173";
+            document.getElementById("type3").style.background-color="#711173";
+            document.getElementById("type4").style.background-color="#711173";
+            break;
+          case 2:
+          document.getElementById("type2").style.background-color="#a33fad";
+          document.getElementById("type1").style.background-color="#711173";
+          document.getElementById("type3").style.background-color="#711173";
+          document.getElementById("type4").style.background-color="#711173";
+            break;
+          case 3:
+          document.getElementById("type3").style.background-color="#a33fad";
+          document.getElementById("type2").style.background-color="#711173";
+          document.getElementById("type1").style.background-color="#711173";
+          document.getElementById("type4").style.background-color="#711173";
+            break;
+          case 4:
+          document.getElementById("type4").style.background-color="#a33fad";
+          document.getElementById("type2").style.background-color="#711173";
+          document.getElementById("type3").style.background-color="#711173";
+          document.getElementById("type1").style.background-color="#711173";
+            break;
+        }
+    }
+
+
+    function opentimeSelector () {
+      var timeSelector = api.require('timeSelector');
+      timeSelector.open({
+        x: 30,
+        y: api.frameHeight / 2 - 130,
+        width: api.frameWidth - 60,
+        height: 260,
+        fixedOn: api.frameName
+      }, function(ret, err) {
+        if (ret) {
+            alert(JSON.stringify(ret));
+        } else {
+            alert(JSON.stringify(err));
+        }
+      });
     }
 </script>
 </html>
