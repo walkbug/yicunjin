@@ -198,14 +198,21 @@
 
 
     function getAllAlert(){
+      var htmlStr1="<li class='aui-list-item'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+      var htmlStr2="</div></div></li>";
+      var uid = api.getStorage("userid");
+      var urlStr = 'http://47.105.67.225/public/index/useraudio/index/userid/'+uid;
+      api.alert({ msg: "uid"+uid });
+      api.alert({ msg: "urlStr"+urlStr });
       api.ajax({
-          url: 'http://47.105.67.225/public/index/useraudio/index/userid/5',
+          url: urlStr,
           method: 'get',
       },function(ret, err){
           if (ret) {
               alert( JSON.stringify( ret ) );
-          } else {
-              alert( JSON.stringify( err ) );
+              if(ret.status=="err"){
+
+              }
           }
       });
 

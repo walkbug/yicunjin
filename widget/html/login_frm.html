@@ -90,6 +90,7 @@
              if (ret) {
                //api.alert({ msg: JSON.stringify(ret) });
                if(ret.status=="ok"){
+                 $api.setStorage("userid",ret.userid);
                  $api.setStorage("username",ret.username);
                  $api.setStorage("mobilephone",ret.mobilephone);
                }else{

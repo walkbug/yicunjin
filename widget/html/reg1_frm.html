@@ -138,8 +138,9 @@
 
              //var obj = $api.strToJson(ret);
              if(ret.status=="ok"){
-               $api.setStorage("username",username);
-               $api.setStorage("mobilephone",mobilephone);
+               $api.setStorage("userid",ret.userid);
+               $api.setStorage("username",ret.username);
+               $api.setStorage("mobilephone",ret.mobilephone);
                api.alert({
                     title: '',
                     msg: '注册成功！',
