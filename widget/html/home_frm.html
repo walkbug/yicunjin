@@ -33,7 +33,7 @@
         </div>
     </section>
     <section class="aui-content">
-        <ul class="aui-list aui-list-in aui-margin-b-15">
+        <ul class="aui-list aui-list-in aui-margin-b-15" id="alertlist">
             <!-- <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
 
@@ -202,8 +202,8 @@
       var htmlStr2="</div></div></li>";
       var uid = $api.getStorage("userid");
       var urlStr = 'http://47.105.67.225/public/index/useraudio/index/userid/'+uid;
-      api.alert({ msg: "uid"+uid });
-      api.alert({ msg: "urlStr"+urlStr });
+      //api.alert({ msg: "uid"+uid });
+      //api.alert({ msg: "urlStr"+urlStr });
       api.ajax({
           url: urlStr,
           method: 'get',
@@ -211,7 +211,9 @@
           if (ret) {
               alert( JSON.stringify( ret ) );
               if(ret.status=="err"){
-
+                var htmlStr = htmlStr1+ret.msg+htmlStr2;
+                var el = document.getElementById('alertlist');
+                $api.html(el, htmlStr);
               }
           }
       });
