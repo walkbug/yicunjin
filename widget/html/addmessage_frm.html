@@ -81,7 +81,7 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name" id="ringtype">
-                    <div style="color:#ffffff;">提醒方式</div>
+                    <div style="color:#ffffff;">提醒方式（闹铃）</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
             </div>
@@ -123,6 +123,36 @@
 
         // closetimeSelector();
       });
+
+
+      var switchBtn = api.require('ringtypeSwitch');
+      switchBtn.open({
+          id:'rtSwitch',
+          state:true,
+          rect: {
+            x: 100,
+            y: 100,
+            w: 80,
+            h: 30
+          },
+          styles:{
+             bgCorner:15,
+             active:'#EEE' ,
+             inActive:'#0F0',
+             thumb:{
+                active:'#F00' ,
+                inActive:'#F0F' ,
+                size:30,
+                corner:15
+             }
+          },
+          fixedOn: '',
+          fixed: true
+      }, function(ret) {
+          JSON.stringify(ret);
+      });
+
+
     }
 
 
@@ -159,7 +189,7 @@
 
 
     function opentypeSelector () {
-      var UIMultiSelector = api.require('UIMultiSelector');
+      var UIMultiSelector = api.require('typeSelector');
       UIMultiSelector.open({
         rect: {
          h: 244
@@ -180,24 +210,24 @@
                  size: 16,
                  h: 44
              },
-             leftButton: {
-                 w: 80,
-                 h: 35,
-                 marginT: 5,
-                 marginL: 8,
-                 bg: '#711173',
-                 color: '#ffffff',
-                 size: 14
-             },
-             rightButton: {
-                 w: 80,
-                 h: 35,
-                 marginT: 5,
-                 marginR: 8,
-                 bg: '#711173',
-                 color: '#ffffff',
-                 size: 14
-             },
+            //  leftButton: {
+            //      w: 80,
+            //      h: 35,
+            //      marginT: 5,
+            //      marginL: 8,
+            //      bg: '#711173',
+            //      color: '#ffffff',
+            //      size: 14
+            //  },
+            //  rightButton: {
+            //      w: 80,
+            //      h: 35,
+            //      marginT: 5,
+            //      marginR: 8,
+            //      bg: '#711173',
+            //      color: '#ffffff',
+            //      size: 14
+            //  },
              item: {
                  h: 35,
                  bg: '#711173',
@@ -238,13 +268,19 @@
                  alert(JSON.stringify(ret));
                  if(ret.eventType=="clickItem"){
                    aType = ret.items[0].text;
-                   alert(aType);
+                  //  alert(aType);
+                  closetypeSelector();
                  }
 
              } else {
                 //  alert(JSON.stringify(err));
              }
       });
+    }
+
+    function closetypeSelector () {
+        var UIMultiSelector = api.require('typeSelector');
+        UIMultiSelector.close();
     }
 
     function openTimeFrame () {
