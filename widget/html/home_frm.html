@@ -233,15 +233,15 @@
                         atype='震动';
                       }
 
-                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'--'+ret.msg[j].alerttime;
+                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'['+ret.msg[j].alerttime+']';
                       // alert(htmlStra);
-                      htmlStr = htmlStr1+htmlStra+htmlStr2;
-                      alert( htmlStr );
+                      htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
+                      // alert( htmlStr );
 
                     }
                   }
                 }
-                alert( htmlStr );
+                // alert( htmlStr );
                 var el = document.getElementById('alertlist');
                 $api.html(el, htmlStr);
 
