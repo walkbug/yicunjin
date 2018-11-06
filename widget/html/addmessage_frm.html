@@ -289,30 +289,32 @@
            }]
         },function(ret, err) {
              if (ret) {
-                 alert(JSON.stringify(ret));
+                //  alert(JSON.stringify(ret));
                  if(ret.eventType=="clickRight"){
                    aType = '';
+                   aStr = '';
                    for(var j = 0; j < ret.items.length; j++){
+                     aStr = aStr+ret.items[j].text+' ';
                      if(ret.items[j].text=='周一'){
-                       aType=aType+'1,'
+                       aType=aType+'1,';
                      }
                      if(ret.items[j].text=='周二'){
-                       aType=aType+'2,'
+                       aType=aType+'2,';
                      }
                      if(ret.items[j].text=='周三'){
-                       aType=aType+'3,'
+                       aType=aType+'3,';
                      }
                      if(ret.items[j].text=='周四'){
-                       aType=aType+'4,'
+                       aType=aType+'4,';
                      }
                      if(ret.items[j].text=='周五'){
-                       aType=aType+'5,'
+                       aType=aType+'5,';
                      }
                      if(ret.items[j].text=='周六'){
-                       aType=aType+'6,'
+                       aType=aType+'6,';
                      }
                      if(ret.items[j].text=='周日'){
-                       aType=aType+'7,'
+                       aType=aType+'7,';
                      }
                    }
                    aType = ret.items[0].text;
@@ -327,7 +329,7 @@
     }
 
     function closetypeSelector () {
-        var UIMultiSelector = api.require('typeSelector');
+        var UIMultiSelector = api.require('UIMultiSelector');
         UIMultiSelector.close();
     }
 
