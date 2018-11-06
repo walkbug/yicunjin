@@ -108,10 +108,11 @@
       },function(ret, err) {
         // alert("11111");
         alert( JSON.stringify( ret ) );
-        alert(ret.value.shour+":"+ret.value.smin);
+        // alert(ret.value.shour+":"+ret.value.smin);
 
         var htmlStr = "提醒时间："+ret.value.shour+":"+ret.value.smin;
-        var el = document.getElementById('alertlist');
+        var el = document.getElementById('alerttime');
+        // alert( htmlStr );
         $api.html(el, htmlStr);
 
         // closetimeSelector();
@@ -151,9 +152,9 @@
     }
 
 
-    function closetimeSelector () {
-      api.closeFrame({name:'times'});
-    }
+    // function closetimeSelector () {
+    //   api.closeFrame({name:'times'});
+    // }
 
     function openTimeFrame () {
         api.openFrame({

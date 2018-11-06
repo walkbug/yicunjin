@@ -55,7 +55,7 @@ var smin = 0;
         timeSelector.open({
           x: 0,
           // y: api.frameHeight / 2 - 130,
-          y: 30,
+          y: 50,
           width: api.frameWidth,
           height: 260,
           bgColor: "#a33fad",
@@ -79,7 +79,7 @@ var smin = 0;
 
     // 登录
     function savetime () {
-      alert(shour+":"+smin);
+      // alert(shour+":"+smin);
       api.sendEvent({
         name: 'timeSelecte',
         extra: {
@@ -88,7 +88,7 @@ var smin = 0;
         }
       });
 
-      // api.closeFrame();
+      api.closeFrame();
     }
 
     // 打开注册
