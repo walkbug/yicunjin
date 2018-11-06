@@ -237,7 +237,7 @@
              if (ret) {
                  alert(JSON.stringify(ret));
                  if(ret.eventType=="clickItem"){
-                   aType = ret.items.text[0];
+                   aType = ret.items[0].text;
                    alert(aType);
                  }
 
