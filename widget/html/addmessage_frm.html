@@ -236,8 +236,11 @@
         },function(ret, err) {
              if (ret) {
                  alert(JSON.stringify(ret));
-                 aType = ret.items.text;
-                 alert(aType);
+                 if(ret.eventType=="clickItem"){
+                   aType = ret.items.text[0];
+                   alert(aType);
+                 }
+
              } else {
                 //  alert(JSON.stringify(err));
              }
