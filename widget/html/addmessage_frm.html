@@ -119,7 +119,7 @@
         var el = document.getElementById('alerttime');
         stime = ret.value.shour+":"+ret.value.smin;
         // alert( htmlStr );
-        // $api.html(el, htmlStr);
+        $api.html(el, htmlStr);
 
         // closetimeSelector();
       });
@@ -130,8 +130,8 @@
           id:'ringButton',
           state:true,
           rect: {
-            x: 320,
-            y: 470,
+            x: 360,
+            y: 420,
             w: 80,
             h: 30
           },
@@ -151,13 +151,14 @@
       }, function(ret) {
           alert(JSON.stringify(ret));
           if(ret.state){
-
             var htmlStr = "提醒方式（闹铃）";
             var el = document.getElementById('ringtype');
+            $api.html(el, htmlStr);
             rType = 0;
           }else{
             var htmlStr = "提醒方式（震动）";
             var el = document.getElementById('ringtype');
+            $api.html(el, htmlStr);
             rType = 1;
           }
       });
