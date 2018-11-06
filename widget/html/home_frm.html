@@ -218,7 +218,7 @@
                 alert( JSON.stringify( ret ) );
 
                 for(var j = 0; j < ret.msg.length; j++){
-                  var arr = ret.msg[j].alerttype.split(",")；
+                  var arr = ret.msg[j].alerttype.split(",");
                   var d=new Date();
                   for(var i = 0; i < arr.length; i++){
                     if(d.getDay()==arr[i]){
