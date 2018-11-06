@@ -155,7 +155,7 @@ function fnOpen(){
       fixed: false
   }, function(ret, err){
       if( ret ){
-          //  alert( JSON.stringify( ret )+'fnOpen' );
+           alert( JSON.stringify( ret )+'fnOpenwin' );
            var obj = $api.strToJson(ret);
            $api.text(mmshow,ret.year+"年"+ret.month+"月");
            if(ret.day){
