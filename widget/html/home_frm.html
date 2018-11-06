@@ -217,6 +217,25 @@
               }else{
                 alert( JSON.stringify( ret ) );
 
+                for(var j = 0; j < ret.msg.length; j++){
+                  var arr = ret.msg[j].alerttype.split(",")；
+                  var d=new Date();
+                  for(var i = 0; i < arr.length; i++){
+                    if(d.getDay()==arr[i]){
+                      var atype='';
+                      if(ret.msg[j].ringtype==0){
+                        atype='响铃';
+                      }
+                      if(ret.msg[j].ringtype==1){
+                        atype='震动';
+                      }
+                      var htmlStr = '['+atype+']'+ret.msg[j].audiotitle+''+ret.msg[j].alerttime;
+                      htmlStr = htmlStr1+htmlStr+htmlStr2;
+                      var el = document.getElementById('alertlist');
+                      $api.html(el, htmlStr);
+                    }
+                  }
+                }
                 // var arr = ret.msg.alerttype.split(",")；
                 // var d=new Date();
                 // for(var j = 0; j < arr.length; j++){
