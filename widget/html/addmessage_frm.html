@@ -112,21 +112,21 @@
     var aType = '';//重复方式
     var rType = 0;
     apiready = function () {
-      api.addEventListener({
-        name: 'timeSelecte'
-      },function(ret, err) {
-        // alert("11111");
-        // alert( JSON.stringify( ret ) );
-        // alert(ret.value.shour+":"+ret.value.smin);
-
-        var htmlStr = "提醒时间："+ret.value.shour+":"+ret.value.smin;
-        var el = document.getElementById('alerttime');
-        stime = ret.value.shour+":"+ret.value.smin;
-        // alert( htmlStr );
-        $api.html(el, htmlStr);
-
-        // closetimeSelector();
-      });
+      // api.addEventListener({
+      //   name: 'timeSelecte'
+      // },function(ret, err) {
+      //   // alert("11111");
+      //   // alert( JSON.stringify( ret ) );
+      //   // alert(ret.value.shour+":"+ret.value.smin);
+      //
+      //   var htmlStr = "提醒时间："+ret.value.shour+":"+ret.value.smin;
+      //   var el = document.getElementById('alerttime');
+      //   stime = ret.value.shour+":"+ret.value.smin;
+      //   // alert( htmlStr );
+      //   $api.html(el, htmlStr);
+      //
+      //   // closetimeSelector();
+      // });
 
 
       var switchBtn = api.require('UISwitchButton');
@@ -357,9 +357,14 @@
             title: '选择时间'
         }, function(ret, err) {
             if (ret) {
-                alert(JSON.stringify(ret));
+              var htmlStr = "提醒时间："+ret.hour+":"+ret.minute;
+              var el = document.getElementById('alerttime');
+              stime = ret.hour+":"+ret.minute;
+              // alert( htmlStr );
+              $api.html(el, htmlStr);
+                // alert(JSON.stringify(ret));
             } else {
-                alert(JSON.stringify(err));
+                // alert(JSON.stringify(err));
             }
         });
     }
