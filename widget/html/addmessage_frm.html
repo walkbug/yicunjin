@@ -314,10 +314,10 @@
                        aType=aType+'6,';
                      }
                      if(ret.items[j].text=='周日'){
-                       aType=aType+'7,';
+                       aType=aType+'0,';
                      }
                    }
-                   aType = ret.items[0].text;
+                  //  aType = ret.items[0].text;
                    var htmlStr = "重复："+aStr;
                    var el = document.getElementById('alerttype');
                    $api.html(el, htmlStr);
@@ -355,6 +355,8 @@
     function alertsend () {
       var uid = $api.getStorage("userid");
       var audiotitle = $api.val($api.byId("audiotitle"));
+
+      alert(audiotitle);
 
       api.ajax({
         url: 'http://47.105.67.225/public/index/useraudio/publish',
