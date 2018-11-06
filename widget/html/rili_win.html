@@ -91,7 +91,9 @@ var mmshow = document.getElementById('mmshow');
 $api.text(mmshow,year+"年"+month+"月");
 // alert('UICalendar');
 var UICalendar;
-var clickDate='';
+var clickDay;
+var clickYear;
+var clickMonth;
 
 var htmlStr1="<li class='aui-list-item'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
 var htmlStr2="</div></div></li>";
@@ -146,8 +148,10 @@ function fnOpen(){
            if(ret.day){
              $api.text(dateshow,ret.day);
            }
-           clickDate=ret.year+"-"+ret.month+"-"+ret.day;
-           alert( clickDate );
+           clickDay=ret.day;
+           clickYear=ret.year;
+           clickMonth=ret.month-1;
+          //  clickDate=ret.year+"-"+ret.month+"-"+ret.day;
            getAllAlert();
 
       }else{
@@ -313,8 +317,58 @@ function fnTurnPage(){
 
 
     function getAllAlert(){
-      alert( clickDate );
 
+      var urlStr = 'http://47.105.67.225/public/index/useraudio/index/userid/'+uid;
+      //api.alert({ msg: "uid"+uid });
+      //api.alert({ msg: "urlStr"+urlStr });
+      api.ajax({
+          url: urlStr,
+          method: 'get',
+      },function(ret, err){
+          if (ret) {
+              //alert( JSON.stringify( ret ) );
+              allAlert=JSON.stringify( ret ) ;
+              if(ret.status=="err"){
+                var htmlStr = htmlStr1+ret.msg+htmlStr2;
+                var el = document.getElementById('alertlist');
+                $api.html(el, htmlStr);
+              }else{
+                // alert( JSON.stringify( ret ) );
+
+                var htmlStr='';
+
+                for(var j = 0; j < ret.msg.length; j++){
+                  var arr = ret.msg[j].alerttype.split(",");
+                  // alert( ret.msg[j].alerttype );clickDate
+                  // clickDay=ret.day;
+                  // clickYear=ret.year;
+                  // clickMonth=ret.month-1;
+                  var d=new Date(clickYear,clickMonth,clickDay);
+                  for(var i = 0; i < arr.length; i++){
+                    if(d.getDay()==arr[i]){
+                      var atype='';
+                      if(ret.msg[j].ringtype==0){
+                        atype='响铃';
+                      }
+                      if(ret.msg[j].ringtype==1){
+                        atype='震动';
+                      }
+
+                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'['+ret.msg[j].alerttime+']';
+                      // alert(htmlStra);
+                      htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
+                      // alert( htmlStr );
+
+                    }
+                  }
+                }
+                // alert( htmlStr );
+                var el = document.getElementById('alertlist');
+                $api.html(el, htmlStr);
+
+              }
+          }
+      });
 
     }
 
