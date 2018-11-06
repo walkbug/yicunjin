@@ -337,17 +337,29 @@
     }
 
     function openTimeFrame () {
-        api.openFrame({
-            name: 'times',
-            url: './time_frm.html',
-            rect: {
-                x: 0,
-                y: 200,
-                w: 'auto',
-                h: 550
-            },
-            pageParam: {
-                name: 'times'
+        // api.openFrame({
+        //     name: 'times',
+        //     url: './time_frm.html',
+        //     rect: {
+        //         x: 0,
+        //         y: 200,
+        //         w: 'auto',
+        //         h: 550
+        //     },
+        //     pageParam: {
+        //         name: 'times'
+        //     }
+        // });
+
+        api.openPicker({
+            type: 'time',
+            date: '12:30',
+            title: '选择时间'
+        }, function(ret, err) {
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
             }
         });
     }
