@@ -68,8 +68,8 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" id="alerttype" onclick="opentypeSelector();">
-                    <div style="color:#ffffff;">重复方式</div>
+                <div class="aui-card-list-user-name" onclick="opentypeSelector();">
+                    <div style="color:#ffffff;" id="alerttype">重复</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
             </div>
@@ -100,7 +100,7 @@
     </section>
 
     <section class="aui-content-padded">
-        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#9459b2;">保存</div>
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#711173;">保存</div>
     </section>
 
 </body>
@@ -318,6 +318,9 @@
                      }
                    }
                    aType = ret.items[0].text;
+                   var htmlStr = "重复："+aStr;
+                   var el = document.getElementById('alerttype');
+                   $api.html(el, htmlStr);
                   //  alert(aType);
                   closetypeSelector();
                  }
@@ -339,7 +342,7 @@
             url: './time_frm.html',
             rect: {
                 x: 0,
-                y: 0,
+                y: 200,
                 w: 'auto',
                 h: 550
             },

@@ -214,6 +214,8 @@
                 var htmlStr = htmlStr1+ret.msg+htmlStr2;
                 var el = document.getElementById('alertlist');
                 $api.html(el, htmlStr);
+              }else{
+                alert( JSON.stringify( ret ) );
               }
           }
       });
