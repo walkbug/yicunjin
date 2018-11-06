@@ -68,7 +68,7 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" id="alerttype">
+                <div class="aui-card-list-user-name" id="alerttype" onclick="opentypeSelector();">
                     <div style="color:#ffffff;">重复方式</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
@@ -107,7 +107,7 @@
         name: 'timeSelecte'
       },function(ret, err) {
         // alert("11111");
-        alert( JSON.stringify( ret ) );
+        // alert( JSON.stringify( ret ) );
         // alert(ret.value.shour+":"+ret.value.smin);
 
         var htmlStr = "提醒时间："+ret.value.shour+":"+ret.value.smin;
@@ -152,9 +152,99 @@
     }
 
 
-    // function closetimeSelector () {
-    //   api.closeFrame({name:'times'});
-    // }
+    function opentypeSelector () {
+      var UIMultiSelector = api.require('UIMultiSelector');
+      UIMultiSelector.open({
+        rect: {
+         h: 244
+         },
+         text: {
+             title: 'UIMultiSelector',
+             leftBtn: 'Cancel',
+             rightBtn: 'Finish',
+             selectAll: 'ALL'
+         },
+         max: 0,
+         singleSelection: true,
+         styles: {
+             mask: 'rgba(0,0,0,0)',
+             title: {
+                 bg: 'rgb(0,64,128)',
+                 color: 'rgb(184,209,5)',
+                 size: 16,
+                 h: 44
+             },
+             leftButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginL: 8,
+                 color: 'rgb(0,0,0)',
+                 size: 14
+             },
+             rightButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginR: 8,
+                 color: 'rgb(0,0,0)',
+                 size: 14
+             },
+             item: {
+                 h: 35,
+                 bg: 'rgb(121,82,173)',
+                 bgActive: 'rgb(43,213,166)',
+                 bgHighlight: 'rgb(238,17,150)',
+                 color: 'rgb(22,112,233)',
+                 active: 'rgb(201,118,126)',
+                 highlight: 'rgb(255,255,0)',
+                 size: 14,
+                 lineColor: 'rgb(78,57,255)',
+                 textAlign: 'center'
+             },
+             icon: {
+                 w: 20,
+                 h: 20,
+                 marginT: 11,
+                 marginH: 8,
+                 bg: '#fff',
+                 align: 'left'
+             }
+         },
+         animation: true,
+         items: [{
+               text: 'Monday',
+               status: 'normal'
+           }, {
+               text: 'Tuesday',
+               status: 'normal'
+           }, {
+               text: 'Wednesday',
+               status: 'normal'
+           }, {
+               text: 'Thursday',
+               status: 'normal'
+           }, {
+               text: 'Friday',
+               status: 'normal'
+           }, {
+               text: 'Saturday',
+               status: 'normal'
+           }, {
+               text: 'Sunday',
+               status: 'normal'
+           }, {
+               text: 'from Monday to Sunday',
+               status: 'normal'
+           }]
+        },function(ret, err) {
+             if (ret) {
+                 alert(JSON.stringify(ret));
+             } else {
+                 alert(JSON.stringify(err));
+             }
+      });
+    }
 
     function openTimeFrame () {
         api.openFrame({
