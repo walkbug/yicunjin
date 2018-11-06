@@ -91,15 +91,16 @@ var mmshow = document.getElementById('mmshow');
 $api.text(mmshow,year+"年"+month+"月");
 // alert('UICalendar');
 var UICalendar;
+var clickDate='';
+
+var htmlStr1="<li class='aui-list-item'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+var htmlStr2="</div></div></li>";
+var uid = $api.getStorage("userid");
 apiready = function() {
   UICalendar = api.require('UICalendar');
   fnOpen();
 
-  var clickDate='';
 
-  var htmlStr1="<li class='aui-list-item'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-  var htmlStr2="</div></div></li>";
-  var uid = $api.getStorage("userid");
 
 };
 
