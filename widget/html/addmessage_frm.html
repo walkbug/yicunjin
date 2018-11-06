@@ -80,9 +80,9 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" id="ringtype">
-                    <div style="color:#ffffff;">提醒方式（闹铃）</div>
-                    <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
+                <div class="aui-card-list-user-name">
+                    <div style="color:#ffffff;" id="ringtype">提醒方式（闹铃）</div>
+                    <!-- <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
                 </div>
             </div>
 
@@ -130,8 +130,8 @@
           id:'ringButton',
           state:true,
           rect: {
-            x: 100,
-            y: 100,
+            x: 300,
+            y: 500,
             w: 80,
             h: 30
           },
@@ -140,8 +140,8 @@
              active:'#711173' ,
              inActive:'#a33fad',
              thumb:{
-                active:'#711173' ,
-                inActive:'#a33fad' ,
+                active:'#ffffff' ,
+                inActive:'#000000' ,
                 size:30,
                 corner:15
              }
@@ -150,6 +150,15 @@
           fixed: true
       }, function(ret) {
           alert(JSON.stringify(ret));
+          if(ret.state=='false'){
+            var htmlStr = "提醒方式（震动）";
+            var el = document.getElementById('ringtype');
+            rType = 1;
+          }else{
+            var htmlStr = "提醒方式（闹铃）";
+            var el = document.getElementById('ringtype');
+            rType = 0;
+          }
       });
 
 
