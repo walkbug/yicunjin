@@ -113,6 +113,7 @@
         var el = document.getElementById('alertlist');
         $api.html(el, htmlStr);
 
+        closetimeSelector();
       });
     }
 
@@ -149,8 +150,8 @@
     }
 
 
-    function opentimeSelector () {
-
+    function closetimeSelector () {
+      api.closeFrame({name:'times'});
     }
 
     function openTimeFrame () {
