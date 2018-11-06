@@ -217,6 +217,8 @@
               }else{
                 alert( JSON.stringify( ret ) );
 
+                var htmlStr='';
+
                 for(var j = 0; j < ret.msg.length; j++){
                   var arr = ret.msg[j].alerttype.split(",");
                   var d=new Date();
@@ -229,20 +231,16 @@
                       if(ret.msg[j].ringtype==1){
                         atype='震动';
                       }
-                      var htmlStr = '['+atype+']'+ret.msg[j].audiotitle+''+ret.msg[j].alerttime;
-                      htmlStr = htmlStr1+htmlStr+htmlStr2;
-                      var el = document.getElementById('alertlist');
-                      $api.html(el, htmlStr);
+                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+''+ret.msg[j].alerttime;
+                      htmlStr = htmlStr1+htmlStra+htmlStr2;
+
                     }
                   }
                 }
-                // var arr = ret.msg.alerttype.split(",")；
-                // var d=new Date();
-                // for(var j = 0; j < arr.length; j++){
-                //   if(d.getDay()==arr[j]){
-                //     var htmlStr =
-                //   }
-                // }
+
+                var el = document.getElementById('alertlist');
+                $api.html(el, htmlStr);
+                
               }
           }
       });
