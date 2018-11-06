@@ -44,8 +44,8 @@
     <section class="aui-content">
         <div class="aui-card-list">
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
-              <div class="aui-card-list-user-name">
-                <input type="text" placeholder="请输入事件标题" id="audiotitle">
+              <div class="aui-card-list-user-name aui-list-item-input">
+                <input type="text" placeholder="请输入事件标题" id="audiotitle" style="color:#ffffff">
                   <!-- <div style="color:#ffffff;">请输入事件标题</div> -->
               </div>
           </div>
@@ -142,15 +142,21 @@
       var timeSelector = api.require('timeSelector');
       timeSelector.open({
         x: 30,
-        y: api.frameHeight / 2 - 130,
+        // y: api.frameHeight / 2 - 130,
+        y: api.frameHeight - 130,
         width: api.frameWidth - 60,
         height: 260,
+        bgColor:#a33fad,
+        normalColor:#dddddd,
+        selectedColor:#ffffff,
+        separateColor:#ffffff,
+        titleColor:#ffffff,
         fixedOn: api.frameName
       }, function(ret, err) {
         if (ret) {
-            alert(JSON.stringify(ret));
+            // alert(JSON.stringify(ret));
         } else {
-            alert(JSON.stringify(err));
+            // alert(JSON.stringify(err));
         }
       });
     }
