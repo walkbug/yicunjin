@@ -215,9 +215,15 @@
                 var el = document.getElementById('alertlist');
                 $api.html(el, htmlStr);
               }else{
-                // alert( JSON.stringify( ret ) );
-                var d=new Date();
-                
+                alert( JSON.stringify( ret ) );
+
+                // var arr = ret.msg.alerttype.split(",")；
+                // var d=new Date();
+                // for(var j = 0; j < arr.length; j++){
+                //   if(d.getDay()==arr[j]){
+                //     var htmlStr =
+                //   }
+                // }
               }
           }
       });
