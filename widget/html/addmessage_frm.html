@@ -103,6 +103,13 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     apiready = function () {
+      api.addEventListener({
+        name: 'timeSelecte'
+      },function(ret, err) {
+        alert("11111");
+        // alert(ret.shour+":"+ret.smin);
+
+      });
     }
 
     var sType = 0;
@@ -144,16 +151,16 @@
 
     function openTimeFrame () {
         api.openFrame({
-            name: 'login',
+            name: 'times',
             url: './time_frm.html',
             rect: {
                 x: 0,
-                y: 0,
+                y: 60,
                 w: 'auto',
-                h: 'auto'
+                h: 350
             },
             pageParam: {
-                name: 'test'
+                name: 'times'
             }
         });
     }

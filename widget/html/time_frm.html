@@ -53,10 +53,10 @@ var smin = 0;
         api.parseTapmode();
         var timeSelector = api.require('timeSelector');
         timeSelector.open({
-          x: 30,
+          x: 0,
           // y: api.frameHeight / 2 - 130,
-          y: 10,
-          width: api.frameWidth - 60,
+          y: 30,
+          width: api.frameWidth
           height: 260,
           bgColor: "#a33fad",
           normalColor: "#ffffff",
@@ -73,12 +73,20 @@ var smin = 0;
               // alert(JSON.stringify(err));
           }
         });
+
     };
 
 
     // 登录
     function savetime () {
       alert(shour+":"+smin);
+      api.sendEvent({
+        name: 'timeSelecte',
+        extra: {
+          shour: shour,
+          smin: smin
+        }
+      });
     }
 
     // 打开注册
