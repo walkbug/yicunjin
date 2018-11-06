@@ -45,7 +45,7 @@
         <div class="aui-card-list">
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
               <div class="aui-card-list-user-name aui-list-item-input">
-                <input type="text" placeholder="请输入事件标题" id="audiotitle" style="color:#ffffff">
+                <input type="text" placeholder="请输入提醒标题" id="audiotitle" style="color:#ffffff">
                   <!-- <div style="color:#ffffff;">请输入事件标题</div> -->
               </div>
           </div>
@@ -93,10 +93,14 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;">请输入提醒内容</div>
+                    <div style="color:#ffffff;">请录音提醒内容</div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#9459b2;">保存</div>
     </section>
 
 </body>
@@ -105,7 +109,7 @@
 
     var sType = 0;
     var stime = '';
-    var aType = '';
+    var aType = '';//重复方式
     var rType = 0;
     apiready = function () {
       api.addEventListener({
@@ -200,7 +204,7 @@
 
 
     function opentypeSelector () {
-      var UIMultiSelector = api.require('typeSelector');
+      var UIMultiSelector = api.require('UIMultiSelector');
       UIMultiSelector.open({
         rect: {
          h: 244
@@ -212,7 +216,7 @@
              selectAll: 'ALL'
          },
          max: 0,
-         singleSelection: true,
+         singleSelection: false,
          styles: {
              mask: 'rgba(0,0,0,0)',
              title: {
@@ -221,24 +225,24 @@
                  size: 16,
                  h: 44
              },
-            //  leftButton: {
-            //      w: 80,
-            //      h: 35,
-            //      marginT: 5,
-            //      marginL: 8,
-            //      bg: '#711173',
-            //      color: '#ffffff',
-            //      size: 14
-            //  },
-            //  rightButton: {
-            //      w: 80,
-            //      h: 35,
-            //      marginT: 5,
-            //      marginR: 8,
-            //      bg: '#711173',
-            //      color: '#ffffff',
-            //      size: 14
-            //  },
+             leftButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginL: 8,
+                 bg: '#711173',
+                 color: '#ffffff',
+                 size: 14
+             },
+             rightButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginR: 8,
+                 bg: '#711173',
+                 color: '#ffffff',
+                 size: 14
+             },
              item: {
                  h: 35,
                  bg: '#711173',
@@ -262,22 +266,55 @@
          },
          animation: true,
          items: [{
-               text: '每天',
+               text: '每日',
                status: 'normal'
            }, {
-               text: '每周',
+               text: '周一',
                status: 'normal'
            }, {
-               text: '每月',
+               text: '周二',
                status: 'normal'
            }, {
-               text: '每年',
+               text: '周三',
+               status: 'normal'
+           }, {
+               text: '周四',
+               status: 'normal'
+           }, {
+               text: '周五',
+               status: 'normal'
+           }, {
+               text: '周六',
                status: 'normal'
            }]
         },function(ret, err) {
              if (ret) {
                  alert(JSON.stringify(ret));
-                 if(ret.eventType=="clickItem"){
+                 if(ret.eventType=="clickRight"){
+                   aType = '';
+                   for(var j = 0; j < ret.items.length; j++){
+                     if(ret.items[j].text=='周一'){
+                       aType=aType+'1,'
+                     }
+                     if(ret.items[j].text=='周二'){
+                       aType=aType+'2,'
+                     }
+                     if(ret.items[j].text=='周三'){
+                       aType=aType+'3,'
+                     }
+                     if(ret.items[j].text=='周四'){
+                       aType=aType+'4,'
+                     }
+                     if(ret.items[j].text=='周五'){
+                       aType=aType+'5,'
+                     }
+                     if(ret.items[j].text=='周六'){
+                       aType=aType+'6,'
+                     }
+                     if(ret.items[j].text=='周日'){
+                       aType=aType+'7,'
+                     }
+                   }
                    aType = ret.items[0].text;
                   //  alert(aType);
                   closetypeSelector();
@@ -308,6 +345,49 @@
                 name: 'times'
             }
         });
+    }
+
+    function alertsend () {
+      var uid = $api.getStorage("userid");
+      var audiotitle = $api.val($api.byId("audiotitle"));
+
+      api.ajax({
+        url: 'http://47.105.67.225/public/index/useraudio/publish',
+        method: 'post',
+        dataType:'json',
+        //cache: false,
+        data: {
+          values: {
+            userid: uid,
+            audiotitle: audiotitle,
+            textinfo: '',
+            useraudio: '',
+            audiotype: sType,
+            alerttime: stime,
+            alerttype: aType,
+            ringtype: rType
+          }
+        }
+      }, function(ret, err) {
+          //api.alert({ msg: "aaaaaaaa" });
+           if (ret) {
+             //api.alert({ msg: JSON.stringify(ret) });
+             if(ret.status=="ok"){
+              //  api.alert({ msg: ret.msg });
+               api.alert({
+                  // title: 'testtitle',
+                  msg: ret.msg ,
+              }, function(ret, err) {
+                api.closeWin();
+              });
+              //  api.alert({ msg: "Storage:"+ });
+             }else{
+               api.alert({ msg: ret.msg });
+             }
+
+           }
+        }
+      );
     }
 </script>
 </html>
