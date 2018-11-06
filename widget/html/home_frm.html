@@ -215,13 +215,13 @@
                 var el = document.getElementById('alertlist');
                 $api.html(el, htmlStr);
               }else{
-                alert( JSON.stringify( ret ) );
+                // alert( JSON.stringify( ret ) );
 
                 var htmlStr='';
 
                 for(var j = 0; j < ret.msg.length; j++){
                   var arr = ret.msg[j].alerttype.split(",");
-                  alert( ret.msg[j].alerttype );
+                  // alert( ret.msg[j].alerttype );
                   var d=new Date();
                   for(var i = 0; i < arr.length; i++){
                     if(d.getDay()==arr[i]){
@@ -234,13 +234,14 @@
                       }
 
                       var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'--'+ret.msg[j].alerttime;
-                      alert(htmlStra);
+                      // alert(htmlStra);
                       htmlStr = htmlStr1+htmlStra+htmlStr2;
+                      alert( htmlStr );
 
                     }
                   }
                 }
-
+                alert( htmlStr );
                 var el = document.getElementById('alertlist');
                 $api.html(el, htmlStr);
 
