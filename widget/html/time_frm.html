@@ -79,7 +79,7 @@ var smin = 0;
 
     // 登录
     function savetime () {
-      alert(shour+":"+smin);
+      // alert(shour+":"+smin);
       api.sendEvent({
         name: 'timeSelecte',
         extra: {
@@ -87,6 +87,8 @@ var smin = 0;
           smin: smin
         }
       });
+
+      api.closeFrame();
     }
 
     // 打开注册

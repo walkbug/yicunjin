@@ -106,8 +106,12 @@
       api.addEventListener({
         name: 'timeSelecte'
       },function(ret, err) {
-        alert("11111");
-        // alert(ret.shour+":"+ret.smin);
+        // alert("11111");
+        alert(ret.shour+":"+ret.smin);
+
+        var htmlStr = "提醒时间："+ret.shour+":"+ret.smin;
+        var el = document.getElementById('alertlist');
+        $api.html(el, htmlStr);
 
       });
     }
