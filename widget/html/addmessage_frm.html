@@ -56,7 +56,7 @@
           </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" onclick="opentimeSelector();">
+                <div class="aui-card-list-user-name" onclick="openTimeFrame();">
                     <div style="color:#ffffff;" id="alerttime">提醒时间</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
@@ -139,26 +139,23 @@
 
 
     function opentimeSelector () {
-      var timeSelector = api.require('timeSelector');
-      timeSelector.open({
-        x: 30,
-        y: api.frameHeight / 2 - 130,
-        // y: api.frameHeight - 130,
-        width: api.frameWidth - 60,
-        height: 60,
-        bgColor: "#a33fad",
-        normalColor: "#ffffff",
-        selectedColor: "#ffffff",
-        separateColor: "#711173",
-        titleColor: "#a33fad",
-        fixedOn: api.frameName
-      }, function(ret, err) {
-        if (ret) {
-            // alert(JSON.stringify(ret));
-        } else {
-            // alert(JSON.stringify(err));
-        }
-      });
+
+    }
+
+    function openTimeFrame () {
+        api.openFrame({
+            name: 'login',
+            url: './time_frm.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            }
+        });
     }
 </script>
 </html>
