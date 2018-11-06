@@ -107,6 +107,8 @@
         name: 'timeSelecte'
       },function(ret, err) {
         // alert("11111");
+        alert( JSON.stringify( ret ) );
+        alert( JSON.stringify( err ) );
         alert(ret.shour+":"+ret.smin);
 
         var htmlStr = "提醒时间："+ret.shour+":"+ret.smin;
