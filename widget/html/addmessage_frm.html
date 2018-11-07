@@ -144,7 +144,6 @@
       var swtop = $api.offset(el);
       alert( swtop.t );
 
-      alert( swTop );
       var switchBtn = api.require('UISwitchButton');
       switchBtn.open({
           id:'ringButton',
@@ -167,7 +166,7 @@
                 corner:15
              }
           },
-          fixedOn: '',
+          fixedOn: api.frameName,
           fixed: false
       }, function(ret) {
           // alert(JSON.stringify(ret));
