@@ -6,6 +6,8 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>医寸金</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconshoubiao/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconrili/iconfont.css" />
     <style type="text/css">
         .text-white {
             color: #ffffff !important;
@@ -72,22 +74,22 @@
 
     </section>
 
-    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;">
-        <div class="aui-bar-tab-item" onclick="fnOpenhomeWin();">
-            <i class="aui-iconfont aui-icon-paper"></i>
-            <div class="aui-bar-tab-label">首页</div>
+    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;left:0.5rem;">
+        <div class="aui-bar-tab-item aui-active" style="line-height:1.4rem">
+            <i class="aui-iconfont aui-icon-home" style="float:left;margin-left:0.2rem;color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">首页</div>
         </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
-            <i class="aui-iconfont aui-icon-menu"></i>
-            <div class="aui-bar-tab-label">手环</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenshouhuanWin();">
+            <i class="aui-iconfont icon iconfont icon-icon-shoubiao" style="float:left;margin-left:0.2rem;color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">手环</div>
         </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
-            <i class="aui-iconfont aui-icon-location"></i>
-            <div class="aui-bar-tab-label">日历</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenriliWin();">
+            <i class="aui-iconfont icon iconfont icon-rili" style="float:left;margin-left:0.2rem;color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">日历</div>
         </div>
-        <div class="aui-bar-tab-item aui-active">
-            <i class="aui-iconfont aui-icon-my"></i>
-            <div class="aui-bar-tab-label">我</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenwoWin();">
+            <i class="aui-iconfont aui-icon-my" style="float:left;margin-left:0.2rem;color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">我</div>
         </div>
     </footer>
 </body>
