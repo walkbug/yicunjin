@@ -111,6 +111,13 @@
     var stime = '';
     var aType = '';//重复方式
     var rType = 0;
+    function getTop(e){
+       var offset=e.offsetTop;
+       if(e.offsetParent!=null){
+         offset+=getTop(e.offsetParent);
+       }
+       return offset;
+    }
     apiready = function () {
       // api.addEventListener({
       //   name: 'timeSelecte'
@@ -129,14 +136,14 @@
       // });
 
       var el = document.getElementById('alerttype');
-
+      var swTop = getTop(el);
       var switchBtn = api.require('UISwitchButton');
       switchBtn.open({
           id:'ringButton',
           state:true,
           rect: {
             x: 370,
-            y: el.offsetTop,
+            y: swTop,
             w: 80,
             h: 30
           },
