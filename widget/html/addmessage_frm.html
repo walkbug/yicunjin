@@ -84,7 +84,7 @@
                     <div style="color:#ffffff;" id="ringtype">提醒方式（闹铃）</div>
                     <!-- <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
                     <div class="aui-list-item-input">
-                      <input type="checkbox" class="aui-switch" checked>
+                      <!-- <input type="checkbox" class="aui-switch" checked> -->
                   </div>
                 </div>
             </div>
@@ -140,9 +140,9 @@
 
       // var el = document.getElementById('alerttype');
       // var swTop = getTop(el);
-      var el = $api.byId('alerttype');
+      var el = $api.byId('ringtype');
       var swtop = $api.offset(el);
-
+      alert( swtop.t );
 
       alert( swTop );
       var switchBtn = api.require('UISwitchButton');
