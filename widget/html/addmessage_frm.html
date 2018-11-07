@@ -138,8 +138,12 @@
       //   // closetimeSelector();
       // });
 
-      var el = document.getElementById('alerttype');
-      var swTop = getTop(el);
+      // var el = document.getElementById('alerttype');
+      // var swTop = getTop(el);
+      var el = $api.byId('alerttype');
+      var swtop = $api.offset(el);
+
+
       alert( swTop );
       var switchBtn = api.require('UISwitchButton');
       switchBtn.open({
@@ -147,8 +151,8 @@
           state:true,
           rect: {
             x: 370,
-            y: 50,
-            // y: swTop+140,
+            // y: 50,
+            y: swtop.t,
             w: 80,
             h: 30
           },
@@ -164,7 +168,7 @@
              }
           },
           fixedOn: '',
-          fixed: true
+          fixed: false
       }, function(ret) {
           // alert(JSON.stringify(ret));
           if(ret.state){
