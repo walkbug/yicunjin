@@ -128,6 +128,7 @@
       //   // closetimeSelector();
       // });
 
+      var el = document.getElementById('alerttype');
 
       var switchBtn = api.require('UISwitchButton');
       switchBtn.open({
@@ -135,7 +136,7 @@
           state:true,
           rect: {
             x: 370,
-            y: 450,
+            y: el.offsetTop,
             w: 80,
             h: 30
           },
