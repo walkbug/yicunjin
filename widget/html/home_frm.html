@@ -81,21 +81,21 @@
         </ul>
     </section>
     <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;">
-        <div class="aui-bar-tab-item aui-active">
-            <i class="aui-iconfont aui-icon-paper"></i>
-            <div class="aui-bar-tab-label">首页</div>
+        <div class="aui-bar-tab-item aui-active" style="line-height:1.4rem">
+            <i class="aui-iconfont aui-icon-paper" style="float:left;margin-left:0.2rem;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;">首页</div>
         </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
-            <i class="aui-iconfont aui-icon-menu"></i>
-            <div class="aui-bar-tab-label">手环</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenshouhuanWin();">
+            <i class="aui-iconfont aui-icon-menu" style="float:left;margin-left:0.2rem;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;">手环</div>
         </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
-            <i class="aui-iconfont aui-icon-location"></i>
-            <div class="aui-bar-tab-label">日历</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenriliWin();">
+            <i class="aui-iconfont aui-icon-location" style="float:left;margin-left:0.2rem;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;">日历</div>
         </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenwoWin();">
-            <i class="aui-iconfont aui-icon-my"></i>
-            <div class="aui-bar-tab-label">我</div>
+        <div class="aui-bar-tab-item" style="line-height:1.4rem" onclick="fnOpenwoWin();">
+            <i class="aui-iconfont aui-icon-my" style="float:left;margin-left:0.2rem;"></i>
+            <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;">我</div>
         </div>
     </footer>
 </body>
@@ -233,7 +233,8 @@
                         atype='震动';
                       }
 
-                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'['+ret.msg[j].alerttime+']';
+                      var htmlStrc="</div><div class='aui-iconfont aui-icon-right' style='color:#ffffff;'>"+ret.msg[j].alerttime;
+                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle;
                       // alert(htmlStra);
                       htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
                       // alert( htmlStr );
