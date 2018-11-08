@@ -184,6 +184,19 @@
       });
 
 
+
+      var iflyRecognition = api.require('iflyRecognition');
+      iflyRecognition.createUtility({
+          ios_appid: ‘******’,
+          android_appid: ‘******’
+      }, function(ret, err) {
+          if (ret.status) {
+              api.alert({ msg: '讯飞创建成功'});
+          } else {
+              api.alert({ msg: "讯飞创建失败" });
+          }
+      });
+
     }
 
 
@@ -429,5 +442,25 @@
         }
       );
     }
+
+
+    // function startRecord () {
+    //   var audioRecorder = api.require('audioRecorder');
+    //   audioRecorder.startRecord({
+    //     savePath:'fs://recorder/test.amr',
+    //     format:'amr'
+    //   }, function(ret, err){
+    //     alert(JSON.stringify(ret));
+    //   });
+    // }
+    //
+    // function stopRecord () {
+    //   var audioRecorder = api.require('audioRecorder');
+    //   audioRecorder.stopRecord(function(ret){
+    //       alert(JSON.stringify(ret));
+    //   });
+    // }
+
+
 </script>
 </html>
