@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css" />
   <style>
    html,body{
-            background: rgba(0, 0, 0, 0);
+            background: rgba(0, 0, 0, 0) !important;
     }
 </style>
 </head>
@@ -19,7 +19,6 @@
           <li class="aui-list-item">
               <div class="aui-list-item-inner" style="height:350px;">
                 <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-
                  </div>
               </div>
           </li>
@@ -33,42 +32,24 @@
         </ul>
     </section>
     <section class="aui-content-padded login-third">
-      <div class="aui-grid" style="background: none;">
+      <div class="aui-grid" style="background-color: #711173 !important;">
         <div class="aui-row">
-            <div class="aui-col-xs-4" id="buttonicon" onclick="soundcontorl();">
-                <span class="aui-iconfont icon iconfont icon-bofang"></span>开始
+            <div class="aui-col-xs-4" onclick="startRecord();" style="color: #ffffff;">
+                <span class="aui-iconfont icon iconfont icon-bofang"></span> 开始
             </div>
-            <div class="aui-col-xs-4">
-                <span class="aui-iconfont icon iconfont icon-wancheng"></span>完成
+            <div class="aui-col-xs-4" onclick="stopRecord();" style="color: #ffffff;">
+                <span class='aui-iconfont icon iconfont icon-tingzhi'></span> 停止
+            </div>
+            <div class="aui-col-xs-4" style="color: #ffffff;">
+                <span class="aui-iconfont icon iconfont icon-wancheng"></span> 完成
             </div>
         </div>
       </div>
-      <!-- <div class="aui-btn aui-btn-info" id="buttonicon" onclick="soundcontorl();"></div> -->
-      <!-- <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span>停止</div> -->
-      <!-- <div class="aui-btn aui-btn-info"></div> -->
     </section>
-    <!-- <section class="aui-content-padded login-third">
-        <p class="aui-font-size-12 aui-text-center aui-margin-b-15">第三方账号登录</p>
-        <div class="aui-grid" style="background: none;">
-            <div class="aui-row">
-                <div class="aui-col-xs-4">
-                    <i class="aui-iconfont aui-icon-qq"></i>
-                </div>
-                <div class="aui-col-xs-4">
-                    <i class="aui-iconfont aui-icon-wechat"></i>
-                </div>
-                <div class="aui-col-xs-4">
-                    <i class="aui-iconfont aui-icon-weibo"></i>
-                </div>
-            </div>
-        </div>
-    </section> -->
+
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-var soundcc = 1;
-var htmlStr1 = "<span class='aui-iconfont icon iconfont icon-bofang'></span>开始";
-var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停止";
     apiready = function(){
         api.parseTapmode();
 
@@ -86,20 +67,6 @@ var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停
         });
 
     };
-
-    //
-    function soundcontorl () {
-      var el = document.getElementById('buttonicon');
-      if(soundcc==1){
-        startRecord();
-        soundcc = 2;
-        $api.html(el, htmlStr2);
-      }else if (soundcc == 2) {
-        stopRecord();
-        soundcc = 1;
-        $api.html(el, htmlStr1);
-      }
-    }
 
     function startRecord () {
       var timestamp = Date.parse(new Date());
