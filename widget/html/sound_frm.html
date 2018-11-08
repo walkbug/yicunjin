@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>时间选择</title>
+    <title>请录音</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
 	<style>
         .login-third {
@@ -23,6 +23,9 @@
         </ul>
     </section>
     <section class="aui-content-padded">
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
         <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="savetime();" style="background-color:#9459b2;">确定</div>
     </section>
     <section class="aui-content-padded">
@@ -51,27 +54,18 @@ var shour = 0;
 var smin = 0;
     apiready = function(){
         api.parseTapmode();
-        var timeSelector = api.require('timeSelector');
-        timeSelector.open({
-          x: 0,
-          // y: api.frameHeight / 2 - 130,
-          y: 0,
-          width: api.frameWidth,
-          height: 260,
-          bgColor: "#a33fad",
-          normalColor: "#ffffff",
-          selectedColor: "#ffffff",
-          separateColor: "#711173",
-          titleColor: "#a33fad",
-          fixedOn: api.frameName
+
+
+        var iflyRecognition = api.require('iflyRecognition');
+        iflyRecognition.createUtility({
+            // ios_appid: ‘******’,
+            android_appid: '5be3a8e4'
         }, function(ret, err) {
-          if (ret) {
-            shour = ret.hour;;
-            smin = ret.minute;;
-              // alert(JSON.stringify(ret));
-          } else {
-              // alert(JSON.stringify(err));
-          }
+            if (ret.status) {
+                api.alert({ msg: '讯飞创建成功'});
+            } else {
+                api.alert({ msg: "讯飞创建失败" });
+            }
         });
 
     };
