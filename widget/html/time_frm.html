@@ -17,17 +17,19 @@
         <ul class="aui-list aui-form-list">
             <li class="aui-list-item">
                 <div class="aui-list-item-inner" style="background-color:#9459b2;height:350px;">
-                  <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-                   <input type="text" id="soundtxt" style="width:50px;height:330px;">
-                   </div>
+
                 </div>
             </li>
         </ul>
     </section>
     <section class="aui-content-padded">
-      <div class="aui-btn aui-btn-info" id="buttonicon" onclick="soundcontorl();"><span class="aui-iconfont icon iconfont icon-bofang"></span>开始</div>
-      <!-- <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span>停止</div> -->
-      <div class="aui-btn aui-btn-info"><span class="aui-iconfont icon iconfont icon-yiyuan"></span>完成</div>
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
+      <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span></div>
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="savetime();" style="background-color:#9459b2;">确定</div>
+    </section>
+    <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="cancltime();" style="background-color:#9459b2;">取消</div>
     </section>
     <!-- <section class="aui-content-padded login-third">
         <p class="aui-font-size-12 aui-text-center aui-margin-b-15">第三方账号登录</p>
@@ -48,9 +50,8 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-var soundcc = 1;
-var htmlStr1 = "<span class='aui-iconfont icon iconfont icon-bofang'></span>开始";
-var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停止";
+var shour = 0;
+var smin = 0;
     apiready = function(){
         api.parseTapmode();
 
@@ -69,43 +70,6 @@ var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停
 
     };
 
-    //
-    function soundcontorl () {
-      var el = document.getElementById('buttonicon');
-      if(soundcc==1){
-        startRecord();
-        soundcc = 2;
-        $api.html(el, htmlStr2);
-      }else if (soundcc == 2) {
-        stopRecord();
-        soundcc = 1;
-        $api.html(el, htmlStr1);
-      }
-    }
-
-    function startRecord () {
-      var timestamp = Date.parse(new Date());
-      timestamp = timestamp / 1000;
-      var iflyRecognition = api.require('iflyRecognition');
-      iflyRecognition.record({
-          vadbos: 5000,
-          vadeos: 5000,
-          rate: 16000,
-          asrptt: 1,
-          audioPath: 'fs://alertsound/'+timestamp+'.pcm'
-      }, function(ret, err) {
-          if (ret.status) {
-              api.alert({ msg: ret.wordStr });
-          } else {
-              api.alert({ msg: err.msg });
-          }
-      });
-    }
-
-    function stopRecord () {
-      var iflyRecognition = api.require('iflyRecognition');
-      iflyRecognition.stopRecord();
-    }
 
     // 登录
     function savetime () {
