@@ -25,7 +25,7 @@
             <li class="aui-list-item">
                 <div class="aui-list-item-inner" style="background-color:#fffff;height:50px;">
                   <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-                   <input type="text" id="soundtxt" style="width:50px;height:330px;">
+                   <input type="text" id="soundtxt" style="height:50px;">
                    </div>
                 </div>
             </li>
@@ -40,7 +40,7 @@
             <div class="aui-col-xs-4" onclick="stopRecord();" style="color: #ffffff;">
                 <span class='aui-iconfont icon iconfont icon-tingzhi'></span> 停止
             </div>
-            <div class="aui-col-xs-4" style="color: #ffffff;">
+            <div class="aui-col-xs-4" onclick="closeSound();" style="color: #ffffff;">
                 <span class="aui-iconfont icon iconfont icon-wancheng"></span> 完成
             </div>
         </div>
@@ -109,7 +109,7 @@
     }
 
     // 打开注册
-    function cancltime () {
+    function closeSound () {
       api.closeFrame();
       // var timeSelector = api.require('timeSelector');
       // timeSelector.close();
