@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-    <section class="aui-content aui-margin-t-15" style="background-color:#9459b2;">
+    <section class="aui-content aui-margin-t-15">
         <ul class="aui-list aui-form-list">
           <li class="aui-list-item">
               <div class="aui-list-item-inner" style="height:350px;">
@@ -32,10 +32,20 @@
             </li>
         </ul>
     </section>
-    <section class="aui-content-padded">
-      <div class="aui-btn aui-btn-info" id="buttonicon" onclick="soundcontorl();"><span class="aui-iconfont icon iconfont icon-bofang"></span>开始</div>
+    <section class="aui-content-padded login-third">
+      <div class="aui-grid" style="background: none;">
+        <div class="aui-row">
+            <div class="aui-col-xs-4" id="buttonicon" onclick="soundcontorl();">
+                <span class="aui-iconfont icon iconfont icon-bofang"></span>开始
+            </div>
+            <div class="aui-col-xs-4">
+                <span class="aui-iconfont icon iconfont icon-wancheng"></span>完成
+            </div>
+        </div>
+      </div>
+      <!-- <div class="aui-btn aui-btn-info" id="buttonicon" onclick="soundcontorl();"></div> -->
       <!-- <div class="aui-btn aui-btn-info"><span class="aui-iconfont aui-icon-edit"></span>停止</div> -->
-      <div class="aui-btn aui-btn-info"><span class="aui-iconfont icon iconfont icon-wancheng"></span>完成</div>
+      <!-- <div class="aui-btn aui-btn-info"></div> -->
     </section>
     <!-- <section class="aui-content-padded login-third">
         <p class="aui-font-size-12 aui-text-center aui-margin-b-15">第三方账号登录</p>
