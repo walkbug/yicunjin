@@ -50,7 +50,7 @@
 
     </section>
 
-    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;left:0.5rem;">
+    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
         <div class="aui-bar-tab-item aui-active" style="line-height:1.4rem" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont aui-icon-home" style="float:left;margin-left:0.2rem;color:#711173;"></i>
             <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">首页</div>
@@ -356,7 +356,8 @@ function fnTurnPage(){
                         atype='震动';
                       }
 
-                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+'['+ret.msg[j].alerttime+']';
+                      var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
+                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
                       // alert(htmlStra);
                       htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
                       // alert( htmlStr );
