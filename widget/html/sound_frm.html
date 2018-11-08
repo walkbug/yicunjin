@@ -6,17 +6,18 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>请录音</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
-	<style>
-        .login-third {
-            margin-top: 3rem;
-        }
-	</style>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css" />
+  <style>
+   html,body{
+            background: rgba(0, 0, 0, 0);
+    }
+</style>
 </head>
 <body>
     <section class="aui-content aui-margin-t-15" style="background-color:#9459b2;">
         <ul class="aui-list aui-form-list">
             <li class="aui-list-item">
-                <div class="aui-list-item-inner" style="background-color:#9459b2;height:350px;">
+                <div class="aui-list-item-inner" style="background-color:#fffff;height:350px;">
                   <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                    <input type="text" id="soundtxt" style="width:50px;height:330px;">
                    </div>
@@ -86,6 +87,7 @@ var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停
     function startRecord () {
       var timestamp = Date.parse(new Date());
       timestamp = timestamp / 1000;
+      var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
           vadbos: 5000,
@@ -95,7 +97,8 @@ var htmlStr2 = "<span class='aui-iconfont icon iconfont icon-tingzhi'></span>停
           audioPath: 'fs://alertsound/'+timestamp+'.pcm'
       }, function(ret, err) {
           if (ret.status) {
-              api.alert({ msg: ret.wordStr });
+              // api.alert({ msg: ret.wordStr });
+              $api.val($api.byId("soundtxt"),ret.wordStr);
           } else {
               api.alert({ msg: err.msg });
           }
