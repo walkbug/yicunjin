@@ -144,9 +144,7 @@ timestamp = timestamp / 1000;
                     url: 'http://47.105.67.225/public/index/Useraudio/testUpload/userid/1',
                     method: 'post',
                     dataType:'json',
-                    headers:{
-                                    'Content-type': 'multipart/form-data'
-                            },
+
                     data: {
                       values: {
                         username: 'uid'
@@ -157,10 +155,11 @@ timestamp = timestamp / 1000;
                     }
                   },function(ret) {
                       //api.alert({ msg: "aaaaaaaa" });
-                      api.hideProgress();
+                      api.alert({ msg: JSON.stringify(ret) });
+                      // api.hideProgress();
                        if (ret) {
 
-                         api.alert({ msg: JSON.stringify(ret) });
+
                        }
                     });
                 }
