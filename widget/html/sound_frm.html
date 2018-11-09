@@ -82,32 +82,23 @@ timestamp = timestamp / 1000;
 
     function startRecord () {
 
-      var audioRecorder = api.require('audioRecorder');
-        audioRecorder.startRecord({
-            savePath:'fs://test.pcm',
-            format:'pcm',
-            channel: 1
-        }, function(ret, err){
-            alert(JSON.stringify(ret));
-        });
-
-      // var el = document.getElementById('soundtxt');
-      // var iflyRecognition = api.require('iflyRecognition');
-      // iflyRecognition.record({
-      //     vadbos: 5000,
-      //     vadeos: 5000,
-      //     rate: 16000,
-      //     asrptt: 1,
-      //     audioPath: 'fs://alertsound/'+timestamp+'.pcm'
-      // }, function(ret, err) {
-      //     if (ret.status) {
-      //         // api.alert({ msg: ret.wordStr });
-      //         $api.val($api.byId("soundtxt"),ret.wordStr);
-      //         // soundStr = $api.val($api.byId("soundtxt"));
-      //     } else {
-      //         api.alert({ msg: err.msg });
-      //     }
-      // });
+      var el = document.getElementById('soundtxt');
+      var iflyRecognition = api.require('iflyRecognition');
+      iflyRecognition.record({
+          vadbos: 5000,
+          vadeos: 5000,
+          rate: 16000,
+          asrptt: 1,
+          audioPath: 'fs://'+timestamp+'.pcm'
+      }, function(ret, err) {
+          if (ret.status) {
+              // api.alert({ msg: ret.wordStr });
+              $api.val($api.byId("soundtxt"),ret.wordStr);
+              // soundStr = $api.val($api.byId("soundtxt"));
+          } else {
+              api.alert({ msg: err.msg });
+          }
+      });
     }
 
     // function stopRecord () {
@@ -118,13 +109,8 @@ timestamp = timestamp / 1000;
     // 登录
     function closeSound () {
 
-      var audioRecorder = api.require('audioRecorder');
-      audioRecorder.stopRecord(function(ret){
-          // alert(JSON.stringify(ret));
-      });
-
-      // var iflyRecognition = api.require('iflyRecognition');
-      // iflyRecognition.stopRecord();
+      var iflyRecognition = api.require('iflyRecognition');
+      iflyRecognition.stopRecord();
 
       soundStr = $api.val($api.byId("soundtxt"));
 
@@ -155,8 +141,8 @@ timestamp = timestamp / 1000;
         channel: 1,
         sampleRates: 16000,
         // quality: 9,
-        originalFilePath: 'fs://test.pcm',
-        mp3FilePath: 'fs://test.mp3'
+        originalFilePath: 'fs://'+timestamp+'.pcm',
+        mp3FilePath: 'fs://'+timestamp+'.mp3'
       }, function(ret) {
         // alert( JSON.stringify( ret ) );
         if(ret.status){
