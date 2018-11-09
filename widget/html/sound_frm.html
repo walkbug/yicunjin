@@ -139,7 +139,7 @@ timestamp = timestamp / 1000;
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.covertToMp3({
         channel: 1,
-        sampleRates: 16000,
+        sampleRates: 44100,
         quality: 9,
         originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
         mp3FilePath: 'fs://alertsound/'+timestamp+'.mp3'
