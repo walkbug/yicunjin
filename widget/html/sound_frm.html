@@ -83,12 +83,13 @@ timestamp = timestamp / 1000;
     function startRecord () {
 
       var audioRecorder = api.require('audioRecorder');
-      audioRecorder.startRecord({
-          savePath:'fs://alertsound/'+timestamp+'.pcm',
-          format:'pcm'
-      }, function(ret, err){
-          // alert(JSON.stringify(ret));
-      });
+        audioRecorder.startRecord({
+            savePath:'fs://test.pcm',
+            format:'pcm',
+            channel: 1
+        }, function(ret, err){
+            alert(JSON.stringify(ret));
+        });
 
       // var el = document.getElementById('soundtxt');
       // var iflyRecognition = api.require('iflyRecognition');
@@ -97,7 +98,7 @@ timestamp = timestamp / 1000;
       //     vadeos: 5000,
       //     rate: 16000,
       //     asrptt: 1,
-      //     audioPath: 'fs://alertsound/123.pcm'
+      //     audioPath: 'fs://alertsound/'+timestamp+'.pcm'
       // }, function(ret, err) {
       //     if (ret.status) {
       //         // api.alert({ msg: ret.wordStr });
@@ -117,20 +118,20 @@ timestamp = timestamp / 1000;
     // 登录
     function closeSound () {
 
-      // var iflyRecognition = api.require('iflyRecognition');
-      // iflyRecognition.stopRecord();
-
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.stopRecord(function(ret){
           // alert(JSON.stringify(ret));
       });
+
+      // var iflyRecognition = api.require('iflyRecognition');
+      // iflyRecognition.stopRecord();
 
       soundStr = $api.val($api.byId("soundtxt"));
 
       api.sendEvent({
         name: 'soundtxt',
         extra: {
-          soundStr: 'soundStr',
+          soundStr: soundStr,
           timestamp: timestamp
         }
       });
@@ -151,11 +152,11 @@ timestamp = timestamp / 1000;
 
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.covertToMp3({
-        channel: 2,
+        channel: 1,
         sampleRates: 16000,
         // quality: 9,
-        originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
-        mp3FilePath: 'fs://alertsound/'+timestamp+'.mp3'
+        originalFilePath: 'fs://test.pcm',
+        mp3FilePath: 'fs://test.mp3'
       }, function(ret) {
         // alert( JSON.stringify( ret ) );
         if(ret.status){
