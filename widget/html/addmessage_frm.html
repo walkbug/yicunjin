@@ -427,12 +427,12 @@
             ringtype: rType
           },
           files: {
-            soundfile: 'fs://alertsound/'+timestamp+'.mp3'
+            soundfile: 'fs://alertsound/'+timestamp+'.pcm'
           }
         }
       }, function(ret, err) {
            if (ret) {
-             api.alert({ msg: JSON.stringify(ret) });
+            //  api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
                api.alert({
                   msg: ret.msg ,
