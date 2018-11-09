@@ -103,19 +103,19 @@ var soundStr="";
     function stopRecord () {
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.stopRecord();
-      soundStr = $api.val($api.byId("soundtxt"));
+    }
 
-      alert(soundStr+"---!!!!!");
+    // 登录
+    function closeSound () {
+
+      soundStr = $api.val($api.byId("soundtxt"));
+      
       api.sendEvent({
         name: 'soundtxt',
         extra: {
           soundStr: soundStr
         }
       });
-    }
-
-    // 登录
-    function closeSound () {
 
       api.closeFrame();
     }

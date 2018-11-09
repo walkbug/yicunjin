@@ -131,14 +131,14 @@
       api.addEventListener({
         name: 'soundtxt'
       },function(ret, err) {
-        alert("11111");
+        // alert("11111");
         // alert( JSON.stringify( ret ) );
         // alert(ret.value.shour+":"+ret.value.smin);
 
         var htmlStr = ret.value.soundStr;
         var el = document.getElementById('audiotitle');
         // stime = ret.value.shour+":"+ret.value.smin;
-        alert( htmlStr );
+        // alert( htmlStr );
         $api.html(el, htmlStr);
 
         // closetimeSelector();
