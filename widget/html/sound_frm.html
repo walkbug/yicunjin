@@ -59,6 +59,7 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+var soundStr="";
     apiready = function(){
         api.parseTapmode();
 
@@ -69,9 +70,9 @@
             android_appid: '5be3a8e4'
         }, function(ret, err) {
             if (ret.status) {
-                api.alert({ msg: '讯飞创建成功'});
+                // api.alert({ msg: '讯飞创建成功'});
             } else {
-                api.alert({ msg: "讯飞创建失败" });
+                // api.alert({ msg: "讯飞创建失败" });
             }
         });
 
@@ -92,6 +93,7 @@
           if (ret.status) {
               // api.alert({ msg: ret.wordStr });
               $api.val($api.byId("soundtxt"),ret.wordStr);
+              // soundStr = $api.val($api.byId("soundtxt"));
           } else {
               api.alert({ msg: err.msg });
           }
@@ -101,28 +103,29 @@
     function stopRecord () {
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.stopRecord();
+      soundStr = $api.val($api.byId("soundtxt"));
+
+      alert(soundStr+"---!!!!!");
+      api.sendEvent({
+        name: 'soundtxt',
+        extra: {
+          soundStr: soundStr
+        }
+      });
     }
 
     // 登录
-    function savetime () {
-      // alert(shour+":"+smin);
-      api.sendEvent({
-        name: 'timeSelecte',
-        extra: {
-          shour: shour,
-          smin: smin
-        }
-      });
+    function closeSound () {
 
       api.closeFrame();
     }
 
     // 打开注册
-    function closeSound () {
-      api.closeFrame();
+    // function closeSound () {
+    //   api.closeFrame();
       // var timeSelector = api.require('timeSelector');
       // timeSelector.close();
-    }
+    // }
 
     //
     // // 打开Window
