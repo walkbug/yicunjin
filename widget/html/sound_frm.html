@@ -128,11 +128,11 @@ timestamp = timestamp / 1000;
 
     //
     function soundToMp3 () {
-      api.showProgress({
-          title: '音频处理中...',
-          text: '请稍等...',
-          modal: false
-      });
+      // api.showProgress({
+      //     title: '音频处理中...',
+      //     text: '请稍等...',
+      //     modal: false
+      // });
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.covertToMp3({
                 channel: 2,
@@ -140,10 +140,10 @@ timestamp = timestamp / 1000;
                 originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
                 mp3FilePath: 'fs://alertsound/'+timestamp+'.mp3'
       }, function(ret) {
-
-                if(ret.status){
-                  api.hideProgress();
-                }
+        alert( JSON.stringify( ret ) );
+        // if(ret.status){
+        //   api.hideProgress();
+        // }
       });
     }
 
