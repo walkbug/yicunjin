@@ -82,14 +82,23 @@ timestamp = timestamp / 1000;
 
     function startRecord () {
 
+      var audioRecorder = api.require('audioRecorder');
+      audioRecorder.startRecord({
+          savePath:'fs://'+timestamp+'.pcm',
+          format:'pcm',
+          channel: 1
+      }, function(ret, err){
+          // alert(JSON.stringify(ret));
+      });
+
       var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
           vadbos: 5000,
           vadeos: 5000,
           rate: 16000,
-          asrptt: 1,
-          audioPath: 'fs://1234.pcm'
+          asrptt: 1
+          // audioPath: 'fs://'+timestamp+'.pcm'
       }, function(ret, err) {
           if (ret.status) {
               // api.alert({ msg: ret.wordStr });
@@ -99,6 +108,7 @@ timestamp = timestamp / 1000;
               api.alert({ msg: err.msg });
           }
       });
+
     }
 
     // function stopRecord () {
@@ -108,6 +118,11 @@ timestamp = timestamp / 1000;
 
     // 登录
     function closeSound () {
+
+      var audioRecorder = api.require('audioRecorder');
+      audioRecorder.stopRecord(function(ret){
+          // alert(JSON.stringify(ret));
+      });
 
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.stopRecord();
@@ -141,8 +156,8 @@ timestamp = timestamp / 1000;
         channel: 1,
         sampleRates: 16000,
         // quality: 9,
-        originalFilePath: 'fs://1234.pcm',
-        mp3FilePath: 'fs://1234.mp3'
+        originalFilePath: 'fs://'+timestamp+'.pcm',
+        mp3FilePath: 'fs://'+timestamp+'.mp3'
       }, function(ret) {
         // alert( JSON.stringify( ret ) );
         if(ret.status){
