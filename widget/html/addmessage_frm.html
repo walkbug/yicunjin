@@ -342,6 +342,11 @@
                   closetypeSelector();
                  }
 
+
+                 if(ret.eventType=="clickRight"){
+                   closetypeSelector();
+                 }
+
              } else {
                 //  alert(JSON.stringify(err));
              }
@@ -427,7 +432,7 @@
         }
       }, function(ret, err) {
            if (ret) {
-             //api.alert({ msg: JSON.stringify(ret) });
+             api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
                api.alert({
                   msg: ret.msg ,
