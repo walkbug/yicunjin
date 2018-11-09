@@ -144,6 +144,9 @@ timestamp = timestamp / 1000;
                     url: 'http://47.105.67.225/public/index/Useraudio/testUpload/userid/1',
                     method: 'post',
                     dataType:'json',
+                    headers:{
+                                    'Content-type': 'multipart/form-data'
+                            },
                     data: {
                       values: {
                         username: 'uid'
