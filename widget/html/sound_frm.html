@@ -101,16 +101,16 @@ timestamp = timestamp / 1000;
       });
     }
 
-    function stopRecord () {
-      var iflyRecognition = api.require('iflyRecognition');
-      iflyRecognition.stopRecord();
-    }
+    // function stopRecord () {
+    //   var iflyRecognition = api.require('iflyRecognition');
+    //   iflyRecognition.stopRecord();
+    // }
 
     // 登录
     function closeSound () {
 
-      // var iflyRecognition = api.require('iflyRecognition');
-      // iflyRecognition.stopRecord();
+      var iflyRecognition = api.require('iflyRecognition');
+      iflyRecognition.stopRecord();
 
       soundStr = $api.val($api.byId("soundtxt"));
 
@@ -122,17 +122,20 @@ timestamp = timestamp / 1000;
         }
       });
 
-      soundToMp3();
-
-    }
-
-    //
-    function soundToMp3 () {
       api.showProgress({
           title: '音频处理中...',
           text: '请稍等...',
           modal: false
       });
+
+      setTimeout("soundToMp3()",10000);
+
+
+    }
+
+    //
+    function soundToMp3 () {
+
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.covertToMp3({
         channel: 2,
