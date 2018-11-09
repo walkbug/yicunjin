@@ -99,6 +99,7 @@ var ble = api.require('ble');
   ble.initManager(function(ret) {
       if (ret.state == "poweredOn") {
           api.alert({ msg: "初始化成功" });
+          euowo();
       }
   });
 };
