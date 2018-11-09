@@ -133,9 +133,6 @@
       api.addEventListener({
         name: 'soundtxt'
       },function(ret, err) {
-        // alert("11111");
-        // alert( JSON.stringify( ret ) );
-        // alert(ret.value.shour+":"+ret.value.smin);
 
         audiotitle = ret.value.soundStr;
         var el = document.getElementById('audiotitle');
@@ -143,23 +140,18 @@
         // alert( htmlStr );
         $api.html(el, audiotitle);
         timestamp = ret.value.timestamp;
-        // alert( timestamp +'--'+audiotitle);
-
-        // closetimeSelector();
       });
 
-      // var el = document.getElementById('alerttype');
-      // var swTop = getTop(el);
       var el = $api.byId('ringtype');
       var swtop = $api.offset(el);
-      // alert( swtop.t );
+
 
       var switchBtn = api.require('UISwitchButton');
       switchBtn.open({
           id:'ringButton',
           state:true,
           rect: {
-            x: api.winWidth*0.72,
+            x: api.winWidth*0.73,
             // y: 50,
             y: swtop.t-3,
             w: 80,

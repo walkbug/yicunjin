@@ -146,6 +146,7 @@ timestamp = timestamp / 1000;
         // alert( JSON.stringify( ret ) );
         if(ret.status){
           api.hideProgress();
+          api.closeFrame();
         }
       });
     }
