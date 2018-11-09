@@ -60,6 +60,8 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
 var soundStr="";
+var timestamp = Date.parse(new Date());
+timestamp = timestamp / 1000;
     apiready = function(){
         api.parseTapmode();
 
@@ -79,8 +81,7 @@ var soundStr="";
     };
 
     function startRecord () {
-      var timestamp = Date.parse(new Date());
-      timestamp = timestamp / 1000;
+
       var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
@@ -109,7 +110,7 @@ var soundStr="";
     function closeSound () {
 
       soundStr = $api.val($api.byId("soundtxt"));
-      
+
       api.sendEvent({
         name: 'soundtxt',
         extra: {
@@ -117,15 +118,24 @@ var soundStr="";
         }
       });
 
-      api.closeFrame();
+      soundToMp3();
+
+
     }
 
-    // 打开注册
-    // function closeSound () {
-    //   api.closeFrame();
-      // var timeSelector = api.require('timeSelector');
-      // timeSelector.close();
-    // }
+    //
+    function soundToMp3 () {
+      var audioRecorder = api.require('audioRecorder');
+      audioRecorder.covertToMp3({
+                channel: 2,
+                sampleRates: 16000,
+                originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
+                mp3FilePath: 'fs://alertsound/timestamp.mp3'
+      }, function(ret) {
+                alert(JSON.stringify(ret));
+                api.closeFrame();
+      });
+    }
 
     //
     // // 打开Window
