@@ -118,7 +118,7 @@
       getAllAlert();
     }
 
-
+    var soundArray=new Array()
 
     var myDate = new Date();
             //时间 2016/3/29/00:20
@@ -219,6 +219,8 @@
 
                 var htmlStr='';
 
+                var m = 0;
+
                 for(var j = 0; j < ret.msg.length; j++){
                   var arr = ret.msg[j].alerttype.split(",");
                   // alert( ret.msg[j].alerttype );
@@ -233,13 +235,15 @@
                         atype='震动';
                       }
 
-                      var htmlStr1="<li class='aui-list-item' onclick='playsound(http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
+                      var htmlStr1="<li class='aui-list-item' onclick='playsound(m);'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
                       var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
                       // alert(htmlStra);
                       htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
                       // alert( htmlStr );
+                      m = m+1;
 
                     }
                   }
@@ -255,8 +259,8 @@
     }
 
 
-    function playsound (url) {
-      alert( url );
+    function playsound (m) {
+      alert( soundArray[m] );
       var audioStreamer = api.require('audioStreamer');
       audioStreamer.openPlayer({
         path: url,
