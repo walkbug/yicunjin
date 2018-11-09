@@ -89,7 +89,7 @@ timestamp = timestamp / 1000;
           vadeos: 5000,
           rate: 16000,
           asrptt: 1,
-          audioPath: 'fs://alertsound/'+timestamp+'.pcm'
+          audioPath: 'fs://alertsound/123.pcm'
       }, function(ret, err) {
           if (ret.status) {
               // api.alert({ msg: ret.wordStr });
@@ -138,11 +138,11 @@ timestamp = timestamp / 1000;
 
       var audioRecorder = api.require('audioRecorder');
       audioRecorder.covertToMp3({
-        channel: 1,
-        sampleRates: 44100,
+        channel: 2,
+        sampleRates: 16000,
         // quality: 9,
-        originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
-        mp3FilePath: 'fs://alertsound/'+timestamp+'.mp3'
+        originalFilePath: 'fs://alertsound/123.pcm',
+        mp3FilePath: 'fs://alertsound/123.mp3'
       }, function(ret) {
         // alert( JSON.stringify( ret ) );
         if(ret.status){
