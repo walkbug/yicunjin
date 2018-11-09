@@ -89,7 +89,7 @@ timestamp = timestamp / 1000;
           vadeos: 5000,
           rate: 16000,
           asrptt: 1,
-          audioPath: 'fs://'+timestamp+'.pcm'
+          audioPath: 'fs://1234.pcm'
       }, function(ret, err) {
           if (ret.status) {
               // api.alert({ msg: ret.wordStr });
@@ -141,8 +141,8 @@ timestamp = timestamp / 1000;
         channel: 1,
         sampleRates: 16000,
         // quality: 9,
-        originalFilePath: 'fs://'+timestamp+'.pcm',
-        mp3FilePath: 'fs://'+timestamp+'.mp3'
+        originalFilePath: 'fs://1234.pcm',
+        mp3FilePath: 'fs://1234.mp3'
       }, function(ret) {
         // alert( JSON.stringify( ret ) );
         if(ret.status){
