@@ -199,8 +199,7 @@
 
 
     function getAllAlert(){
-      var htmlStr1="<li class='aui-list-item'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-      var htmlStr2="</div></div></li>";
+
       var uid = $api.getStorage("userid");
       var urlStr = 'http://47.105.67.225/public/index/useraudio/index/userid/'+uid;
       //api.alert({ msg: "uid"+uid });
@@ -234,6 +233,8 @@
                         atype='震动';
                       }
 
+                      var htmlStr1="<li class='aui-list-item' onclick=''><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr2="</div></div></li>";
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
                       var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
                       // alert(htmlStra);

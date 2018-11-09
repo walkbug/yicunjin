@@ -140,7 +140,7 @@ timestamp = timestamp / 1000;
       audioRecorder.covertToMp3({
         channel: 1,
         sampleRates: 44100,
-        quality: 9,
+        // quality: 9,
         originalFilePath: 'fs://alertsound/'+timestamp+'.pcm',
         mp3FilePath: 'fs://alertsound/'+timestamp+'.mp3'
       }, function(ret) {
