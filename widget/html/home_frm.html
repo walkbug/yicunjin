@@ -261,6 +261,10 @@
 
     function playsound (m) {
       alert( soundArray[m] );
+      soundArray[m] = soundArray[m] .replace("\\\\", "\/\/");
+      soundArray[m] = soundArray[m] .replace("\\", "\/");
+      soundArray[m] = soundArray[m] .replace("\\", "\/");
+      alert(soundArray[m] );
       var audioStreamer = api.require('audioStreamer');
       audioStreamer.openPlayer({
         path: url,
