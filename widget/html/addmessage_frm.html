@@ -343,12 +343,9 @@
                  }
 
 
-                 if(ret.eventType=="clickRight"){
-                   closetypeSelector();
-                 }
-
-             } else {
-                //  alert(JSON.stringify(err));
+             }
+             if(ret.eventType=="clickRight"){
+               closetypeSelector();
              }
       });
     }
@@ -406,7 +403,8 @@
       });
 
       var uid = $api.getStorage("userid");
-      var audiotitle = $api.val($api.byId("audiotitle"));
+      // var audiotitle = $api.val($api.byId("audiotitle"));
+      var audiotitle = $api.text($api.byId("audiotitle"));
 
       // alert(audiotitle);
 
@@ -427,7 +425,7 @@
             ringtype: rType
           },
           files: {
-            soundfile: 'fs://alertsound/'+timestamp+'.pcm'
+            soundfile: 'fs://alertsound/'+timestamp+'.mp3'
           }
         }
       }, function(ret, err) {
