@@ -45,10 +45,14 @@
     <section class="aui-content">
         <div class="aui-card-list">
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
-              <div class="aui-card-list-user-name aui-list-item-input">
-                <input type="text" placeholder="请输入提醒标题" id="audiotitle" style="color:#ffffff">
-                  <!-- <div style="color:#ffffff;">请输入事件标题</div> -->
-              </div>
+            <div class="aui-card-list-user-name" onclick="openSound();">
+                <div style="color:#ffffff;" id="audiotitle">请录音提醒内容</div>
+                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
+            </div>
+              <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
+                <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
+                <div style="color:#ffffff;">请录音提醒内容</div>
+              </div> -->
           </div>
 
           <section style="height:2px;">
@@ -95,12 +99,12 @@
                 </div>
             </section>
 
-            <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" >
+            <!-- <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
+                <div class="aui-card-list-user-name" onclick="openSound();">
                     <div style="color:#ffffff;">请录音提醒内容</div>
                     <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -124,21 +128,21 @@
        return offset;
     }
     apiready = function () {
-      // api.addEventListener({
-      //   name: 'timeSelecte'
-      // },function(ret, err) {
-      //   // alert("11111");
-      //   // alert( JSON.stringify( ret ) );
-      //   // alert(ret.value.shour+":"+ret.value.smin);
-      //
-      //   var htmlStr = "提醒时间："+ret.value.shour+":"+ret.value.smin;
-      //   var el = document.getElementById('alerttime');
-      //   stime = ret.value.shour+":"+ret.value.smin;
-      //   // alert( htmlStr );
-      //   $api.html(el, htmlStr);
-      //
-      //   // closetimeSelector();
-      // });
+      api.addEventListener({
+        name: 'soundtxt'
+      },function(ret, err) {
+        // alert("11111");
+        // alert( JSON.stringify( ret ) );
+        // alert(ret.value.shour+":"+ret.value.smin);
+
+        var htmlStr = ret.value.soundStr;
+        var el = document.getElementById('audiotitle');
+        // stime = ret.value.shour+":"+ret.value.smin;
+        // alert( htmlStr );
+        $api.html(el, htmlStr);
+
+        // closetimeSelector();
+      });
 
       // var el = document.getElementById('alerttype');
       // var swTop = getTop(el);
