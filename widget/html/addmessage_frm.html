@@ -120,6 +120,8 @@
     var stime = '';
     var aType = '';//重复方式
     var rType = 0;
+    var timestamp = '';
+    var audiotitle = '';
     function getTop(e){
        var offset=e.offsetTop;
        if(e.offsetParent!=null){
@@ -135,11 +137,13 @@
         // alert( JSON.stringify( ret ) );
         // alert(ret.value.shour+":"+ret.value.smin);
 
-        var htmlStr = ret.value.soundStr;
+        audiotitle = ret.value.soundStr;
         var el = document.getElementById('audiotitle');
         // stime = ret.value.shour+":"+ret.value.smin;
         // alert( htmlStr );
-        $api.html(el, htmlStr);
+        $api.html(el, audiotitle);
+        timestamp = ret.value.timestamp;
+        alert( timestamp +'--'+audiotitle);
 
         // closetimeSelector();
       });
@@ -397,6 +401,13 @@
     }
 
     function alertsend () {
+
+      api.showProgress({
+          title: '数据处理中...',
+          text: '请稍等...',
+          modal: false
+      });
+
       var uid = $api.getStorage("userid");
       var audiotitle = $api.val($api.byId("audiotitle"));
 
@@ -417,21 +428,21 @@
             alerttime: stime,
             alerttype: aType,
             ringtype: rType
+          },
+          files: {
+            file: 'fs://alertsound/'+timestamp+'.mp3'
           }
         }
       }, function(ret, err) {
-          //api.alert({ msg: "aaaaaaaa" });
            if (ret) {
              //api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
-              //  api.alert({ msg: ret.msg });
                api.alert({
-                  // title: 'testtitle',
                   msg: ret.msg ,
               }, function(ret, err) {
+                api.hideProgress();
                 api.closeWin();
               });
-              //  api.alert({ msg: "Storage:"+ });
              }else{
                api.alert({ msg: ret.msg });
              }
