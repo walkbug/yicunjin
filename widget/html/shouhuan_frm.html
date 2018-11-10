@@ -118,6 +118,7 @@ alert('date');
 apiready = function() {
 var ble = api.require('ble');
   ble.initManager(function(ret) {
+    api.alert({ msg: JSON.stringify(ret) });
       if (ret.state == "poweredOn") {
           api.alert({ msg: "初始化成功" });
           euowo();
