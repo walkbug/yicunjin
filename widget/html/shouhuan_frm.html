@@ -73,7 +73,7 @@
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
-                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="scanble();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="startble();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                     蓝牙初始化
                   </div>
               </section>
@@ -160,6 +160,7 @@ function scanble(){
     ble.scan({
     }, function(ret) {
         if (ret.status) {
+          api.alert({ msg: JSON.stringify(ret) });
           ble.getPeripheral(function(ret) {
               if (ret) {
                   api.alert({ msg: JSON.stringify(ret) });
