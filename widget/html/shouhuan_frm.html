@@ -136,7 +136,7 @@ function euowo(){
           ble.getPeripheral(function(ret) {
               if (ret) {
                   api.alert({ msg: JSON.stringify(ret) });
-                  var uuid = ret.peripherals[0].uuid;
+                  // var uuid = ret.peripherals[0].uuid;
                   //ssid = ret.characteristics[0].serviceUUID;
 
                   //api.alert({ msg: "ssid:"+ssid });
