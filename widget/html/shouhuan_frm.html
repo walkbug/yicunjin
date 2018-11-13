@@ -75,7 +75,7 @@
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
-                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="scanble();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                     扫描蓝牙
                   </div>
               </section>
@@ -143,9 +143,9 @@ var ble = api.require('ble');
   });
 };
 
-//var uuid = "";
-//var ssid = "";
-function euowo(){
+var uuid = "";
+var ssid = "";
+function scanble(){
   var ble = api.require('ble');
     ble.scan({
     }, function(ret) {
