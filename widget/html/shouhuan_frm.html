@@ -164,7 +164,7 @@ function getdevice(){
               if(ret.peripherals[i].name){
                 htmlStra = ret.peripherals[i].name;
               }
-              var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+              var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");'><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
               var htmlStr2 = "</div></div></li>";
               htmlStr = htmlStr + htmlStr1 + htmlStra + htmlStr2;
 
