@@ -34,7 +34,7 @@
         </div>
     </section> -->
     <section class="aui-content">
-        <ul class="aui-list aui-list-in aui-margin-b-15" id="conlist">
+        <ul class="aui-list aui-list-in aui-margin-b-15" id="conlistaa">
             <!-- <li class="aui-list-header">
               手环状态
             </li>
@@ -198,7 +198,7 @@ function getdevice(){
               var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>"
               var htmlStr2 = "</div></div></li>";
               htmlStr = htmlStr + htmlStr1 + htmlStra + htmlStr2;
-              alert(htmlStr);
+
             }
 
 
@@ -210,7 +210,8 @@ function getdevice(){
           // getServiceid(uuid);
       }
   });
-  var el = document.getElementById('conlist');
+  alert(htmlStr);
+  var el = document.getElementById('conlistaa');
   $api.html(el, htmlStr);
 }
 
