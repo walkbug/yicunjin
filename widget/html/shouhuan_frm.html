@@ -212,20 +212,14 @@ function deviceconnect(m){
           }, function(ret) {
               if (ret) {
                   // api.alert({ msg: JSON.stringify(ret) });
-                  if(ret.services.length>0){
-                    for(var i = 0; i < ret.services.length; i++){
-                      alert(ret.services[i]);
-                      ble.discoverCharacteristics({
-                          peripheralUUID: uuid[m],
-                          serviceUUID: ret.services[i]
-                      }, function(ret) {
-                          if (ret) {
-                              api.alert({ msg: JSON.stringify(ret) });
-                          }
-                      });
-
-                    }
-                  }
+                  ble.discoverCharacteristics({
+                      peripheralUUID: uuid[m],
+                      serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb"
+                  }, function(ret) {
+                      if (ret) {
+                          api.alert({ msg: JSON.stringify(ret) });
+                      }
+                  });
               }
           });
 
