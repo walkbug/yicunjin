@@ -153,8 +153,6 @@ function getdevice(){
   ble.getPeripheral(function(ret) {
       if (ret) {
 
-          // api.alert({ msg: JSON.stringify(ret) });
-
           if(ret.peripherals.length>0){
             for(var i = 0; i < ret.peripherals.length; i++){
               // alert(ret.peripherals[i].name);
@@ -174,11 +172,7 @@ function getdevice(){
             var el = document.getElementById('conlistaa');
             $api.html(el, htmlStr);
           }
-          // var uuid = ret.peripherals[0].uuid;
-          // ssid = ret.characteristics[0].serviceUUID;
-          //
-          // api.alert({ msg: "ssid:"+ssid });
-          // getServiceid(uuid);
+
       }
   });
 
@@ -224,7 +218,8 @@ function deviceconnect(m){
           });
 
       } else {
-          alert(err.code);
+          // alert(err.code);
+          alert("连接失败");
       }
   });
 }
