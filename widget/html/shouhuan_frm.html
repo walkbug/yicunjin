@@ -207,12 +207,24 @@ function deviceconnect(m){
   }, function(ret, err) {
       if (ret.status) {
           alert("连接成功！");
-          ble.discoverCharacteristics({
+          ble.discoverService({
               peripheralUUID: uuid[m]
           }, function(ret) {
               if (ret) {
-                  api.alert({ msg: JSON.stringify(ret) });
+                  // api.alert({ msg: JSON.stringify(ret) });
+                  if(ret.services.length>0){
+                    for(var i = 0; i < ret.peripherals.length; i++){
+                      ble.discoverCharacteristics({
+                          peripheralUUID: uuid[m],
+                          serviceUUID: ret.peripherals[i]
+                      }, function(ret) {
+                          if (ret) {
+                              api.alert({ msg: JSON.stringify(ret) });
+                          }
+                      });
 
+                    }
+                  }
               }
           });
 
