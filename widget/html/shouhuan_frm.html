@@ -174,10 +174,11 @@ function scanble(){
 }
 
 function getdevice(){
+  var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
   var ble = api.require('ble');
   ble.getPeripheral(function(ret) {
       if (ret) {
-        var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
+
           api.alert({ msg: JSON.stringify(ret) });
           if(ret.peripherals.length>0){
             for(var i = 0; i < ret.peripherals; i++){
