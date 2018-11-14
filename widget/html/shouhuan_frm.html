@@ -193,7 +193,7 @@ function getdevice(){
             for(var i = 0; i < ret.peripherals.length; i++){
               alert(ret.peripherals[i].name);
               uuid[i] = ret.peripherals[i].uuid;
-              ssid[i] = ret.characteristics[i].serviceUUID;
+              // ssid[i] = ret.characteristics[i].serviceUUID;
               var htmlStra = ret.peripherals[i].name;
               var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>"
               var htmlStr2 = "</div></div></li>";
