@@ -197,6 +197,8 @@ function getServiceid(uuid){
 );
 }
 
+
+
 function deviceconnect(m){
   alert(uuid[m]);
   var ble = api.require('ble');
@@ -205,11 +207,12 @@ function deviceconnect(m){
   }, function(ret, err) {
       if (ret.status) {
           alert("连接成功！");
-          ble.discoverService({
+          ble.discoverCharacteristics({
               peripheralUUID: uuid[m]
           }, function(ret) {
               if (ret) {
                   api.alert({ msg: JSON.stringify(ret) });
+
               }
           });
 
