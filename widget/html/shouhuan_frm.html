@@ -162,7 +162,7 @@ function getdevice(){
               // ssid[i] = ret.characteristics[i].serviceUUID;
               var htmlStra = "未命名设备";
               if(ret.peripherals[i].name){
-                htmlStra = "ret.peripherals[i].name";
+                htmlStra = ret.peripherals[i].name;
               }
               var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>"
               var htmlStr2 = "</div></div></li>";
@@ -185,7 +185,7 @@ function getdevice(){
 }
 
 function getServiceid(uuid){
-  api.alert({ msg: "uuid:"+uuid });
+  alert("uuid:"+uuid);
   var ble = api.require('ble');
   ble.discoverService({
     peripheralUUID: uuid
@@ -197,6 +197,7 @@ function getServiceid(uuid){
 }
 
 function deviceconnect(m){
+  alert("m:"+m);
   var ble = api.require('ble');
   ble.connect({
       peripheralUUID: uuid[m]
