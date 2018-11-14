@@ -214,12 +214,13 @@ function deviceconnect(m){
                   // api.alert({ msg: JSON.stringify(ret) });
                   if(ret.services.length>0){
                     for(var i = 0; i < ret.services.length; i++){
+                      alert(ret.services[i]);
                       ble.discoverCharacteristics({
                           peripheralUUID: uuid[m],
                           serviceUUID: ret.services[i]
                       }, function(ret) {
                           if (ret) {
-                              api.alert({ msg: "services:"+ret.services[i]+JSON.stringify(ret) });
+                              api.alert({ msg: JSON.stringify(ret) });
                           }
                       });
 
