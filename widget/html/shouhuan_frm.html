@@ -188,9 +188,10 @@ function getdevice(){
       if (ret) {
 
           api.alert({ msg: JSON.stringify(ret) });
-          alert(ret.peripherals.length);
+
           if(ret.peripherals.length>0){
             for(var i = 0; i < ret.peripherals; i++){
+              alert(ret.peripherals.[i].name);
               uuid[i] = ret.peripherals[i].uuid;
               ssid[i] = ret.characteristics[i].serviceUUID;
               var htmlStra = ret.peripherals[i].name;
