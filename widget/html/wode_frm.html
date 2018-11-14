@@ -25,7 +25,7 @@
     </section>
     <section class="aui-content" id="user-info" >
         <div style="position:relative;width:100%;margin：0 auto;height:auto;">
-          <div style="width:100%;text-align:center;height:auto;">
+          <div style="width:100%;text-align:center;height:auto;" onclick="selsectpic();">
               <img src="../image/head.png" width="20%" height="auto" style="margin：0 auto;display: inline-block;" />
           </div>
         </div>
@@ -97,6 +97,28 @@
 // alert('date');
     apiready = function () {
 
+    }
+
+    // 打开手环Window
+    function selsectpic () {
+      api.getPicture({
+        sourceType: 'album',
+        encodingType: 'jpg',
+        mediaValue: 'pic',
+        destinationType: 'url',
+        allowEdit: true,//（可选项）是否可以选择图片后进行编辑，支持iOS及部分安卓手机
+        preview: false,//（可选项）是否选择图片后进行预览，只支持iOS。
+        quality: 50,
+        targetWidth: 100,
+        targetHeight: 100,
+        saveToPhotoAlbum: false
+      }, function(ret, err) {
+        if (ret) {
+            alert(JSON.stringify(ret));
+        } else {
+            alert(JSON.stringify(err));
+        }
+      });
     }
 
 
