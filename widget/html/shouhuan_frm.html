@@ -185,13 +185,13 @@ function getdevice(){
 }
 
 function getServiceid(uuid){
-  alert("uuid:"+uuid);
+  // alert("uuid:"+uuid);
   var ble = api.require('ble');
   ble.discoverService({
     peripheralUUID: uuid
   }, function(ret) {
       if (ret) {
-          api.alert({ msg: JSON.stringify(ret) });
+          // api.alert({ msg: JSON.stringify(ret) });
       }
   }
 );
@@ -211,20 +211,20 @@ function deviceconnect(m){
               peripheralUUID: uuid[m]
           }, function(ret) {
               if (ret) {
-                  // api.alert({ msg: JSON.stringify(ret) });
-                  if(ret.services.length>0){
-                    for(var i = 0; i < ret.services.length; i++){
-                      ble.discoverCharacteristics({
-                          peripheralUUID: uuid[m],
-                          serviceUUID: ret.services[i]
-                      }, function(ret) {
-                          if (ret) {
-                              api.alert({ msg: JSON.stringify(ret) });
-                          }
-                      });
-
-                    }
-                  }
+                  api.alert({ msg: JSON.stringify(ret) });
+                  // if(ret.services.length>0){
+                  //   for(var i = 0; i < ret.services.length; i++){
+                  //     ble.discoverCharacteristics({
+                  //         peripheralUUID: uuid[m],
+                  //         serviceUUID: ret.services[i]
+                  //     }, function(ret) {
+                  //         if (ret) {
+                  //             api.alert({ msg: JSON.stringify(ret) });
+                  //         }
+                  //     });
+                  //
+                  //   }
+                  // }
               }
           });
 
