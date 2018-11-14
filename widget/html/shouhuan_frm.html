@@ -138,14 +138,14 @@ function startble(){
             ble.scan({
             }, function(ret) {
                 if (ret.status) {
-                  api.alert({ msg: JSON.stringify(ret) });
+                  // api.alert({ msg: JSON.stringify(ret) });
                   getdevice();
                 }
             });
         }
     });
 }
-f
+
 
 function getdevice(){
   var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
