@@ -26,7 +26,7 @@
     <section class="aui-content" id="user-info" >
         <div style="position:relative;width:100%;margin：0 auto;height:auto;">
           <div style="width:100%;text-align:center;height:auto;" onclick="selsectpic();">
-              <img src="../image/head.png" width="20%" height="auto" style="margin：0 auto;display: inline-block;" />
+              <img id="headpic" src="../image/head.png" width="20%" height="auto" style="margin：0 auto;display: inline-block;" />
           </div>
         </div>
     </section>
@@ -114,11 +114,50 @@
         saveToPhotoAlbum: false
       }, function(ret, err) {
         if (ret) {
-            alert(JSON.stringify(ret));
+            // alert(JSON.stringify(ret));
+            uploadHead(ret.data);
         } else {
             alert(JSON.stringify(err));
         }
       });
+    }
+
+    function uploadHead (file) {
+      api.showProgress({
+          title: '图片上传中...',
+          text: '请稍等...',
+          modal: false
+      });
+      var uid = $api.getStorage("userid");
+
+      api.ajax({
+        url: 'http://47.105.67.225/public/index/useraudio/publish',
+        method: 'post',
+        dataType:'json',
+        //cache: false,
+        data: {
+          values: {
+            id: uid
+          },
+          files: {
+            headpic: file
+          }
+        }
+      }, function(ret, err) {
+           if (ret) {
+            //  api.alert({ msg: JSON.stringify(ret) });
+             if(ret.status=="ok"){
+               var el = document.getElementById('conlist');
+               el.src = "http://47.105.67.225/public/uploads/"+ret.headpic;
+               api.hideProgress();
+             }else{
+               api.alert({ msg: ret.msg });
+             }
+
+           }
+        }
+      );
+
     }
 
 
