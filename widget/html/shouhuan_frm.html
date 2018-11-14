@@ -35,7 +35,7 @@
     </section> -->
     <section class="aui-content">
         <ul class="aui-list aui-list-in aui-margin-b-15" id="conlist">
-            <li class="aui-list-header" id="listheader">
+            <!-- <li class="aui-list-header">
               手环状态
             </li>
             <li class="aui-list-item">
@@ -47,7 +47,7 @@
                 <div class="aui-list-item-inner aui-list-item-arrow">
                     <div class="aui-list-item-title">手环容量：28M</div>
                 </div>
-            </li>
+            </li> -->
             <!-- <li class="aui-list-header">
               手环内容
             </li>
@@ -104,12 +104,11 @@
             </li>
 
             <li class="aui-list-item">
-                <div class="aui-list-item-label-icon">
-
-                </div>
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title"></div>
-                </div>
+                <section class="aui-content-padded" style="width:100%;text-align:center;">
+                    <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="isscanble();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                      是否在扫描
+                    </div>
+                </section>
             </li>
 
 
@@ -142,8 +141,8 @@ apiready = function() {
 startble();
 };
 
-var uuid = "";
-var ssid = "";
+var uuid = [];
+var ssid = [];
 
 function startble(){
   var ble = api.require('ble');
@@ -161,18 +160,37 @@ function scanble(){
     }, function(ret) {
         if (ret.status) {
           api.alert({ msg: JSON.stringify(ret) });
-          ble.getPeripheral(function(ret) {
-              if (ret) {
-                  api.alert({ msg: JSON.stringify(ret) });
-                  // var uuid = ret.peripherals[0].uuid;
-                  //ssid = ret.characteristics[0].serviceUUID;
-
-                  //api.alert({ msg: "ssid:"+ssid });
-                  //getServiceid(uuid);
-              }
-          });
+          getdevice();
         }
     });
+}
+
+function getdevice(){
+  var ble = api.require('ble');
+  ble.getPeripheral(function(ret) {
+      if (ret) {
+        var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
+          api.alert({ msg: JSON.stringify(ret) });
+          if(ret.peripherals.length>0){
+            for(var i = 0; i < ret.peripherals; i++){
+              uuid[i] = ret.peripherals[i].uuid;
+              ssid[i] = ret.characteristics[i].serviceUUID;
+            }
+            var htmlStra = ret.peripherals[i].name;
+            var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>"
+            var htmlStr2 = "</div></div></li>";
+            htmlStr = htmlStr + htmlStr1 + htmlStra + htmlStr2;
+            ;
+          }
+          // var uuid = ret.peripherals[0].uuid;
+          // ssid = ret.characteristics[0].serviceUUID;
+          //
+          // api.alert({ msg: "ssid:"+ssid });
+          // getServiceid(uuid);
+      }
+  });
+  var el = document.getElementById('conlist');
+  $api.html(el, htmlStr);
 }
 
 function getServiceid(uuid){
@@ -187,14 +205,27 @@ function getServiceid(uuid){
   });
 }
 
-function sadfasd(){
+function deviceconnect(m){
+  var ble = api.require('ble');
+  ble.connect({
+      peripheralUUID: uuid[m]
+  }, function(ret, err) {
+      if (ret.status) {
+          alert("连接成功！");
+      } else {
+          alert(err.code);
+      }
+  });
+}
+
+function isscanble(){
   var ble = api.require('ble');
   ble.isScanning(function(ret) {
     api.alert({ msg: JSON.stringify(ret) });
   })
 }
 
-function sadkf(){
+function stopscanble(){
   var ble = api.require('ble');
   ble.stopScan();
 }
