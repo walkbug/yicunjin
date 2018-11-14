@@ -198,13 +198,21 @@ function getServiceid(uuid){
 }
 
 function deviceconnect(m){
-  alert("m:"+m);
+  alert(uuid[m]);
   var ble = api.require('ble');
   ble.connect({
       peripheralUUID: uuid[m]
   }, function(ret, err) {
       if (ret.status) {
           alert("连接成功！");
+          ble.discoverService({
+              peripheralUUID: uuid[m]
+          }, function(ret) {
+              if (ret) {
+                  api.alert({ msg: JSON.stringify(ret) });
+              }
+          });
+
       } else {
           alert(err.code);
       }
@@ -222,6 +230,9 @@ function stopscanble(){
   var ble = api.require('ble');
   ble.stopScan();
 }
+
+// discoverCharacteristics根据指定的外围设备 UUID 及其服务 UUID 获取该外围设备的所有特征（Characteristic）
+// discoverService根据指定的外围设备 UUID 获取该外围设备的所有服务
 
 
     var myDate = new Date();
