@@ -148,7 +148,7 @@
              api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
                api.alert({ msg: ret.headpic });
-               var el = document.getElementById('conlist');
+               var el = document.getElementById('headpic');
                el.src = "http://47.105.67.225/public/uploads/"+ret.headpic;
                api.hideProgress();
              }else{
