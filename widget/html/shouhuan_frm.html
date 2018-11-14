@@ -201,7 +201,9 @@ function getdevice(){
 
             }
 
-
+            // alert(htmlStr);
+            var el = document.getElementById('conlistaa');
+            $api.html(el, htmlStr);
           }
           // var uuid = ret.peripherals[0].uuid;
           // ssid = ret.characteristics[0].serviceUUID;
@@ -210,9 +212,7 @@ function getdevice(){
           // getServiceid(uuid);
       }
   });
-  alert(htmlStr);
-  var el = document.getElementById('conlistaa');
-  $api.html(el, htmlStr);
+
 }
 
 function getServiceid(uuid){
