@@ -89,7 +89,7 @@ timestamp = timestamp / 1000;
           vadeos: 5000,
           rate: 16000,
           asrptt: 1
-          // audioPath: 'fs://'+timestamp+'.pcm'
+          audioPath: 'fs://'+timestamp+'.pcm'
       }, function(ret, err) {
           if (ret.status) {
               // api.alert({ msg: ret.wordStr });
@@ -100,14 +100,14 @@ timestamp = timestamp / 1000;
           }
       });
 
-      var audioRecorder = api.require('audioRecorder');
-      audioRecorder.startRecord({
-          savePath:'fs://'+timestamp+'.pcm',
-          format:'pcm',
-          channel: 1
-      }, function(ret, err){
-          // alert(JSON.stringify(ret));
-      });
+      // var audioRecorder = api.require('audioRecorder');
+      // audioRecorder.startRecord({
+      //     savePath:'fs://'+timestamp+'.pcm',
+      //     format:'pcm',
+      //     channel: 1
+      // }, function(ret, err){
+      //     // alert(JSON.stringify(ret));
+      // });
 
 
 
