@@ -147,7 +147,23 @@ timestamp = timestamp / 1000;
 
       // setTimeout("soundToMp3()",2000);
 
-      api.closeFrame();
+      var fs = api.require('fs');
+        fs.exist({
+            path: 'fs://'+timestamp+'.wav'
+        }, function(ret, err) {
+            if (ret.exist) {
+                if (ret.directory) {
+                    alert('文件夹');
+                } else {
+                    alert('fs://'+timestamp+'.wav');
+                    api.closeFrame();
+                }
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
+
+
 
     }
 
