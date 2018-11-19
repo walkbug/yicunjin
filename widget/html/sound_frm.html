@@ -147,43 +147,45 @@ timestamp = timestamp / 1000;
 
       // setTimeout("soundToMp3()",2000);
 
-      var fs = api.require('fs');
-        fs.exist({
-            path: 'fs://'+timestamp+'.wav'
-        }, function(ret, err) {
-            if (ret.exist) {
-                if (ret.directory) {
-                    alert('文件夹');
-                } else {
-                    alert('fs://'+timestamp+'.wav');
-                    api.closeFrame();
-                }
-            } else {
-                alert(JSON.stringify(err));
-            }
-        });
+      // var fs = api.require('fs');
+      //   fs.exist({
+      //       path: 'fs://'+timestamp+'.wav'
+      //   }, function(ret, err) {
+      //       if (ret.exist) {
+      //           if (ret.directory) {
+      //               alert('文件夹');
+      //           } else {
+      //               alert('fs://'+timestamp+'.wav');
+      //               api.closeFrame();
+      //           }
+      //       } else {
+      //           alert(JSON.stringify(err));
+      //       }
+      //   });
 
-
+      setTimeout("soundToMp3()",2000);
 
     }
 
     //
     function soundToMp3 () {
 
-      var audioRecorder = api.require('audioRecorder');
-      audioRecorder.covertToMp3({
-        channel: 1,
-        sampleRates: 16000,
-        // quality: 9,
-        originalFilePath: 'fs://'+timestamp+'.pcm',
-        mp3FilePath: 'fs://'+timestamp+'.mp3'
-      }, function(ret) {
-        // alert( JSON.stringify( ret ) );
-        if(ret.status){
-          api.hideProgress();
-          api.closeFrame();
-        }
-      });
+      // var audioRecorder = api.require('audioRecorder');
+      // audioRecorder.covertToMp3({
+      //   channel: 1,
+      //   sampleRates: 16000,
+      //   quality: 9,
+      //   originalFilePath: 'fs://'+timestamp+'.pcm',
+      //   mp3FilePath: 'fs://'+timestamp+'.mp3'
+      // }, function(ret) {
+      //   alert( JSON.stringify( ret ) );
+      //   if(ret.status){
+      //     api.hideProgress();
+      //     api.closeFrame();
+      //   }
+      // });
+
+      api.closeFrame();
     }
 
     //
