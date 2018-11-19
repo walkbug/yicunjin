@@ -82,15 +82,6 @@ timestamp = timestamp / 1000;
 
     function startRecord () {
 
-      var audioRecorder = api.require('audioRecorder');
-      audioRecorder.startRecord({
-          savePath:'fs://'+timestamp+'.pcm',
-          format:'pcm',
-          channel: 1
-      }, function(ret, err){
-          // alert(JSON.stringify(ret));
-      });
-
       var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
@@ -108,6 +99,17 @@ timestamp = timestamp / 1000;
               api.alert({ msg: err.msg });
           }
       });
+
+      var audioRecorder = api.require('audioRecorder');
+      audioRecorder.startRecord({
+          savePath:'fs://'+timestamp+'.pcm',
+          format:'pcm',
+          channel: 1
+      }, function(ret, err){
+          // alert(JSON.stringify(ret));
+      });
+
+
 
     }
 
