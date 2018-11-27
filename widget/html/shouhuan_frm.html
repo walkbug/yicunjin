@@ -208,6 +208,7 @@ function getdevice(){
 
 function getDeviceData(){
   alert("uuid:"+uuid[deviceid]);
+  alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.readValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
@@ -224,6 +225,7 @@ function getDeviceData(){
 
 function writeUserData(){
   alert("uuid:"+uuid[deviceid]);
+  alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.writeValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
@@ -231,6 +233,7 @@ function writeUserData(){
     characteristicUUID: "0000ff21-0000-8000-00805f9b34fb",
     value: '0x010x010037000100ac00450057'
   }, function(ret) {
+    alert("writeUserData:-----");
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
       }
@@ -241,6 +244,7 @@ function writeUserData(){
 
 function readUserData(){
   alert("uuid:"+uuid[deviceid]);
+  alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.readValueForDescriptor({
     peripheralUUID: uuid[deviceid],
