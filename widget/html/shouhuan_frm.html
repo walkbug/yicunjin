@@ -216,12 +216,14 @@ function getDeviceData(){
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff24-0000-8000-00805f9b34fb"
   }, function(ret,err) {
-      if (ret) {
-          api.alert({ msg: JSON.stringify(ret) });
-      }else {
-
-        api.alert({ msg: JSON.stringify(err) });
-      }
+    api.alert({ msg: JSON.stringify(ret) });
+    api.alert({ msg: JSON.stringify(err) });
+      // if (ret) {
+      //
+      // }else {
+      //
+      //
+      // }
   }
 );
 }
@@ -239,12 +241,14 @@ function writeUserData(){
   }, function(ret,err) {
     // alert("writeUserData:-----");
     // api.alert({ msg: JSON.stringify(err) });
-      if (ret) {
-          api.alert({ msg: JSON.stringify(ret) });
-      }else {
-
-        api.alert({ msg: JSON.stringify(err) });
-      }
+    api.alert({ msg: JSON.stringify(ret) });
+    api.alert({ msg: JSON.stringify(err) });
+      // if (ret) {
+      //
+      // }else {
+      //
+      //
+      // }
   }
 );
 }
@@ -262,11 +266,14 @@ function readUserData(){
     // value: '0x010x010037000100ac00450057'
   }, function(ret,err) {
     // api.alert({ msg: JSON.stringify(err) });
-      if (ret) {
-          api.alert({ msg: JSON.stringify(ret) });
-      }else{
-        api.alert({ msg: JSON.stringify(err) });
-      }
+    api.alert({ msg: JSON.stringify(ret) });
+    api.alert({ msg: JSON.stringify(err) });
+      // if (ret) {
+      //
+      // }else {
+      //
+      //
+      // }
   }
 );
 }
