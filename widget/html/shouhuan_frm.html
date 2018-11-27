@@ -231,9 +231,10 @@ function writeUserData(){
     peripheralUUID: uuid[deviceid],
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff21-0000-8000-00805f9b34fb",
-    value: '12345678'
+    value: '1234'
   }, function(ret) {
     alert("writeUserData:-----");
+    api.alert({ msg: JSON.stringify(err) });
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
       }
@@ -253,6 +254,7 @@ function readUserData(){
     // descriptorUUID:
     // value: '0x010x010037000100ac00450057'
   }, function(ret) {
+    api.alert({ msg: JSON.stringify(err) });
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
       }
