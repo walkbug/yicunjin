@@ -148,6 +148,7 @@ startble();
 };
 
 var uuid = [];
+var uuname = [];
 var ssid = [];
 var deviceid = 0;
 
@@ -184,6 +185,9 @@ function getdevice(){
               var htmlStra = "未命名设备";
               if(ret.peripherals[i].name){
                 htmlStra = ret.peripherals[i].name;
+                uuname[i] = ret.peripherals[i].name;
+              }else{
+                uuname[i] = "未命名设备";
               }
               var htmlStr1 = "<li class='aui-list-item' onclick='deviceconnect("+i+");'><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
               var htmlStr2 = "</div></div></li>";
@@ -202,7 +206,7 @@ function getdevice(){
 }
 
 function getDeviceData(){
-  // alert("uuid:"+uuid);
+  alert("uuid:"+uuid[deviceid]);
   var ble = api.require('ble');
   ble.readValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
@@ -217,7 +221,7 @@ function getDeviceData(){
 }
 
 function writeUserData(){
-  // alert("uuid:"+uuid);
+  alert("uuid:"+uuid[deviceid]);
   var ble = api.require('ble');
   ble.writeValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
@@ -234,7 +238,7 @@ function writeUserData(){
 
 
 function readUserData(){
-  // alert("uuid:"+uuid);
+  alert("uuid:"+uuid[deviceid]);
   var ble = api.require('ble');
   ble.readValueForDescriptor({
     peripheralUUID: uuid[deviceid],
