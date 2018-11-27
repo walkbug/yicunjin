@@ -207,24 +207,27 @@ function getdevice(){
 }
 
 function getDeviceData(){
-  alert("uuid:"+uuid[deviceid]);
-  alert("uuname:"+uuname[deviceid]);
+  // alert("uuid:"+uuid[deviceid]);
+  // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.readValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
     // peripheralUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff24-0000-8000-00805f9b34fb"
-  }, function(ret) {
+  }, function(ret,err) {
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
+      }else {
+
+        api.alert({ msg: JSON.stringify(err) });
       }
   }
 );
 }
 
 function writeUserData(){
-  alert("uuid:"+uuid[deviceid]);
+  // alert("uuid:"+uuid[deviceid]);
   alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.writeValueForCharacteristic({
@@ -233,11 +236,14 @@ function writeUserData(){
     characteristicUUID: "0000ff21-0000-8000-00805f9b34fb",
     value: '12345678',
     writeType:'response'
-  }, function(ret) {
-    alert("writeUserData:-----");
+  }, function(ret,err) {
+    // alert("writeUserData:-----");
     // api.alert({ msg: JSON.stringify(err) });
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
+      }else {
+
+        api.alert({ msg: JSON.stringify(err) });
       }
   }
 );
@@ -245,8 +251,8 @@ function writeUserData(){
 
 
 function readUserData(){
-  alert("uuid:"+uuid[deviceid]);
-  alert("uuname:"+uuname[deviceid]);
+  // alert("uuid:"+uuid[deviceid]);
+  // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.readValueForDescriptor({
     peripheralUUID: uuid[deviceid],
@@ -254,10 +260,12 @@ function readUserData(){
     characteristicUUID: "0000ff21-0000-8000-00805f9b34fb"
     // descriptorUUID:
     // value: '0x010x010037000100ac00450057'
-  }, function(ret) {
+  }, function(ret,err) {
     // api.alert({ msg: JSON.stringify(err) });
       if (ret) {
           api.alert({ msg: JSON.stringify(ret) });
+      }else{
+        api.alert({ msg: JSON.stringify(err) });
       }
   }
 );
