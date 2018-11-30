@@ -123,9 +123,16 @@
       var pwd = $api.val($api.byId("pwd"));
       var pwd2 = $api.val($api.byId("pwd2"));
       var username = $api.val($api.byId("username"));
-      var userrole = $api.val($api.byId("userrole"));
-      //api.alert({ msg: "mobilephone"+mobilephone });
-      //api.alert({ msg: username });
+      var obj = document.getElementsByName("fruit");
+      var userrole;
+      for (var i = 0; i < obj.length; i++) {
+        if (obj[i].checked) {
+          userrole = obj[i].value;
+        }
+      }
+
+      api.alert({ msg: "userrole"+userrole });
+      // api.alert({ msg: username });
       api.ajax({
         url: 'http://47.105.67.225/public/index/index/userReg',
         method: 'post',
