@@ -467,7 +467,7 @@
       var sTitle = "";
       saType.slice(0,saType.length-1)
       var ss = saType.split(",");
-      api.alert({ msg: saType });
+      // api.alert({ msg: saType });
       api.alert({ msg: ss });
       switch (sType) {
         case 1:
@@ -494,7 +494,7 @@
               extra: "tttt"
           },
           vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
-          sound:'fs://'+timestamp+'.wav',
+          // sound:'fs://'+timestamp+'.wav',
           alarm: {
               hour: shour,
               minutes: sminutes,
@@ -503,7 +503,7 @@
           }
       }, function(ret, err){
         api.alert({ msg: "ret:"+JSON.stringify(ret) });
-        api.alert({ msg: "err:"+JSON.stringify(err) });
+        // api.alert({ msg: "err:"+JSON.stringify(err) });
         api.hideProgress();
         // api.closeWin();
       });
