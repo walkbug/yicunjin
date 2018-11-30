@@ -238,8 +238,14 @@
                       soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
                       var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
-                      var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
-                      var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
+                      if (ret.msg.length>0) {
+                        var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
+                        var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
+                      }else {
+                        var htmlStrc="</div><div class='aui-list-item-right'>";
+                        var htmlStra = ret.msg[j].audiotitle+htmlStrc;
+                      }
+
                       // alert(htmlStra);
                       htmlStr = htmlStr+htmlStr1+htmlStra+htmlStr2;
                       // alert( htmlStr );
