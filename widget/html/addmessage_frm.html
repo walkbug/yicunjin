@@ -465,6 +465,7 @@
     function setAlarm () {
       var audiotitle = $api.text($api.byId("audiotitle"));
       var sTitle = "";
+      saType.slice(0,saType.length-1)
       var ss = saType.split(",");
       api.alert({ msg: saType });
       api.alert({ msg: ss });
@@ -501,8 +502,8 @@
               // daysOfWeek: [1,2,3,4,5,6,7]saType.split(",")
           }
       }, function(ret, err){
-        api.alert({ msg: JSON.stringify(ret) });
-        api.alert({ msg: JSON.stringify(err) });
+        api.alert({ msg: "ret:"+JSON.stringify(ret) });
+        api.alert({ msg: "err:"+JSON.stringify(err) });
         api.hideProgress();
         // api.closeWin();
       });
