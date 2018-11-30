@@ -477,14 +477,14 @@
           notify: {
               title: sTitle,
               content: audiotitle,
-              extra: ""
+              extra: "tttt"
           },
           vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
-          sound:'fs://'+timestamp+'.wav',
+          // sound:'fs://'+timestamp+'.wav',
           alarm: {
               hour: 11,
               minutes: 38,
-              daysOfWeek: aType.split(",")
+              daysOfWeek: [1,2,3,4,5,6,7]
           }
       }, function(ret, err){
 
