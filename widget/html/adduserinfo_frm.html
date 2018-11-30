@@ -52,11 +52,11 @@
             </section>
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
-                <div class="aui-card-list-user-name" onclick="opentypeSelector();">
+                <div class="aui-card-list-user-name">
                     <div style="color:#ffffff;" id="alerttype">身高</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
-                        <input type="number" pattern="[0-9]*"  placeholder="请输入身高（cm）" id="height">
+                        <input type="number" pattern="[0-9]*"  placeholder="请输入身高（cm）" id="height" onblur="getstep();">
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     <div style="color:#ffffff;" id="ringtype">步长</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
-                        <input type="number" pattern="[0-9]*" placeholder="请输入步长" id="steplength">
+                        <input type="number" pattern="[0-9]*" placeholder="请输入步长" id="steplength" >
                     </div>
                 </div>
             </div>
@@ -112,6 +112,15 @@
     apiready = function () {
 
 
+    }
+
+    function getstep(){
+       var height = $api.text($api.byId("height"));
+       if (height>45) {
+         var el = document.getElementById('steplength');
+         var se = height*0.45;
+         $api.html(el, se);
+       }
     }
 
 
