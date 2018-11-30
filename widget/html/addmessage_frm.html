@@ -465,6 +465,9 @@
     function setAlarm () {
       var audiotitle = $api.text($api.byId("audiotitle"));
       var sTitle = "";
+      var ss = saType.split(",");
+      api.alert({ msg: saType });
+      api.alert({ msg: ss });
       switch (sType) {
         case 1:
           sTitle = "吃药";
@@ -481,6 +484,8 @@
         default:
 
       }
+      // var shour = 10;
+      // var sminutes = 0;
       api.notification({
           notify: {
               title: sTitle,
@@ -490,10 +495,10 @@
           vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
           sound:'fs://'+timestamp+'.wav',
           alarm: {
-              hour: 11,
-              minutes: 38,
-              // daysOfWeek: [1,2,3,4,5,6,7]s.split(",");
-              daysOfWeek: saType.split(",");
+              hour: shour,
+              minutes: sminutes,
+              daysOfWeek: [1,2,3,4,5,6,7]
+              // daysOfWeek: [1,2,3,4,5,6,7]saType.split(",")
           }
       }, function(ret, err){
         api.alert({ msg: JSON.stringify(ret) });
