@@ -41,7 +41,7 @@
                 <div class="aui-list-item-label-icon">
 
                 </div>
-                <div class="aui-list-item-inner aui-list-item-arrow">
+                <div class="aui-list-item-inner aui-list-item-arrow" onclick="editpwd();">
                     <div class="aui-list-item-title">修改密码</div>
                 </div>
             </li>
@@ -57,18 +57,18 @@
                 <div class="aui-list-item-label-icon">
 
                 </div>
-                <div class="aui-list-item-inner aui-list-item-arrow">
-                    <div class="aui-list-item-title">手环使用人</div>
+                <div class="aui-list-item-inner aui-list-item-arrow" onclick="fnOpenaddWin();">
+                    <div class="aui-list-item-title">使用人资料</div>
                 </div>
             </li>
-            <li class="aui-list-item">
+            <!-- <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
 
                 </div>
                 <div class="aui-list-item-inner aui-list-item-arrow">
                     <div class="aui-list-item-title">协助人</div>
                 </div>
-            </li>
+            </li> -->
         </ul>
 
     </section>
@@ -96,10 +96,14 @@
 <script type="text/javascript">
 // alert('date');
     apiready = function () {
-
+      var userHead = $api.getStorage("headpic");
+      if (userHead.length>15) {
+        var el = document.getElementById('headpic');
+        el.src = "http://47.105.67.225/public/uploads/"+userHead;
+      }
     }
 
-    // 打开手环Window
+    // 打开
     function selsectpic () {
       api.getPicture({
         sourceType: 'album',
@@ -145,9 +149,9 @@
         }
       }, function(ret, err) {
            if (ret) {
-             api.alert({ msg: JSON.stringify(ret) });
+            //  api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
-               api.alert({ msg: ret.headpic });
+              //  api.alert({ msg: ret.headpic });
                var el = document.getElementById('headpic');
                el.src = "http://47.105.67.225/public/uploads/"+ret.headpic;
                api.hideProgress();
@@ -227,11 +231,21 @@
         });
     }
 
-    // 打开添加提醒Window
+    // 打开添加Window
     function fnOpenaddWin () {
         api.openWin({
-            name: 'addmessage',
-            url: './addmessage_win.html',
+            name: 'adduserinfo',
+            url: './adduserinfo_win.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+    function editpwd () {
+        api.openWin({
+            name: 'editpwd',
+            url: './editpwd_win.html',
             pageParam: {
                 name: 'test'
             }
