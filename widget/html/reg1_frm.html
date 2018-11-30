@@ -67,6 +67,19 @@
                     </div> -->
                 </div>
             </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-inner">
+                  <div class="aui-list-item-label aui-border-r color-orange">
+                      请选择：
+                  </div>
+                    <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
+                        <label><input class="aui-radio" type="radio" name="userrole" id="userrole" checked value="0"> 使用人</label>
+                        <label><input class="aui-radio" type="radio" name="userrole" id="userrole" value="1"> 协助人</label>
+                        <label><input class="aui-radio" type="radio" name="userrole" id="userrole" value="2"> 关注人</label>
+                    </div>
+
+                </div>
+            </li>
         </ul>
     </section>
     <section class="aui-content-padded">
@@ -116,6 +129,7 @@
       var pwd = $api.val($api.byId("pwd"));
       var pwd2 = $api.val($api.byId("pwd2"));
       var username = $api.val($api.byId("username"));
+      var userrole = $api.val($api.byId("userrole"));
       //api.alert({ msg: "mobilephone"+mobilephone });
       //api.alert({ msg: username });
       api.ajax({
@@ -128,7 +142,8 @@
             mobilephone: mobilephone,
             pwd: pwd,
             pwd2: pwd2,
-            username: username
+            username: username,
+            userrole: userrole
           }
         }
       }, function(ret, err) {
