@@ -121,6 +121,7 @@
     var sminutes = 0;
     var stime = '';
     var aType = '';//重复方式
+    var saType = '';//重复方式
     var rType = 0;
     var timestamp = '';
     var audiotitle = '';
@@ -311,29 +312,37 @@
                 //  alert(JSON.stringify(ret));
                  if(ret.eventType=="clickRight"){
                    aType = '';
+                   saType = '';
                    aStr = '';
                    for(var j = 0; j < ret.items.length; j++){
                      aStr = aStr+ret.items[j].text+' ';
                      if(ret.items[j].text=='周一'){
                        aType=aType+'1,';
+                       saType=saType+'1,';
                      }
                      if(ret.items[j].text=='周二'){
                        aType=aType+'2,';
+                       saType=saType+'2,';
                      }
                      if(ret.items[j].text=='周三'){
                        aType=aType+'3,';
+                       saType=saType+'3,';
                      }
                      if(ret.items[j].text=='周四'){
                        aType=aType+'4,';
+                       saType=saType+'4,';
                      }
                      if(ret.items[j].text=='周五'){
                        aType=aType+'5,';
+                       saType=saType+'5,';
                      }
                      if(ret.items[j].text=='周六'){
                        aType=aType+'6,';
+                       saType=saType+'6,';
                      }
                      if(ret.items[j].text=='周日'){
                        aType=aType+'0,';
+                       saType=saType+'7,';
                      }
                    }
                   //  aType = ret.items[0].text;
@@ -480,11 +489,12 @@
               extra: "tttt"
           },
           vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
-          // sound:'fs://'+timestamp+'.wav',
+          sound:'fs://'+timestamp+'.wav',
           alarm: {
               hour: 11,
               minutes: 38,
-              daysOfWeek: [1,2,3,4,5,6,7]
+              // daysOfWeek: [1,2,3,4,5,6,7]s.split(",");
+              daysOfWeek: saType.split(",");
           }
       }, function(ret, err){
         api.alert({ msg: JSON.stringify(ret) });
