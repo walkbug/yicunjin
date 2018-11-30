@@ -117,6 +117,8 @@
 <script type="text/javascript">
 
     var sType = 0;
+    var shour = 10;
+    var sminutes = 0;
     var stime = '';
     var aType = '';//重复方式
     var rType = 0;
@@ -335,6 +337,8 @@
                      }
                    }
                   //  aType = ret.items[0].text;
+                  var reg=/,$/gi;//此处是正则
+                  aType=str.replace(reg,"");
                    var htmlStr = "重复："+aStr;
                    var el = document.getElementById('alerttype');
                    $api.html(el, htmlStr);
@@ -385,6 +389,8 @@
               var htmlStr = "提醒时间："+ret.hour+":"+ret.minute;
               var el = document.getElementById('alerttime');
               stime = ret.hour+":"+ret.minute;
+              shour = ret.hour;
+              sminutes = ret.minute;
               // alert( htmlStr );
               $api.html(el, htmlStr);
                 // alert(JSON.stringify(ret));
@@ -447,6 +453,43 @@
       );
     }
 
+
+    function setAlarm () {
+      var audiotitle = $api.text($api.byId("audiotitle"));
+      var sTitle = "";
+      switch (sType) {
+        case 1:
+          sTitle = "吃药";
+          break;
+        case 2:
+          sTitle = "就医";
+          break;
+        case 3:
+          sTitle = "锻炼";
+          break;
+        case 4:
+          sTitle = "其他";
+          break;
+        default:
+
+      }
+      api.notification({
+          notify: {
+              title: sTitle,
+              content: audiotitle,
+              extra: ""
+          },
+          vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
+          sound:'fs://'+timestamp+'.wav',
+          alarm: {
+              hour: 11,
+              minutes: 38,
+              daysOfWeek: aType.split(",")
+          }
+      }, function(ret, err){
+
+      });
+    }
 
 </script>
 </html>
