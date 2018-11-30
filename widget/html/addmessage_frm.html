@@ -121,7 +121,7 @@
     var sminutes = 0;
     var stime = '';
     var aType = '';//重复方式
-    var saType = '';//重复方式
+    var saType = new Array();//重复方式
     var rType = 0;
     var timestamp = '';
     var audiotitle = '';
@@ -318,31 +318,31 @@
                      aStr = aStr+ret.items[j].text+' ';
                      if(ret.items[j].text=='周一'){
                        aType=aType+'1,';
-                       saType=saType+'1,';
+                       saType[j]=1;
                      }
                      if(ret.items[j].text=='周二'){
                        aType=aType+'2,';
-                       saType=saType+'2,';
+                       saType[j]=2;
                      }
                      if(ret.items[j].text=='周三'){
                        aType=aType+'3,';
-                       saType=saType+'3,';
+                       saType[j]=3;
                      }
                      if(ret.items[j].text=='周四'){
                        aType=aType+'4,';
-                       saType=saType+'4,';
+                       saType[j]=4;
                      }
                      if(ret.items[j].text=='周五'){
                        aType=aType+'5,';
-                       saType=saType+'5,';
+                       saType[j]=5;
                      }
                      if(ret.items[j].text=='周六'){
                        aType=aType+'6,';
-                       saType=saType+'6,';
+                       saType[j]=6;
                      }
                      if(ret.items[j].text=='周日'){
                        aType=aType+'0,';
-                       saType=saType+'7,';
+                       saType[j]=7;
                      }
                    }
                   //  aType = ret.items[0].text;
@@ -465,10 +465,10 @@
     function setAlarm () {
       var audiotitle = $api.text($api.byId("audiotitle"));
       var sTitle = "";
-      saType.slice(0,saType.length-1)
-      var ss = saType.split(",");
-      // api.alert({ msg: saType });
-      api.alert({ msg: ss });
+      // saType.slice(0,saType.length-1)
+      // var ss = saType.split(",");
+      api.alert({ msg: saType });
+      // api.alert({ msg: ss });
       switch (sType) {
         case 1:
           sTitle = "吃药";
