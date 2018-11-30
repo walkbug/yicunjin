@@ -450,8 +450,7 @@
                api.alert({
                   msg: ret.msg ,
               }, function(ret, err) {
-                api.hideProgress();
-                api.closeWin();
+                setAlarm ();
               });
              }else{
                api.alert({ msg: ret.msg });
@@ -499,6 +498,8 @@
       }, function(ret, err){
         api.alert({ msg: JSON.stringify(ret) });
         api.alert({ msg: JSON.stringify(err) });
+        api.hideProgress();
+        // api.closeWin();
       });
     }
 
