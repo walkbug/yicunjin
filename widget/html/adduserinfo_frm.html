@@ -26,8 +26,10 @@
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
                     <div style="color:#ffffff;">性别：</div>
-                    <input class="aui-radio" type="radio" name="sex" id="sex" checked value="1"> 男
-                    <input class="aui-radio" type="radio" name="sex" id="sex" value="0"> 女
+                    <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
+                    <label style="color:#ffffff;"><input class="aui-radio" type="radio" name="sex" id="sex" checked value="1"> 男</label>
+                    <label style="color:#ffffff;"><input class="aui-radio" type="radio" name="sex" id="sex" value="0"> 女</label>
+                    </div>
                 </div>
             </div>
 
@@ -38,7 +40,7 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;" id="ringtype">年龄</div>
+                    <div style="color:#ffffff;" id="ringtype">年龄：</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="number" pattern="[0-9]*" placeholder="请输入年龄" id="birthday" name="birthday" style="color:#ffffff;">
@@ -53,7 +55,7 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;" id="alerttype">身高</div>
+                    <div style="color:#ffffff;" id="alerttype">身高：</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="number" pattern="[0-9]*"  placeholder="请输入身高（cm）" id="height" name="height" onblur="getstep();" style="color:#ffffff;">
@@ -68,7 +70,7 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;" id="ringtype">体重</div>
+                    <div style="color:#ffffff;" id="ringtype">体重：</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="number" pattern="[0-9]*" placeholder="请输入体重（kg）" id="weight" name="weight" style="color:#ffffff;">
@@ -83,7 +85,7 @@
 
             <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div style="color:#ffffff;" id="ringtype">步长</div>
+                    <div style="color:#ffffff;" id="ringtype">步长：</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
                         <!-- <input type="number" pattern="^1[345678][0-9]{9}$" placeholder="输入短信验证码" id="code"> -->
                         <input type="number" pattern="[0-9]*" placeholder="请输入步长（cm）" id="steplength"  name="steplength" style="color:#ffffff;">
