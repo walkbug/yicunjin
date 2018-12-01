@@ -133,12 +133,12 @@
       });
 
       var uid = $api.getStorage("userid");
-      var birthday = $api.text($api.byId("birthday"));
-      var height = $api.text($api.byId("height"));
-      var weight = $api.text($api.byId("weight"));
-      var steplength = $api.text($api.byId("steplength"));
+      var birthday = $api.val($api.byId("birthday"));
+      var height = $api.val($api.byId("height"));
+      var weight = $api.val($api.byId("weight"));
+      var steplength = $api.val($api.byId("steplength"));
       var sex;
-      alert( 'birthday:'+birthday+'height:'+height );
+      // alert( 'birthday:'+birthday+'height:'+height );
       var obj = document.getElementsByName("sex");
       for (var i = 0; i < obj.length; i++) {
         if (obj[i].checked) {
