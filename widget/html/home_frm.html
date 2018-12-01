@@ -284,10 +284,15 @@
         return now.getTime();
     }
 
-    // var timeStart,timeEnd,time;//申明全局变量
+    var timeStart,timeEnd,time;//申明全局变量
 
     function touchend(){
-      alert('time');
+
+      if (timeEnd-timeStart>1000) {
+        alert('time');
+      }
+      timeStart = 0;
+      timeEnd = 0;
       clearInterval(time);//如果按下时间不到1000毫秒便弹起，
 
     }
@@ -304,11 +309,20 @@
             // }
             alert("长按");
           }
-          // else if (timeEnd-timeStart>200 && timeEnd-timeStart<700) {
-          //   playsound (m);
-          // }
         },100);
     }
+
+    function gtouchmove(){
+
+        clearTimeout(timeOutEvent);
+
+        // timeOutEvent = 0;
+        timeStart = 0;
+        timeEnd = 0;
+
+        // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
+
+    };
 
 
 
@@ -340,15 +354,7 @@
 
       };
 
-      function gtouchmove(){
 
-          clearTimeout(timeOutEvent);
-
-          timeOutEvent = 0;
-
-          // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
-
-      };
 
       function longPress(){
 
