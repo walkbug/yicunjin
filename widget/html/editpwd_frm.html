@@ -114,7 +114,7 @@
         }
       }, function(ret, err) {
            if (ret) {
-             api.alert({ msg: JSON.stringify(ret) });
+            //  api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
                api.alert({
                   msg: ret.msg ,
@@ -124,6 +124,7 @@
               });
              }else{
                api.alert({ msg: ret.msg });
+               api.hideProgress();
              }
 
            }
