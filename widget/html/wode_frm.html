@@ -97,6 +97,7 @@
 // alert('date');
     apiready = function () {
       var userHead = $api.getStorage("headpic");
+      alert(userHead);
       if (userHead.length>15) {
         var el = document.getElementById('headpic');
         el.src = "http://47.105.67.225/public/uploads/"+userHead;
