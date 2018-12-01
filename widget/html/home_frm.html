@@ -287,7 +287,7 @@
     // var timeStart,timeEnd,time;//申明全局变量
 
     function touchend(){
-      alert(time);
+      alert('time');
       clearInterval(time);//如果按下时间不到1000毫秒便弹起，
 
     }
@@ -296,7 +296,7 @@
         timeStart=getTimeNow();//获取鼠标按下时的时间
         time=setInterval(function(){
           timeEnd=getTimeNow();//也就是每100毫秒获取一次时间
-          if(timeEnd-timeStart>700)//如果此时检测到的时间与第一次获取的时间差有1000毫秒
+          if(timeEnd-timeStart>2000)//如果此时检测到的时间与第一次获取的时间差有1000毫秒
           {
             clearInterval(time);//便不再继续重复此函数 （clearInterval取消周期性执行）
             // if($api.attr($api.last(obj),'style')){
@@ -346,7 +346,7 @@
 
           timeOutEvent = 0;
 
-          alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
+          // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
 
       };
 
