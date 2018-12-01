@@ -97,7 +97,7 @@
 // alert('date');
     apiready = function () {
       var userHead = $api.getStorage("headpic");
-      alert(userHead);
+      // alert(userHead);
       if (userHead) {
         var el = document.getElementById('headpic');
         el.src = "http://47.105.67.225/public/uploads/"+userHead;
@@ -119,7 +119,7 @@
         saveToPhotoAlbum: false
       }, function(ret, err) {
         if (ret) {
-            // alert(JSON.stringify(ret));
+            alert(JSON.stringify(ret));
             uploadHead(ret.data);
         } else {
             alert(JSON.stringify(err));
