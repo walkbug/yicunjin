@@ -119,8 +119,11 @@
         saveToPhotoAlbum: false
       }, function(ret, err) {
         if (ret) {
-            alert(JSON.stringify(ret));
-            uploadHead(ret.data);
+            // alert(JSON.stringify(ret));
+            if (ret.data.length>0) {
+              uploadHead(ret.data);
+            }
+
         } else {
             alert(JSON.stringify(err));
         }
