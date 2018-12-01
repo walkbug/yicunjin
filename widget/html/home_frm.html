@@ -237,7 +237,7 @@
 
                       soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
                       // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-                      var htmlStr1="<li class='aui-list-item' ontouchend='touchend()' ontouchmove='gtouchmove()' ontouchstart='touchstart(this,"+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr1="<li class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
 
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
@@ -284,12 +284,15 @@
         return now.getTime();
     }
 
-    var timeStart,timeEnd,time;//申明全局变量
+    var timeStart=0;
+    var timeEnd=0;
+    var time;//申明全局变量
 
-    function touchend(){
+    function touchend(m){
 
-      if (timeEnd-timeStart>100) {
-        alert('time');
+      if (timeEnd-timeStart<100) {
+        // alert('time');
+        playsound(m);
       }
       timeStart = 0;
       timeEnd = 0;
@@ -297,17 +300,18 @@
 
     }
 
-    function touchstart(obj,m){
+    function touchstart(m){
         timeStart=getTimeNow();//获取鼠标按下时的时间
         time=setInterval(function(){
           timeEnd=getTimeNow();//也就是每100毫秒获取一次时间
-          if(timeEnd-timeStart>2000)//如果此时检测到的时间与第一次获取的时间差有1000毫秒
+          if(timeEnd-timeStart>1000)//如果此时检测到的时间与第一次获取的时间差有1000毫秒
           {
             clearInterval(time);//便不再继续重复此函数 （clearInterval取消周期性执行）
             // if($api.attr($api.last(obj),'style')){
             //   $api.removeAttr($api.last(obj),'style');
             // }
-            alert("长按");
+            // alert("长按");
+            delalert(m);
           }
         },100);
     }
@@ -322,46 +326,12 @@
 
         // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
 
+    }
+
+    function delalert(m){
+      alert("删除");
     };
 
 
-
-      var timeOutEvent=0;
-      function gtouchstart(obj,m){
-
-          timeOutEvent = setTimeout(longPress(),1000);
-
-          return false;
-
-          //单击开始计时 500代表0.5秒
-
-          //如果longPress()需要传参得写成下面注释中的代码
-
-          //timeOutEvent = setTimeout(function(){ longPress(url);},500);
-
-      };
-      function gtouchend(){
-
-          clearTimeout(timeOutEvent);
-
-          if(timeOutEvent!=0){
-
-              alert('单击执行代码区');
-
-          }
-
-          return false;
-
-      };
-
-
-
-      function longPress(){
-
-          timeOutEvent = 0;
-
-          alert('长按执行代码区');
-
-      }
 </script>
 </html>
