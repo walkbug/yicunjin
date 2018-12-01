@@ -113,15 +113,16 @@
     }
     apiready = function () {
 
+      getAllinfo();
 
     }
 
     function getstep(){
-       var height = $api.text($api.byId("height"));
+       var height = $api.val($api.byId("height"));
        if (height>45) {
-         var el = document.getElementById('steplength');
+        //  var el = document.getElementById('steplength');
          var se = height*0.45;
-         $api.html(el, se);
+         $api.val($api.byId ('steplength')) = se;
        }
     }
 
@@ -179,6 +180,42 @@
            }
         }
       );
+    }
+
+
+    function getAllinfo(){
+
+      var uid = $api.getStorage("userid");
+      var urlStr = 'http://47.105.67.225/public/index/index/userInfo/id/'+uid;
+      //api.alert({ msg: "uid"+uid });
+      //api.alert({ msg: "urlStr"+urlStr });
+      api.ajax({
+          url: urlStr,
+          method: 'get',
+      },function(ret, err){
+          if (ret) {
+              alert( JSON.stringify( ret ) );
+              if(ret.status=="ok"){
+                for(var j = 0; j < ret.msg.length; j++){
+                  var obj = document.getElementsByName("sex");
+                  if (ret.msg[j].sex==1) {
+                    obj[0].checked = true;
+                    obj[1].checked = false;
+                  }else {
+                    obj[0].checked = false;
+                    obj[1].checked = true;
+                  }
+
+                  $api.val($api.byId ('birthday')) = ret.msg[j].birthday;
+                  $api.val($api.byId ('height')) = ret.msg[j].birthday;
+                  $api.val($api.byId ('weight')) = ret.msg[j].birthday;
+                  $api.val($api.byId ('steplength')) = ret.msg[j].birthday;
+                }
+
+              }
+          }
+      });
+
     }
 
 
