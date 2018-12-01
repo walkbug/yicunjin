@@ -286,7 +286,7 @@
 
     function touchend(){
       clearInterval(time);//如果按下时间不到1000毫秒便弹起，
-      // alert("点击");
+      alert(time);
     }
 
     function touchstart(obj,m){
@@ -300,9 +300,10 @@
             //   $api.removeAttr($api.last(obj),'style');
             // }
             alert("长按");
-          }else if (timeEnd-timeStart>200 && timeEnd-timeStart<700) {
-            playsound (m);
           }
+          // else if (timeEnd-timeStart>200 && timeEnd-timeStart<700) {
+          //   playsound (m);
+          // }
         },100);
     }
 </script>
