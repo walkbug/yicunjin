@@ -237,7 +237,7 @@
 
                       soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
                       // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-                      var htmlStr1="<li class='aui-list-item' ontouchend='touchend()' ontouchmove='touchend()' ontouchstart='touchstart(this,"+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr1="<li class='aui-list-item' ontouchend='gtouchend()' ontouchmove='gtouchmove()' ontouchstart='gtouchstart(this,"+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
 
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
@@ -309,5 +309,53 @@
           // }
         },100);
     }
+
+
+
+      var timeOutEvent=0;
+      function gtouchstart(obj,m){
+
+          timeOutEvent = setTimeout(longPress(),500);
+
+          return false;
+
+          //单击开始计时 500代表0.5秒
+
+          //如果longPress()需要传参得写成下面注释中的代码
+
+          //timeOutEvent = setTimeout(function(){ longPress(url);},500);
+
+      };
+      function gtouchend(){
+
+          clearTimeout(timeOutEvent);
+
+          if(timeOutEvent!=0){
+
+              alert('单击执行代码区');
+
+          }
+
+          return false;
+
+      };
+
+      function gtouchmove(){
+
+          clearTimeout(timeOutEvent);
+
+          timeOutEvent = 0;
+
+          alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
+
+      };
+
+      function longPress(){
+
+          timeOutEvent = 0;
+
+          alert('长按执行代码区');
+
+      }
 </script>
 </html>
