@@ -158,6 +158,7 @@
               //  api.alert({ msg: ret.headpic });
                var el = document.getElementById('headpic');
                el.src = "http://47.105.67.225/public/uploads/"+ret.headpic;
+               $api.setStorage("headpic",ret.headpic);
                api.hideProgress();
              }else{
                api.alert({ msg: ret.msg });
