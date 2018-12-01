@@ -26,7 +26,7 @@
                 <div class="aui-card-list-user-name">
                     <div style="color:#ffffff;" id="ringtype">原密码：</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-                        <input type="password" placeholder="输入原密码" id="pwd0">
+                        <input type="password" placeholder="输入原密码" id="pwd0" style="color:#ffffff;">
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="aui-card-list-user-name">
                     <div style="color:#ffffff;" id="alerttype">输入新密码</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-                        <input type="password" placeholder="输入新密码" id="pwd">
+                        <input type="password" placeholder="输入新密码" id="pwd" style="color:#ffffff;">
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="aui-card-list-user-name">
                     <div style="color:#ffffff;" id="ringtype">再次输入新密码</div>
                     <div class="aui-list-item-input aui-padded-l-10" style="width: auto;">
-                        <input type="password" placeholder="再次输入新密码" id="pwd2">
+                        <input type="password" placeholder="再次输入新密码" id="pwd2" style="color:#ffffff;">
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
         }
       }, function(ret, err) {
            if (ret) {
-            //  api.alert({ msg: JSON.stringify(ret) });
+             api.alert({ msg: JSON.stringify(ret) });
              if(ret.status=="ok"){
                api.alert({
                   msg: ret.msg ,
