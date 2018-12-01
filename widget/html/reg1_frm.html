@@ -113,9 +113,10 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+var smsVerify = null;
     apiready = function(){
         api.parseTapmode();
-        var smsVerify = api.require('smsVerify');
+        smsVerify = api.require('smsVerify');
         smsVerify.register(function(ret, err){
             if(ret.status){
                 // api.alert({msg: '注册成功'});
