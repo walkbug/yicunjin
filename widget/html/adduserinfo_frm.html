@@ -122,7 +122,8 @@
        if (height>45) {
         //  var el = document.getElementById('steplength');
          var se = height*0.45;
-         $api.val($api.byId ('steplength')) = se;
+        //  $api.val($api.byId('steplength')) = se;
+        document.getElementById('steplength').value = se;
        }
     }
 
@@ -194,24 +195,26 @@
           method: 'get',
       },function(ret, err){
           if (ret) {
-              alert( JSON.stringify( ret ) );
+              // alert( JSON.stringify( ret ) );
               if(ret.status=="ok"){
-                for(var j = 0; j < ret.msg.length; j++){
-                  var obj = document.getElementsByName("sex");
-                  if (ret.msg[j].sex==1) {
-                    obj[0].checked = true;
-                    obj[1].checked = false;
-                  }else {
-                    obj[0].checked = false;
-                    obj[1].checked = true;
-                  }
-
-                  $api.val($api.byId ('birthday')) = ret.msg[j].birthday;
-                  $api.val($api.byId ('height')) = ret.msg[j].birthday;
-                  $api.val($api.byId ('weight')) = ret.msg[j].birthday;
-                  $api.val($api.byId ('steplength')) = ret.msg[j].birthday;
+                var obj = document.getElementsByName("sex");
+                if (ret.msg.sex==1) {
+                  obj[0].checked = true;
+                  obj[1].checked = false;
+                }else {
+                  obj[0].checked = false;
+                  obj[1].checked = true;
                 }
 
+                // $api.val($api.byId ('birthday')) = ret.msg.birthday;
+                // $api.val($api.byId ('height')) = ret.msg.birthday;
+                // $api.val($api.byId ('weight')) = ret.msg.birthday;
+                // $api.val($api.byId ('steplength')) = ret.msg.birthday;
+
+                document.getElementById('birthday').value = ret.msg.birthday;
+                document.getElementById('height').value = ret.msg.height;
+                document.getElementById('weight').value = ret.msg.weight;
+                document.getElementById('steplength').value = ret.msg.steplength;
               }
           }
       });
