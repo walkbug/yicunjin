@@ -28,11 +28,7 @@
           </div>
         </div>
     </section>
-    <section style="height:20px;">
-        <div >
 
-        </div>
-    </section>
     <section class="aui-content">
         <ul class="aui-list aui-list-in aui-margin-b-15" id="alertlist">
             <!-- <li class="aui-list-item">
@@ -290,10 +286,11 @@
 
     function touchend(m){
 
-      if (timeEnd-timeStart<100) {
-        // alert('time');
-        playsound(m);
-      }
+      // if (timeEnd-timeStart<100) {
+      //   // alert('time');
+      //
+      // }
+      playsound(m);
       timeStart = 0;
       timeEnd = 0;
       clearInterval(time);//如果按下时间不到1000毫秒便弹起，
@@ -312,8 +309,8 @@
             // }
             timeStart = 0;
             timeEnd = 0;
-            alert("timeStart:"+timeStart+"timeEnd:"+timeStart);
-            // delalert(m);
+            // alert("timeStart:"+timeStart+"timeEnd:"+timeStart);
+            delalert(m);
           }
         },100);
     }
