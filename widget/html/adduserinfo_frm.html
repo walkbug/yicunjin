@@ -195,10 +195,10 @@
           method: 'get',
       },function(ret, err){
           if (ret) {
-              alert( JSON.stringify( ret ) );
+              // alert( JSON.stringify( ret ) );
               if(ret.status=="ok"){
                 var obj = document.getElementsByName("sex");
-                if (ret.msg.sex==1) {
+                if (ret.msg.sex=="男") {
                   obj[0].checked = true;
                   obj[1].checked = false;
                 }else {
