@@ -61,6 +61,14 @@
                     <div class="aui-list-item-title">使用人资料</div>
                 </div>
             </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow" onclick="logout();">
+                    <div class="aui-list-item-title">注销</div>
+                </div>
+            </li>
             <!-- <li class="aui-list-item">
                 <div class="aui-list-item-label-icon">
 
@@ -197,6 +205,7 @@
         api.openWin({
             name: 'shouhuan',
             url: './shouhuan_win.html',
+            reload:true,
             pageParam: {
                 name: 'shouhuan'
             }
@@ -208,6 +217,7 @@
         api.openWin({
             name: 'rili',
             url: './rili_win.html',
+            reload:true,
             pageParam: {
                 name: 'rili'
             }
@@ -219,6 +229,7 @@
         api.openWin({
             name: 'wode',
             url: './wode_win.html',
+            reload:true,
             pageParam: {
                 name: 'wode'
             }
@@ -230,6 +241,7 @@
         api.openWin({
             name: 'home',
             url: './home_win.html',
+            reload:true,
             pageParam: {
                 name: 'home'
             }
@@ -241,6 +253,7 @@
         api.openWin({
             name: 'adduserinfo',
             url: './adduserinfo_win.html',
+            reload:true,
             pageParam: {
                 name: 'test'
             }
@@ -251,6 +264,23 @@
         api.openWin({
             name: 'editpwd',
             url: './editpwd_win.html',
+            reload:true,
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+
+    function logout () {
+      $api.rmStorage("userid");
+      $api.rmStorage("username");
+      $api.rmStorage("mobilephone");
+      $api.rmStorage("headpic");
+        api.openWin({
+            name: 'login',
+            url: './login_win.html',
+            reload:true,
             pageParam: {
                 name: 'test'
             }

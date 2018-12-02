@@ -70,7 +70,9 @@
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
-var soundArray=new Array()
+var soundArray=new Array();
+var titleArray=new Array();
+var idArray=new Array();
 
 var myDate = new Date();
         //时间 2016/3/29/00:20
@@ -268,6 +270,7 @@ function fnTurnPage(){
         api.openWin({
             name: 'shouhuan',
             url: './shouhuan_win.html',
+            reload:true,
             pageParam: {
                 name: 'shouhuan'
             }
@@ -279,6 +282,7 @@ function fnTurnPage(){
         api.openWin({
             name: 'rili',
             url: './rili_win.html',
+            reload:true,
             pageParam: {
                 name: 'rili'
             }
@@ -290,6 +294,7 @@ function fnTurnPage(){
         api.openWin({
             name: 'wode',
             url: './wode_win.html',
+            reload:true,
             pageParam: {
                 name: 'wode'
             }
@@ -301,6 +306,7 @@ function fnTurnPage(){
         api.openWin({
             name: 'addmessage',
             url: './addmessage_win.html',
+            reload:true,
             pageParam: {
                 name: 'test'
             }
@@ -311,6 +317,7 @@ function fnTurnPage(){
         api.openWin({
             name: 'home',
             url: './home_win.html',
+            reload:true,
             pageParam: {
                 name: 'home'
             }
@@ -359,8 +366,10 @@ function fnTurnPage(){
                       }
 
                       soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
-
-                      var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      titleArray[m] = ret.msg[j].audiotitle;
+                      idArray[m] = ret.msg[j].id;
+                      // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr1="<li id='date"+m+"' class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
                       var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
@@ -396,6 +405,151 @@ function fnTurnPage(){
             // api.alert({ msg: JSON.stringify(ret) });
         }
       });
+    }
+
+
+    function getTimeNow() {
+        var now=new Date();
+        return now.getTime();
+    }
+
+    var timeStart=0;
+    var timeEnd=0;
+    var time;//申明全局变量
+
+    function touchend(m){
+
+      // if (timeEnd-timeStart<100) {
+      //   // alert('time');
+      //
+      // }
+      playsound(m);
+      // timeStart = 0;
+      // timeEnd = 0;
+      clearInterval(time);//如果按下时间不到1000毫秒便弹起，
+
+    }
+
+    function touchstart(m){
+        timeStart=getTimeNow();//获取鼠标按下时的时间
+        time=setInterval(function(){
+          timeEnd=getTimeNow();//也就是每100毫秒获取一次时间
+          if(timeEnd-timeStart>1000)//如果此时检测到的时间与第一次获取的时间差有1000毫秒
+          {
+            clearInterval(time);//便不再继续重复此函数 （clearInterval取消周期性执行）
+            // if($api.attr($api.last(obj),'style')){
+            //   $api.removeAttr($api.last(obj),'style');
+            // }
+            timeStart = 0;
+            timeEnd = 0;
+            // alert("timeStart:"+timeStart+"timeEnd:"+timeStart);
+            delalert(m);
+          }
+        },100);
+    }
+
+    function gtouchmove(){
+
+        clearTimeout(time);
+
+        // timeOutEvent = 0;
+        timeStart = 0;
+        timeEnd = 0;
+
+        // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
+
+    }
+
+    function delalert(m){
+      // alert("删除");
+      var dialogBox = api.require('dialogBox');
+      dialogBox.alert({
+          texts: {
+              title: '确认',
+              content: '是否删除"'+titleArray[m]+'"',
+              leftBtnTitle: '取消',
+              rightBtnTitle: '确认'
+          },
+          styles: {
+              bg: '#fff',
+              w: 300,
+              corner:2,
+              title: {
+                  marginT: 20,
+                  icon: 'widget://res/gou.png',
+                  iconSize: 40,
+                  titleSize: 14,
+                  titleColor: '#000'
+              },
+              content: {
+                  color: '#000',
+                  size: 14
+              },
+              left: {
+                  marginB: 7,
+                  marginL: 20,
+                  w: 130,
+                  h: 35,
+                  corner: 2,
+                  bg: '#9459b2',
+                  color: '#ffffff',
+                  size: 12
+              },
+              right: {
+                  marginB: 7,
+                  marginL: 10,
+                  w: 130,
+                  h: 35,
+                  corner: 2,
+                  bg: '#9459b2',
+                  color: '#ffffff',
+                  size: 12
+              }
+          }
+      }, function(ret) {
+          if (ret.eventType == 'left') {
+              var dialogBox = api.require('dialogBox');
+              dialogBox.close({
+                  dialogName: 'alert'
+              });
+          }else {
+            // alert('删除！！！！');
+            deldate (m);
+            var dialogBox = api.require('dialogBox');
+            dialogBox.close({
+                dialogName: 'alert'
+            });
+          }
+      });
+    }
+
+    function deldate (m) {
+      alert('m:'+m+"--id:"+idArray[m]);
+      api.showProgress({
+          title: '删除中...',
+          text: '请稍等...',
+          modal: false
+      });
+      // var uid = $api.getStorage("userid");
+
+      api.ajax({
+        url: 'http://47.105.67.225/public/index/useraudio/delete/id/'+idArray[m],
+        method: 'get',
+        dataType:'json'
+      }, function(ret, err) {
+           if (ret) {
+             if(ret.status=="ok"){
+              api.alert({ msg: ret.msg });
+              var el = document.getElementById('date'+m);
+              $api.remove(el);
+             }else{
+               api.alert({ msg: ret.msg });
+             }
+           }
+           api.hideProgress();
+        }
+      );
+
     }
 
 </script>
