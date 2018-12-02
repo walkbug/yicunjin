@@ -310,15 +310,17 @@
             // if($api.attr($api.last(obj),'style')){
             //   $api.removeAttr($api.last(obj),'style');
             // }
-            // alert("长按");
-            delalert(m);
+            timeStart = 0;
+            timeEnd = 0;
+            alert("timeStart:"+timeStart+"timeEnd:"+timeStart);
+            // delalert(m);
           }
         },100);
     }
 
     function gtouchmove(){
 
-        clearTimeout(timeOutEvent);
+        clearTimeout(time);
 
         // timeOutEvent = 0;
         timeStart = 0;
