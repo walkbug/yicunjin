@@ -237,7 +237,7 @@
                       titleArray[m] = ret.msg[j].audiotitle;
                       idArray[m] = ret.msg[j].id;
                       // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-                      var htmlStr1="<li class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr1="<li id='date"+m+"' class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
 
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
@@ -295,8 +295,8 @@
       //
       // }
       playsound(m);
-      timeStart = 0;
-      timeEnd = 0;
+      // timeStart = 0;
+      // timeEnd = 0;
       clearInterval(time);//如果按下时间不到1000毫秒便弹起，
 
     }
@@ -324,8 +324,8 @@
         clearTimeout(time);
 
         // timeOutEvent = 0;
-        timeStart = 0;
-        timeEnd = 0;
+        // timeStart = 0;
+        // timeEnd = 0;
 
         // alert('单击未松开直接滑动的执行代码区，默认取消任何操作');
 
@@ -384,10 +384,43 @@
                   dialogName: 'alert'
               });
           }else {
-            alert('删除！！！！');
+            // alert('删除！！！！');
+            deldate (m);
+            var dialogBox = api.require('dialogBox');
+            dialogBox.close({
+                dialogName: 'alert'
+            });
           }
       });
-    };
+    }
+
+    function deldate (m) {
+      api.showProgress({
+          title: '删除中...',
+          text: '请稍等...',
+          modal: false
+      });
+      // var uid = $api.getStorage("userid");
+
+      api.ajax({
+        url: 'http://47.105.67.225/public/index/useraudio/delete/id/'+idArray[m],
+        method: 'get',
+        dataType:'json'
+      }, function(ret, err) {
+           if (ret) {
+             if(ret.status=="ok"){
+              api.alert({ msg: ret.msg });
+              var el = document.getElementById('date'+m);
+              $api.remove(el);
+             }else{
+               api.alert({ msg: ret.msg });
+             }
+           }
+           api.hideProgress();
+        }
+      );
+
+    }
 
 
 </script>
