@@ -114,7 +114,9 @@
       getAllAlert();
     }
 
-    var soundArray=new Array()
+    var soundArray=new Array();
+    var titleArray=new Array();
+    var idArray=new Array();
 
     var myDate = new Date();
             //时间 2016/3/29/00:20
@@ -232,6 +234,8 @@
                       }
 
                       soundArray[m] = "http://47.105.67.225/public/uploads/"+ret.msg[j].useraudio;
+                      titleArray[m] = ret.msg[j].audiotitle;
+                      idArray[m] = ret.msg[j].id;
                       // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr1="<li class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
                       var htmlStr2="</div></div></li>";
@@ -328,7 +332,59 @@
     }
 
     function delalert(m){
-      alert("删除");
+      // alert("删除");
+      var dialogBox = api.require('dialogBox');
+      dialogBox.alert({
+          texts: {
+              title: '确认',
+              content: '是否删除"'+titleArray[m]+'"',
+              leftBtnTitle: '取消',
+              rightBtnTitle: '确认'
+          },
+          styles: {
+              bg: '#fff',
+              w: 300,
+              corner:2,
+              title: {
+                  marginT: 20,
+                  icon: 'widget://res/gou.png',
+                  iconSize: 40,
+                  titleSize: 14,
+                  titleColor: '#000'
+              },
+              content: {
+                  color: '#000',
+                  size: 14
+              },
+              left: {
+                  marginB: 7,
+                  marginL: 20,
+                  w: 130,
+                  h: 35,
+                  corner: 2,
+                  bg: '#e0e',
+                  size: 12
+              },
+              right: {
+                  marginB: 7,
+                  marginL: 10,
+                  w: 130,
+                  h: 35,
+                  corner: 2,
+                  bg: '#e0e',
+                  size: 12
+              }
+          }
+      }, function(ret) {
+          if (ret.eventType == 'left') {
+              var dialogBox = api.require('dialogBox');
+              dialogBox.close({
+                  dialogName: 'alert'
+              });
+          }else {
+            alert('删除！！！！');
+          }
+      });
     };
 
 
