@@ -74,15 +74,18 @@
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" onclick="getdevice();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                    获取设备
+                    扫描设备
                   </div>
               </section>
           </li>
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
+                <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <input type="text"  placeholder="请输入要写入的内容" id="userdata" name="userdata" style="color:#ffffff;" value="">
+                </div>
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="writeUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                    写入用户数据
+                    写入用户数据（ff21）
                   </div>
               </section>
           </li>
@@ -90,7 +93,7 @@
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="readUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                    读取用户数据
+                    读取用户数据（ff21）
                   </div>
               </section>
           </li>
@@ -98,7 +101,7 @@
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="getDeviceData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                    读取设备广播数据
+                    读取设备广播数据（ff24）
                   </div>
               </section>
           </li>
@@ -229,14 +232,15 @@ function getDeviceData(){
 }
 
 function writeUserData(){
-  // alert("uuid:"+uuid[deviceid]);
+  var userdata = $api.val($api.byId("userdata"));
+  alert("userdata:"+userdata);
   // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
   ble.writeValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
-    value: '12345678',
+    value: userdata,
     writeType:'withoutResponse'
   }, function(ret,err) {
     // alert("writeUserData:-----");
