@@ -402,7 +402,7 @@ function fnTurnPage(){
                       titleArray[m] = ret.msg[j].audiotitle;
                       idArray[m] = ret.msg[j].id;
                       // var htmlStr1="<li class='aui-list-item' onclick='playsound("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
-                      var htmlStr1="<li id='date"+m+"' class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title'>";
+                      var htmlStr1="<li id='date"+m+"' class='aui-list-item' ontouchend='touchend("+m+")' ontouchmove='gtouchmove()' ontouchstart='touchstart("+m+");'><div class='aui-list-item-label-icon'></div><div class='aui-list-item-inner aui-list-item-arrow'><div class='aui-list-item-title' style='color:#898989'>";
                       var htmlStr2="</div></div></li>";
                       var htmlStrc="</div><div class='aui-list-item-right'>"+ret.msg[j].alerttime;
                       var htmlStra = '['+atype+']'+ret.msg[j].audiotitle+htmlStrc;
