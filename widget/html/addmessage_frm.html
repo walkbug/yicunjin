@@ -50,11 +50,11 @@
 
           <section style="height:2px;">
               <div >
-                <hr/>
+                <hr style="color:#aaaaaa"/>
               </div>
           </section>
 
-            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important">
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important;>
                 <div class="aui-card-list-user-name">
                     <div id="quantian">全天事件</div>
                 </div>
@@ -62,7 +62,6 @@
 
             <section style="height:2px;">
                 <div >
-                  <hr/>
                 </div>
             </section>
 
@@ -73,9 +72,8 @@
                   </div>
               </div>
 
-              <section style="height:2px;">
+              <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
                   <div >
-                    <hr/>
                   </div>
               </section>
 
@@ -86,9 +84,8 @@
                     </div>
                 </div>
 
-            <section style="height:2px;">
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
                 <div >
-                  <hr/>
                 </div>
             </section>
 
@@ -103,9 +100,8 @@
                 </div>
             </div>
 
-            <section style="height:2px;">
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
                 <div >
-                  <hr/>
                 </div>
             </section>
 
@@ -116,9 +112,8 @@
                 </div>
             </div>
 
-            <section style="height:2px;">
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
                 <div >
-                  <hr/>
                 </div>
             </section>
 
@@ -218,12 +213,12 @@
       }, function(ret) {
           // alert(JSON.stringify(ret));
           if(ret.state){
-            var htmlStr = "提醒方式（闹铃）";
+            var htmlStr = "闹铃提醒";
             var el = document.getElementById('ringtype');
             $api.html(el, htmlStr);
             rType = 0;
           }else{
-            var htmlStr = "提醒方式（震动）";
+            var htmlStr = "震动提醒";
             var el = document.getElementById('ringtype');
             $api.html(el, htmlStr);
             rType = 1;
