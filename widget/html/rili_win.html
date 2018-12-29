@@ -49,7 +49,7 @@
 
     </section>
 
-    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
+    <!-- <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
         <div class="aui-bar-tab-item aui-active" style="line-height:1.4rem" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont aui-icon-home" style="float:left;margin-left:0.2rem;color:#711173;"></i>
             <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">首页</div>
@@ -66,7 +66,27 @@
             <i class="aui-iconfont aui-icon-my" style="float:left;margin-left:0.2rem;color:#711173;"></i>
             <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">我</div>
         </div>
+    </footer> -->
+
+    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
+        <div class="aui-bar-tab-item aui-active">
+            <i class="aui-iconfont icon iconfont icon-rili" style="color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="color:#711173;">日历</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
+            <i class="aui-iconfont icon iconfont icon-7yuyuedingdanwudingdan"></i>
+            <div class="aui-bar-tab-label">诊疗</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
+            <i class="aui-iconfont icon iconfont icon-sound"></i>
+            <div class="aui-bar-tab-label">求助</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenwoWin();">
+            <i class="aui-iconfont icon iconfont icon-shebei"></i>
+            <div class="aui-bar-tab-label">设备</div>
+        </div>
     </footer>
+
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
@@ -89,10 +109,11 @@ var minutes = myDate.getMinutes();
 var seconds = myDate.getSeconds();
 // alert(date);
 var dateshow = document.getElementById('dateshow');
-$api.text(dateshow,date);
+
 
 var mmshow = document.getElementById('mmshow');
 $api.text(mmshow,year+"年"+month+"月");
+$api.text(dateshow,month+"月");
 // alert('UICalendar');
 var UICalendar;
 var clickDay;
@@ -119,21 +140,21 @@ function fnOpen(){
           h: 320
       },
       styles: {
-          bg: '#fff',
+          bg: 'rgba(0,0,0,1)',
           week: {
-              weekdayColor: '#3b3b3b',
-              weekendColor: '#a8d400',
+              weekdayColor: '#ffffff',
+              weekendColor: '#ffffff',
               size: 12
           },
           date: {
-              color: '#3b3b3b',
+              color: '#ffffff',
               selectedColor: '#fff',
-              selectedBg: '#a8d500',
+              selectedBg: '#d45270',
               size: 12
           },
           today: {
-              color: 'rgb(230,46,37)',
-              bg: ''
+              color: '#ffffff',
+              bg: '#333333'
           },
           specialDate: {
               color: '#fff'
