@@ -278,11 +278,11 @@ function strToHexCharCode(str) {
 
 function writeUserData(){
   var userdata = $api.val($api.byId("userdata"));
-  // var userdataHex = strToHexCharCode(userdata);
-  var userdataStr = hexCharCodeToStr(userdata);
+  var userdataHex = strToHexCharCode(userdata);
+  // var userdataStr = hexCharCodeToStr(userdata);
   alert("userdata:"+userdata);
-  // alert("userdataHex:"+userdataHex);
-  alert("userdataStr:"+userdataStr);
+  alert("userdataHex:"+userdataHex);
+  // alert("userdataStr:"+userdataStr);
   // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
 //   ble.writeValueForCharacteristic({
