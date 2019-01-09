@@ -92,6 +92,17 @@
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
+                <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <input type="text"  placeholder="请输入要写入的内容" id="userdata" name="userdata" style="color:#ffffff;" value="">
+                </div>
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="writeUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                    写入音频文件（ff23）
+                  </div>
+              </section>
+          </li>
+
+          <li class="aui-list-item">
+              <section class="aui-content-padded" style="width:100%;text-align:center;">
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="readUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                     读取用户数据（ff21）
                   </div>
@@ -174,6 +185,7 @@ function startble(){
 }
 
 
+
 function getdevice(){
   var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
   var ble = api.require('ble');
@@ -231,30 +243,43 @@ function getDeviceData(){
 );
 }
 
+function strToHexCharCode(str) {
+　　if(str === "")
+　　　　return "";
+　　var hexCharCode = [];
+　　hexCharCode.push("0x");
+　　for(var i = 0; i < str.length; i++) {
+　　　　hexCharCode.push((str.charCodeAt(i)).toString(16));
+　　}
+　　return hexCharCode.join("");
+}
+
 function writeUserData(){
   var userdata = $api.val($api.byId("userdata"));
+  var userdataHex = strToHexCharCode(userdata);
   alert("userdata:"+userdata);
+  alert("userdataHex:"+userdataHex);
   // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
-  ble.writeValueForCharacteristic({
-    peripheralUUID: uuid[deviceid],
-    serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
-    characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
-    value: userdata,
-    writeType:'withoutResponse'
-  }, function(ret,err) {
-    // alert("writeUserData:-----");
-    // api.alert({ msg: JSON.stringify(err) });
-    api.alert({ msg: JSON.stringify(ret) });
-    // api.alert({ msg: JSON.stringify(err) });
-      if (ret) {
-
-      }else {
-
-
-      }
-  }
-);
+//   ble.writeValueForCharacteristic({
+//     peripheralUUID: uuid[deviceid],
+//     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
+//     characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
+//     value: userdataHex,
+//     writeType:'withoutResponse'
+//   }, function(ret,err) {
+//     // alert("writeUserData:-----");
+//     // api.alert({ msg: JSON.stringify(err) });
+//     api.alert({ msg: JSON.stringify(ret) });
+//     // api.alert({ msg: JSON.stringify(err) });
+//       if (ret) {
+//
+//       }else {
+//
+//
+//       }
+//   }
+// );
 }
 
 
@@ -270,8 +295,8 @@ function readUserData(){
     // value: '0x010x010037000100ac00450057'
   }, function(ret,err) {
     // api.alert({ msg: JSON.stringify(err) });
-    // api.alert({ msg: JSON.stringify(ret) });
-    // api.alert({ msg: JSON.stringify(err) });
+    api.alert({ msg: JSON.stringify(ret) });
+    api.alert({ msg: JSON.stringify(err) });
       // if (ret) {
       //
       // }else {
