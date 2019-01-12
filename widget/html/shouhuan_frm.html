@@ -191,7 +191,7 @@ function getdevice(){
   var ble = api.require('ble');
   ble.getPeripheral(function(ret) {
       if (ret) {
-        // api.alert({ msg: JSON.stringify(ret) });
+        api.alert({ msg: JSON.stringify(ret) });
           if(ret.peripherals.length>0){
 
             for(var i = 0; i < ret.peripherals.length; i++){
@@ -278,32 +278,32 @@ function strToHexCharCode(str) {
 
 function writeUserData(){
   var userdata = $api.val($api.byId("userdata"));
-  var userdataHex = strToHexCharCode(userdata);
+  // var userdataHex = strToHexCharCode(userdata);
   // var userdataStr = hexCharCodeToStr(userdata);
   alert("userdata:"+userdata);
-  alert("userdataHex:"+userdataHex);
+  // alert("userdataHex:"+userdataHex);
   // alert("userdataStr:"+userdataStr);
   // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('ble');
-//   ble.writeValueForCharacteristic({
-//     peripheralUUID: uuid[deviceid],
-//     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
-//     characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
-//     value: userdataHex,
-//     writeType:'withoutResponse'
-//   }, function(ret,err) {
-//     // alert("writeUserData:-----");
-//     // api.alert({ msg: JSON.stringify(err) });
-//     api.alert({ msg: JSON.stringify(ret) });
-//     // api.alert({ msg: JSON.stringify(err) });
-//       if (ret) {
-//
-//       }else {
-//
-//
-//       }
-//   }
-// );
+  ble.writeValueForCharacteristic({
+    peripheralUUID: uuid[deviceid],
+    serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
+    characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
+    value: userdata,
+    writeType:'withoutResponse'
+  }, function(ret,err) {
+    // alert("writeUserData:-----");
+    // api.alert({ msg: JSON.stringify(err) });
+    api.alert({ msg: JSON.stringify(ret) });
+    // api.alert({ msg: JSON.stringify(err) });
+      if (ret) {
+
+      }else {
+
+
+      }
+  }
+);
 }
 
 
