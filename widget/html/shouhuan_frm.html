@@ -96,7 +96,7 @@
                   <input type="text"  placeholder="请输入要写入的内容" id="userdata" name="userdata" style="color:#ffffff;" value="">
                 </div>
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="writeUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                    写入音频文件（ff23）
+                    写入音频文件（ff21）
                   </div>
               </section>
           </li>
@@ -108,14 +108,14 @@
                   </div>
               </section>
           </li>
-
+<!--
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
                   <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="getDeviceData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                     读取设备广播数据（ff24）
                   </div>
               </section>
-          </li>
+          </li> -->
 
             <li class="aui-list-item">
                 <section class="aui-content-padded" style="width:100%;text-align:center;">
@@ -192,7 +192,7 @@ function startble(){
             api.alert({ msg: "初始化成功" });
             // euowo();
             ble.scan({
-              serviceUUIDs: []
+              serviceUUIDs: ['061B690B-F490-B003-D83C4FC08096']
             }, function(ret) {
                 if (ret.status) {
                   api.alert({ msg: JSON.stringify(ret) });
