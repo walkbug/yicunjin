@@ -189,9 +189,11 @@ function startble(){
 function getdevice(){
   var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
   var ble = api.require('ble');
-  ble.getPeripheral(function(ret) {
+  ble.getPeripheral(function(ret,err) {
+    api.alert({ msg: JSON.stringify(ret) });
+    api.alert({ msg: JSON.stringify(err) });
       if (ret) {
-        api.alert({ msg: JSON.stringify(ret) });
+        // api.alert({ msg: JSON.stringify(ret) });
           if(ret.peripherals.length>0){
 
             for(var i = 0; i < ret.peripherals.length; i++){
