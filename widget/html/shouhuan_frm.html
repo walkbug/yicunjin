@@ -169,14 +169,14 @@ var deviceid = 0;
 function startble(){
   var ble = api.require('ble');
     ble.initManager(function(ret) {
-      // api.alert({ msg: JSON.stringify(ret) });
+      api.alert({ msg: JSON.stringify(ret) });
         if (ret.state == "poweredOn") {
             api.alert({ msg: "初始化成功" });
             // euowo();
             ble.scan({
             }, function(ret) {
                 if (ret.status) {
-                  api.alert({ msg: JSON.stringify(ret) });
+                  // api.alert({ msg: JSON.stringify(ret) });
                   getdevice();
                 }
             });
