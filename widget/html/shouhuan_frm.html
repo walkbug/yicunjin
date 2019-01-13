@@ -312,7 +312,7 @@ function writeUserData(){
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
     value: userdata,
-    writeType:'auto'
+    writeType:'withoutResponse'
   }, function(ret,err) {
     // alert("writeUserData:-----");
     // api.alert({ msg: JSON.stringify(err) });
