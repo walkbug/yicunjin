@@ -367,6 +367,7 @@ function deviceconnect(m){
           ble.discoverService({
               peripheralUUID: uuid[m]
           }, function(ret) {
+            api.alert({ msg: JSON.stringify(ret) });
               if (ret) {
                   // api.alert({ msg: JSON.stringify(ret) });
                   ble.discoverCharacteristics({
