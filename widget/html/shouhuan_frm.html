@@ -185,7 +185,7 @@ var ssid = [];
 var deviceid = 0;
 
 function startble(){
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
     ble.initManager(function(ret) {
       // api.alert({ msg: JSON.stringify(ret) });
         if (ret.state == "poweredOn") {
@@ -208,7 +208,7 @@ function startble(){
 
 function getdevice(){
   var htmlStr = "<li class='aui-list-header'>蓝牙设备</li>";
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.getPeripheral(function(ret,err) {
     api.alert({ msg: JSON.stringify(ret) });
     api.alert({ msg: JSON.stringify(err) });
@@ -246,7 +246,7 @@ function getdevice(){
 function getDeviceData(){
   // alert("uuid:"+uuid[deviceid]);
   // alert("uuname:"+uuname[deviceid]);
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.readValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
     // peripheralUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
@@ -306,7 +306,7 @@ function writeUserData(){
   // alert("userdataHex:"+userdataHex);
   // alert("userdataStr:"+userdataStr);
   // alert("uuname:"+uuname[deviceid]);
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.writeValueForCharacteristic({
     peripheralUUID: uuid[deviceid],
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
@@ -332,7 +332,7 @@ function writeUserData(){
 function readUserData(){
   // alert("uuid:"+uuid[deviceid]);
   // alert("uuname:"+uuname[deviceid]);
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.readValueForDescriptor({
     peripheralUUID: uuid[deviceid],
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
@@ -358,7 +358,7 @@ function readUserData(){
 function deviceconnect(m){
   // alert(uuid[m]);
   deviceid = m;
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.connect({
       peripheralUUID: uuid[m]
   }, function(ret, err) {
@@ -388,14 +388,14 @@ function deviceconnect(m){
 }
 
 function isscanble(){
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.isScanning(function(ret) {
     api.alert({ msg: JSON.stringify(ret) });
   })
 }
 
 function stopscanble(){
-  var ble = api.require('MyBle');
+  var ble = api.require('ble');
   ble.stopScan();
   alert("stopScan");
 }
