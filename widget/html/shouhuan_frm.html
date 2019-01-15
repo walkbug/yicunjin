@@ -92,10 +92,10 @@
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
-                <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
-                  <input type="text"  placeholder="请输入要写入的内容" id="userdata" name="userdata" style="color:#ffffff;" value="">
+                <div id="soundfile" name="soundfile" class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;color:#ffffff;">
+
                 </div>
-                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="writeUserData();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="sendsound();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                     写入音频文件（ff21）
                   </div>
               </section>
@@ -177,13 +177,18 @@
 // alert('date');
 apiready = function() {
 startble();
+
 };
 
 var uuid = [];
 var uuname = [];
 var ssid = [];
 var deviceid = 0;
-
+var timestamp = $api.getStorage('timestamp');
+if (timestamp) {
+  var el = document.getElementById('soundfile');
+  $api.html(el, timestamp);
+}
 function startble(){
   var ble = api.require('myBle');
     ble.initManager(function(ret) {
@@ -409,6 +414,18 @@ function stopscanble(){
   var ble = api.require('myBle');
   ble.stopScan();
   alert("stopScan");
+}
+
+function sendsound(){
+  var ble = api.require('myBle');
+  ble.writeSoundForCharacteristic({
+    peripheralUUID: uuid[deviceid],
+    serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
+    characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
+    file: 'fs://'+timestamp+'.wav'
+  }, function(ret) {
+      api.alert({ msg: JSON.stringify(ret) });
+  });
 }
 
 // discoverCharacteristics根据指定的外围设备 UUID 及其服务 UUID 获取该外围设备的所有特征（Characteristic）

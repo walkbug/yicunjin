@@ -48,13 +48,24 @@
               </div> -->
           </div>
 
+          <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
+            <div class="aui-card-list-user-name" onclick="openSound();">
+                <div style="color:#ffffff;" id="audiotitle">请录音提醒内容</div>
+                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
+            </div>
+              <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
+                <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
+                <div style="color:#ffffff;">请录音提醒内容</div>
+              </div> -->
+          </div>
+
           <section style="height:2px;">
               <div >
                 <hr style="color:#aaaaaa"/>
               </div>
           </section>
 
-            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important;>
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important;">
                 <div class="aui-card-list-user-name">
                     <div id="quantian">全天事件</div>
                 </div>
@@ -126,6 +137,12 @@
         </div>
     </section>
 
+    <!-- <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="sendsound();" style="background-color:#711173 !important;">
+          发送声音到手环
+        </div>
+    </section> -->
+
     <section class="aui-content-padded">
         <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#711173 !important;">保存</div>
     </section>
@@ -180,6 +197,7 @@
         // alert( htmlStr );
         $api.html(el, audiotitle);
         timestamp = ret.value.timestamp;
+        $api.setStorage("timestamp",timestamp);
       });
 
       var el = $api.byId('ringtype');
@@ -588,6 +606,9 @@
         // api.closeWin();
       });
     }
+
+
+
 
 </script>
 </html>
