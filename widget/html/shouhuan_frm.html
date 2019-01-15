@@ -340,7 +340,7 @@ function writeUserData(){
 
 
 function readUserData(){
-  alert("uuid:"+uuid[deviceid]);
+  // alert("uuid:"+uuid[deviceid]);
   // alert("uuname:"+uuname[deviceid]);
   var ble = api.require('myBle');
   ble.setNotify({
@@ -349,10 +349,10 @@ function readUserData(){
     characteristicUUID: "0000ff24-0000-1000-8000-00805f9b34fb"
     // descriptorUUID:
     // value: '0x010x010037000100ac00450057'
-  }, function(ret,err) {
+  }, function(ret) {
     // api.alert({ msg: JSON.stringify(err) });
     api.alert({ msg: JSON.stringify(ret) });
-    api.alert({ msg: JSON.stringify(err) });
+    // api.alert({ msg: JSON.stringify(err) });
       // if (ret) {
       //
       // }else {
