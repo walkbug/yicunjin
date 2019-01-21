@@ -417,6 +417,7 @@ function stopscanble(){
 }
 
 function sendsound(){
+  alert("sendsound");
   var ble = api.require('myBle');
   ble.writeSoundForCharacteristic({
     peripheralUUID: uuid[deviceid],

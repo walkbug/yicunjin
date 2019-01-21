@@ -140,7 +140,7 @@
     </section>
 
     <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
-        <div class="aui-bar-tab-item aui-active">
+        <div class="aui-bar-tab-item aui-active" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont icon iconfont icon-rili" style="color:#711173;"></i>
             <div class="aui-bar-tab-label" style="color:#711173;">日历</div>
         </div>
@@ -596,6 +596,67 @@
         api.hideProgress();
         // api.closeWin();
       });
+    }
+
+
+    // 打开手环Window
+    function fnOpenshouhuanWin () {
+        api.openWin({
+            name: 'shouhuan',
+            url: './shouhuan_win.html',
+            reload:true,
+            pageParam: {
+                name: 'shouhuan'
+            }
+        });
+    }
+
+    // 打开日历Window
+    function fnOpenriliWin () {
+        api.openWin({
+            name: 'rili',
+            url: './rili_win.html',
+            reload:true,
+            pageParam: {
+                name: 'rili'
+            }
+        });
+    }
+
+    // 打开我Window
+    function fnOpenwoWin () {
+        api.openWin({
+            name: 'wode',
+            url: './wode_win.html',
+            reload:true,
+            pageParam: {
+                name: 'wode'
+            }
+        });
+    }
+
+    // 打开添加提醒Window
+    function fnOpenaddWin () {
+        api.openWin({
+            name: 'addmessage',
+            url: './addmessage_win.html',
+            reload:true,
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+    // 打开Window
+    function fnOpenhomeWin () {
+        api.openWin({
+            name: 'home',
+            url: './home_win.html',
+            reload:true,
+            pageParam: {
+                name: 'home'
+            }
+        });
     }
 
 </script>
