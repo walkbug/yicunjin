@@ -37,9 +37,8 @@
 
           <div class="aui-card-list-header aui-card-list-user">
             <div class="aui-card-list-user-name">
-                <!-- <div style="color:#ffffff;" id="audiotitle">请输入事件标题</div>
-                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
-                <input type="text" placeholder="请输入提醒标题" id="audiotitle">
+                <div id="audiotitle">录音提醒文本</div>
+                <!-- <input type="text" placeholder="请输入提醒标题" id="audiotitle"> -->
             </div>
               <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
                 <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
@@ -49,7 +48,7 @@
 
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
             <div class="aui-card-list-user-name" onclick="openSound();">
-                <div style="color:#ffffff;" id="audiotitle">请录音提醒内容</div>
+                <div style="color:#ffffff;">请录音提醒内容</div>
                 <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
             </div>
               <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
@@ -190,6 +189,7 @@
         // alert( htmlStr );
         $api.html(el, audiotitle);
         timestamp = ret.value.timestamp;
+        $api.setStorage("timestamp",timestamp);
       });
 
       var el = $api.byId('ringtype');
