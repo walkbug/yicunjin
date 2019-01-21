@@ -1,0 +1,614 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>添加提醒</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconfont2/iconfont.css" />
+    <style type="text/css">
+        #classify {
+            color: #ffffff !important;
+        }
+    </style>
+    <style>
+    @font-face
+    {
+    font-family: myFirstFont;
+    src: url('../image/fangzhengyyj.ttf'); /* IE9+ */
+    }
+
+    div
+    {
+    font-family:myFirstFont;
+    }
+    </style>
+</head>
+<body>
+
+    <section class="aui-content">
+        <div class="aui-card-list">
+
+          <section style="height:20px;">
+              <div >
+              </div>
+          </section>
+
+          <div class="aui-card-list-header aui-card-list-user">
+            <div class="aui-card-list-user-name">
+                <!-- <div style="color:#ffffff;" id="audiotitle">请输入事件标题</div>
+                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
+                <input type="text" placeholder="请输入提醒标题" id="audiotitle">
+            </div>
+              <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
+                <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
+                <div style="color:#ffffff;">请录音提醒内容</div>
+              </div> -->
+          </div>
+
+          <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
+            <div class="aui-card-list-user-name" onclick="openSound();">
+                <div style="color:#ffffff;" id="audiotitle">请录音提醒内容</div>
+                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
+            </div>
+              <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
+                <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
+                <div style="color:#ffffff;">请录音提醒内容</div>
+              </div> -->
+          </div>
+
+          <section style="height:2px;">
+              <div >
+                <hr style="color:#aaaaaa"/>
+              </div>
+          </section>
+
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important;">
+                <div class="aui-card-list-user-name">
+                    <div id="quantian">全天事件</div>
+                </div>
+            </div>
+
+            <section style="height:2px;">
+                <div >
+                </div>
+            </section>
+
+              <div class="aui-card-list-header aui-card-list-user">
+                  <div class="aui-card-list-user-name" onclick="openTimeFrame('salerttime');">
+                      <div id="salerttime">开始时间</div>
+                      <i class="aui-iconfont aui-icon-right"></i>
+                  </div>
+              </div>
+
+              <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+                  <div >
+                  </div>
+              </section>
+
+                <div class="aui-card-list-header aui-card-list-user">
+                    <div class="aui-card-list-user-name" onclick="openTimeFrame('ealerttime');">
+                        <div id="ealerttime">结束时间</div>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </div>
+                </div>
+
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+                <div >
+                </div>
+            </section>
+
+
+            <div class="aui-card-list-header aui-card-list-user">
+                <div class="aui-card-list-user-name">
+                    <div id="ringtype">响铃提醒</div>
+                    <!-- <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
+                    <!-- <div class="aui-list-item-input">
+                      <input type="checkbox" class="aui-switch" checked>
+                  </div> -->
+                </div>
+            </div>
+
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+                <div >
+                </div>
+            </section>
+
+            <div class="aui-card-list-header aui-card-list-user">
+                <div class="aui-card-list-user-name" onclick="opentypeSelector();">
+                    <div id="alerttype">重复</div>
+                    <i class="aui-iconfont aui-icon-right"></i>
+                </div>
+            </div>
+
+            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+                <div >
+                </div>
+            </section>
+
+            <!-- <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
+                <div class="aui-card-list-user-name" onclick="openSound();">
+                    <div style="color:#ffffff;">请录音提醒内容</div>
+                    <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="sendsound();" style="background-color:#711173 !important;">
+          发送声音到手环
+        </div>
+    </section> -->
+
+    <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#711173 !important;">保存</div>
+    </section>
+
+    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
+        <div class="aui-bar-tab-item aui-active">
+            <i class="aui-iconfont icon iconfont icon-rili" style="color:#711173;"></i>
+            <div class="aui-bar-tab-label" style="color:#711173;">日历</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
+            <i class="aui-iconfont icon iconfont icon-7yuyuedingdanwudingdan"></i>
+            <div class="aui-bar-tab-label">诊疗</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
+            <i class="aui-iconfont icon iconfont icon-sound"></i>
+            <div class="aui-bar-tab-label">求助</div>
+        </div>
+        <div class="aui-bar-tab-item" onclick="fnOpenwoWin();">
+            <i class="aui-iconfont icon iconfont icon-shebei"></i>
+            <div class="aui-bar-tab-label">设备</div>
+        </div>
+    </footer>
+
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+
+    var sType = 0;
+    var shour = 10;
+    var sminutes = 0;
+    var stime = '';
+    var aType = '';//重复方式
+    var saType = new Array();//重复方式
+    var rType = 0;
+    var timestamp = '';
+    var audiotitle = '';
+    function getTop(e){
+       var offset=e.offsetTop;
+       if(e.offsetParent!=null){
+         offset+=getTop(e.offsetParent);
+       }
+       return offset;
+    }
+    apiready = function () {
+      api.addEventListener({
+        name: 'soundtxt'
+      },function(ret, err) {
+
+        audiotitle = ret.value.soundStr;
+        var el = document.getElementById('audiotitle');
+        // stime = ret.value.shour+":"+ret.value.smin;
+        // alert( htmlStr );
+        $api.html(el, audiotitle);
+        timestamp = ret.value.timestamp;
+        $api.setStorage("timestamp",timestamp);
+      });
+
+      var el = $api.byId('ringtype');
+      var swtop = $api.offset(el);
+
+
+      var switchBtn = api.require('UISwitchButton');
+      switchBtn.open({
+          id:'ringButton',
+          state:true,
+          rect: {
+            x: api.winWidth*0.73,
+            // y: 50,
+            y: swtop.t-3,
+            w: 80,
+            h: 30
+          },
+          styles:{
+             bgCorner:15,
+             active:'#cccccc' ,
+             inActive:'#cccccc',
+             thumb:{
+                active:'#711173' ,
+                inActive:'#711173' ,
+                size:30,
+                corner:15
+             }
+          },
+          fixedOn: api.frameName,
+          fixed: false
+      }, function(ret) {
+          // alert(JSON.stringify(ret));
+          if(ret.state){
+            var htmlStr = "闹铃提醒";
+            var el = document.getElementById('ringtype');
+            $api.html(el, htmlStr);
+            rType = 0;
+          }else{
+            var htmlStr = "震动提醒";
+            var el = document.getElementById('ringtype');
+            $api.html(el, htmlStr);
+            rType = 1;
+          }
+      });
+
+
+
+      var switchBtn1 = api.require('UISwitchButton');
+      var elq = $api.byId('quantian');
+      var swtopq = $api.offset(elq);
+      switchBtn1.open({
+          id:'quanButton',
+          state:true,
+          rect: {
+            x: api.winWidth*0.73,
+            // y: 50,
+            y: swtopq.t-3,
+            w: 80,
+            h: 30
+          },
+          styles:{
+             bgCorner:15,
+             active:'#ffffff' ,
+             inActive:'#ffffff',
+             thumb:{
+                active:'#711173' ,
+                inActive:'#711173' ,
+                size:30,
+                corner:15
+             }
+          },
+          fixedOn: api.frameName,
+          fixed: false
+      }, function(ret) {
+          // alert(JSON.stringify(ret));
+          if(ret.state){
+            var htmlStr = "全天事件";
+            var el = document.getElementById('quantian');
+            $api.html(el, htmlStr);
+            rType = 0;
+          }else{
+            var htmlStr = "非全天事件";
+            var el = document.getElementById('quantian');
+            $api.html(el, htmlStr);
+            rType = 1;
+          }
+      });
+
+    }
+
+
+    function selectType (id) {
+        sType = id;
+        //api.alert({ msg: ret.msg });
+        switch(id){
+          case 1:
+            document.getElementById("type1").style.background="#a33fad";
+            document.getElementById("type2").style.background="#711173";
+            document.getElementById("type3").style.background="#711173";
+            document.getElementById("type4").style.background="#711173";
+            break;
+          case 2:
+          document.getElementById("type2").style.background="#a33fad";
+          document.getElementById("type1").style.background="#711173";
+          document.getElementById("type3").style.background="#711173";
+          document.getElementById("type4").style.background="#711173";
+            break;
+          case 3:
+          document.getElementById("type3").style.background="#a33fad";
+          document.getElementById("type2").style.background="#711173";
+          document.getElementById("type1").style.background="#711173";
+          document.getElementById("type4").style.background="#711173";
+            break;
+          case 4:
+          document.getElementById("type4").style.background="#a33fad";
+          document.getElementById("type2").style.background="#711173";
+          document.getElementById("type3").style.background="#711173";
+          document.getElementById("type1").style.background="#711173";
+            break;
+        }
+    }
+
+
+    function opentypeSelector () {
+      var UIMultiSelector = api.require('UIMultiSelector');
+      UIMultiSelector.open({
+        rect: {
+         h: 244
+         },
+         text: {
+             title: '请选择',
+             leftBtn: '取消',
+             rightBtn: '完成',
+             selectAll: 'ALL'
+         },
+         max: 0,
+         singleSelection: false,
+         styles: {
+             mask: 'rgba(0,0,0,0)',
+             title: {
+                 bg: '#a33fad',
+                 color: '#ffffff',
+                 size: 16,
+                 h: 44
+             },
+             leftButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginL: 8,
+                 bg: '#711173',
+                 color: '#ffffff',
+                 size: 14
+             },
+             rightButton: {
+                 w: 80,
+                 h: 35,
+                 marginT: 5,
+                 marginR: 8,
+                 bg: '#711173',
+                 color: '#ffffff',
+                 size: 14
+             },
+             item: {
+                 h: 35,
+                 bg: '#711173',
+                 bgActive: '#a33fad',
+                 bgHighlight: '#a33fad',
+                 color: '#ffffff',
+                 active: '#711173',
+                 highlight: '#711173',
+                 size: 14,
+                 lineColor: '#ffffff',
+                 textAlign: 'center'
+             },
+             icon: {
+                 w: 20,
+                 h: 20,
+                 marginT: 11,
+                 marginH: 8,
+                 bg: '#fff',
+                 align: 'left'
+             }
+         },
+         animation: true,
+         items: [{
+               text: '周日',
+               status: 'normal'
+           }, {
+               text: '周一',
+               status: 'normal'
+           }, {
+               text: '周二',
+               status: 'normal'
+           }, {
+               text: '周三',
+               status: 'normal'
+           }, {
+               text: '周四',
+               status: 'normal'
+           }, {
+               text: '周五',
+               status: 'normal'
+           }, {
+               text: '周六',
+               status: 'normal'
+           }]
+        },function(ret, err) {
+             if (ret) {
+                //  alert(JSON.stringify(ret));
+                 if(ret.eventType=="clickRight"){
+                   aType = '';
+                   saType = '';
+                   aStr = '';
+                   for(var j = 0; j < ret.items.length; j++){
+                     aStr = aStr+ret.items[j].text+' ';
+                     if(ret.items[j].text=='周一'){
+                       aType=aType+'1,';
+                       saType[j]=1;
+                     }
+                     if(ret.items[j].text=='周二'){
+                       aType=aType+'2,';
+                       saType[j]=2;
+                     }
+                     if(ret.items[j].text=='周三'){
+                       aType=aType+'3,';
+                       saType[j]=3;
+                     }
+                     if(ret.items[j].text=='周四'){
+                       aType=aType+'4,';
+                       saType[j]=4;
+                     }
+                     if(ret.items[j].text=='周五'){
+                       aType=aType+'5,';
+                       saType[j]=5;
+                     }
+                     if(ret.items[j].text=='周六'){
+                       aType=aType+'6,';
+                       saType[j]=6;
+                     }
+                     if(ret.items[j].text=='周日'){
+                       aType=aType+'0,';
+                       saType[j]=7;
+                     }
+                   }
+                  //  aType = ret.items[0].text;
+                  // var reg=/,$/gi;//此处是正则
+                  // aType=str.replace(reg,"");
+                   var htmlStr = "重复："+aStr;
+                   var el = document.getElementById('alerttype');
+                   $api.html(el, htmlStr);
+                   alert(saType);
+                  closetypeSelector();
+                 }
+
+
+             }
+             if(ret.eventType=="clickRight"){
+               closetypeSelector();
+             }
+      });
+    }
+
+    function closetypeSelector () {
+        var UIMultiSelector = api.require('UIMultiSelector');
+        UIMultiSelector.close();
+    }
+
+    function openSound () {
+      api.openFrame({
+          name: 'sounds',
+          url: './sound_frm.html',
+          rect: {
+              x: 0,
+              y: api.winHeight/2-100,
+              w: 'auto',
+              h: 'auto'
+              // w: api.winWidth,
+              // h: api.winHeight
+          },
+          pageParam: {
+              name: 'sounds'
+          }
+      });
+    }
+
+    function openTimeFrame (elid) {
+
+
+        api.openPicker({
+            type: 'time',
+            date: '12:30',
+            title: '选择时间'
+        }, function(ret, err) {
+            if (ret) {
+              var htmlStr = "提醒时间："+ret.hour+":"+ret.minute;
+              var el = document.getElementById(elid);
+              stime = ret.hour+":"+ret.minute;
+              shour = ret.hour;
+              sminutes = ret.minute;
+              // alert( htmlStr );
+              $api.html(el, htmlStr);
+                // alert(JSON.stringify(ret));
+            } else {
+                // alert(JSON.stringify(err));
+            }
+        });
+    }
+
+    function alertsend () {
+
+      api.showProgress({
+          title: '数据处理中...',
+          text: '请稍等...',
+          modal: false
+      });
+
+      var uid = $api.getStorage("userid");
+      // var audiotitle = $api.val($api.byId("audiotitle"));
+      var audiotitle = $api.text($api.byId("audiotitle"));
+
+      // alert(audiotitle);
+
+      api.ajax({
+        url: 'http://47.105.67.225/public/index/useraudio/publish',
+        method: 'post',
+        dataType:'json',
+        //cache: false,
+        data: {
+          values: {
+            userid: uid,
+            audiotitle: audiotitle,
+            textinfo: '',
+            useraudio: '',
+            audiotype: sType,
+            alerttime: stime,
+            alerttype: aType,
+            ringtype: rType
+          },
+          files: {
+            soundfile: 'fs://'+timestamp+'.wav'
+          }
+        }
+      }, function(ret, err) {
+           if (ret) {
+            //  api.alert({ msg: JSON.stringify(ret) });
+             if(ret.status=="ok"){
+               api.alert({
+                  msg: ret.msg ,
+              }, function(ret, err) {
+                setAlarm ();
+              });
+             }else{
+               api.alert({ msg: ret.msg });
+             }
+
+           }
+        }
+      );
+    }
+
+
+    function setAlarm () {
+      var audiotitle = $api.text($api.byId("audiotitle"));
+      var sTitle = "";
+      // saType.slice(0,saType.length-1)
+      // var ss = saType.split(",");
+      // api.alert({ msg: saType });
+      // api.alert({ msg: ss });
+      switch (sType) {
+        case 1:
+          sTitle = "吃药";
+          break;
+        case 2:
+          sTitle = "就医";
+          break;
+        case 3:
+          sTitle = "锻炼";
+          break;
+        case 4:
+          sTitle = "其他";
+          break;
+        default:
+
+      }
+      // var shour = 10;
+      // var sminutes = 0;
+      api.notification({
+          notify: {
+              title: sTitle,
+              content: audiotitle,
+              extra: "tttt"
+          },
+          vibrate:[100, 500, 200, 500, 300, 500, 400, 500],
+          // sound:'fs://'+timestamp+'.wav',
+          alarm: {
+              hour: shour,
+              minutes: sminutes,
+              daysOfWeek: [1,2,3,4,5,6,7]
+              // daysOfWeek: [1,2,3,4,5,6,7]saType.split(",")
+          }
+      }, function(ret, err){
+        api.alert({ msg: "ret:"+JSON.stringify(ret) });
+        // api.alert({ msg: "err:"+JSON.stringify(err) });
+        api.hideProgress();
+        // api.closeWin();
+      });
+    }
+
+
+
+
+</script>
+</html>
