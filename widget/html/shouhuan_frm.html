@@ -193,7 +193,8 @@ var deviceid = 0;
 var timestamp = $api.getStorage('timestamp');
 if (timestamp) {
   var el = document.getElementById('soundfile');
-  $api.html(el, 'fs://'+timestamp+'.wav');
+  // $api.html(el, 'fs://'+timestamp+'.wav');
+  $api.html(el, 'http://47.105.67.225/public/uploads/20181120/6fb2f2209497f69aad30156fa478160c.wav');
 }
 function startble(){
   var ble = api.require('myBle');
@@ -429,7 +430,7 @@ function sendsound(){
     peripheralUUID: uuid[deviceid],
     serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
     characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
-    file: 'fs://'+timestamp+'.wav'
+    file: 'http://47.105.67.225/public/uploads/20181120/6fb2f2209497f69aad30156fa478160c.wav'
   }, function(ret,err) {
       api.alert({ msg: JSON.stringify(ret) });
       api.alert({ msg: JSON.stringify(err) });
@@ -441,7 +442,7 @@ function playsound () {
   // alert(soundArray[m] );
   var audioStreamer = api.require('audioStreamer');
   audioStreamer.openPlayer({
-    path: 'fs://'+timestamp+'.wav',
+    path: 'http://47.105.67.225/public/uploads/20181120/6fb2f2209497f69aad30156fa478160c.wav',
   }, function(ret) {
     if (ret.status) {
         // api.alert({ msg: JSON.stringify(ret) });
