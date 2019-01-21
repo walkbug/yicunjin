@@ -141,7 +141,13 @@
                 </section>
             </li>
 
-
+            <li class="aui-list-item">
+                <section class="aui-content-padded" style="width:100%;text-align:center;">
+                    <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="playsound();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                      播放语音
+                    </div>
+                </section>
+            </li>
 
             <li class="aui-list-item">
                 <section class="aui-content-padded" style="width:100%;text-align:center;">
@@ -187,7 +193,7 @@ var deviceid = 0;
 var timestamp = $api.getStorage('timestamp');
 if (timestamp) {
   var el = document.getElementById('soundfile');
-  $api.html(el, timestamp);
+  $api.html(el, 'fs://'+timestamp+'.wav');
 }
 function startble(){
   var ble = api.require('myBle');
@@ -427,6 +433,19 @@ function sendsound(){
   }, function(ret,err) {
       api.alert({ msg: JSON.stringify(ret) });
       api.alert({ msg: JSON.stringify(err) });
+  });
+}
+
+function playsound () {
+  // alert( soundArray[m] );
+  // alert(soundArray[m] );
+  var audioStreamer = api.require('audioStreamer');
+  audioStreamer.openPlayer({
+    path: 'fs://'+timestamp+'.wav',
+  }, function(ret) {
+    if (ret.status) {
+        // api.alert({ msg: JSON.stringify(ret) });
+    }
   });
 }
 
