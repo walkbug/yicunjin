@@ -72,17 +72,17 @@ timestamp = timestamp / 1000;
             android_appid: '5be3a8e4'
         }, function(ret, err) {
             if (ret.status) {
-                api.alert({ msg: '讯飞创建成功'});
+                // api.alert({ msg: '讯飞创建成功'});
             } else {
-                api.alert({ msg: "讯飞创建失败" });
+                // api.alert({ msg: "讯飞创建失败" });
             }
         });
 
     };
 
     function startRecord () {
-      api.alert({ msg: 'startRecord------'});
-      var el = document.getElementById('soundtxt');
+      api.alert({ msg: timestamp});
+      // var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
           vadbos: 5000,
