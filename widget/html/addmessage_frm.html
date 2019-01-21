@@ -7,47 +7,43 @@
     <title>添加提醒</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/iconfont/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="../css/iconfont2/iconfont.css" />
     <style type="text/css">
         #classify {
             color: #ffffff !important;
         }
     </style>
-    <style>
-    @font-face
-    {
-    font-family: myFirstFont;
-    src: url('../image/fangzhengyyj.ttf'); /* IE9+ */
-    }
-
-    div
-    {
-    font-family:myFirstFont;
-    }
-    </style>
 </head>
-<body>
+<body style="background-color:#a786c8;">
+    <section class="aui-content " style="background-color: #711173 !important">
+        <div class="aui-grid aui-bg-info" style="background-color: #711173 !important">
+            <div class="aui-row" id="classify">
+                <div class="aui-col-xs-3" onclick="selectType(1);" id="type1">
+                    <i class="aui-iconfont icon iconfont icon-yaopin"></i>
+                    <div class="aui-grid-label">吃药</div>
+                </div>
+                <div class="aui-col-xs-3" onclick="selectType(2);" id="type2">
+                    <i class="aui-iconfont icon iconfont icon-yiyuan"></i>
+                    <div class="aui-grid-label">就医</div>
+                </div>
+                <div class="aui-col-xs-3" onclick="selectType(3);" id="type3">
+                    <i class="aui-iconfont icon iconfont icon-zoulu-"></i>
+                    <div class="aui-grid-label">锻炼</div>
+                </div>
+                <div class="aui-col-xs-3" onclick="selectType(4);" id="type4">
+                    <i class="aui-iconfont icon iconfont icon-qita"></i>
+                    <div class="aui-grid-label">其他</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="height:30px;">
+        <div >
+        </div>
+    </section>
 
     <section class="aui-content">
         <div class="aui-card-list">
-
-          <section style="height:20px;">
-              <div >
-              </div>
-          </section>
-
-          <div class="aui-card-list-header aui-card-list-user">
-            <div class="aui-card-list-user-name">
-                <!-- <div style="color:#ffffff;" id="audiotitle">请输入事件标题</div>
-                <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
-                <input type="text" placeholder="请输入提醒标题" id="audiotitle">
-            </div>
-              <!-- <div class="aui-card-list-user-name aui-list-item-input" onclick="openSound();">
-                <input type="text" placeholder="请输入提醒标题" style="color:#ffffff">
-                <div style="color:#ffffff;">请录音提醒内容</div>
-              </div> -->
-          </div>
-
           <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important;">
             <div class="aui-card-list-user-name" onclick="openSound();">
                 <div style="color:#ffffff;" id="audiotitle">请录音提醒内容</div>
@@ -61,13 +57,13 @@
 
           <section style="height:2px;">
               <div >
-                <hr style="color:#aaaaaa"/>
               </div>
           </section>
 
-            <div class="aui-card-list-header aui-card-list-user" style="background-color: #cccccc !important;">
-                <div class="aui-card-list-user-name">
-                    <div id="quantian">全天事件</div>
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
+                <div class="aui-card-list-user-name" onclick="openTimeFrame();">
+                    <div style="color:#ffffff;" id="alerttime">提醒时间</div>
+                    <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
             </div>
 
@@ -76,34 +72,21 @@
                 </div>
             </section>
 
-              <div class="aui-card-list-header aui-card-list-user">
-                  <div class="aui-card-list-user-name" onclick="openTimeFrame('salerttime');">
-                      <div id="salerttime">开始时间</div>
-                      <i class="aui-iconfont aui-icon-right"></i>
-                  </div>
-              </div>
-
-              <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
-                  <div >
-                  </div>
-              </section>
-
-                <div class="aui-card-list-header aui-card-list-user">
-                    <div class="aui-card-list-user-name" onclick="openTimeFrame('ealerttime');">
-                        <div id="ealerttime">结束时间</div>
-                        <i class="aui-iconfont aui-icon-right"></i>
-                    </div>
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
+                <div class="aui-card-list-user-name" onclick="opentypeSelector();">
+                    <div style="color:#ffffff;" id="alerttype">重复</div>
+                    <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i>
                 </div>
+            </div>
 
-            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+            <section style="height:2px;">
                 <div >
                 </div>
             </section>
 
-
-            <div class="aui-card-list-header aui-card-list-user">
+            <div class="aui-card-list-header aui-card-list-user" style="background-color: #711173 !important">
                 <div class="aui-card-list-user-name">
-                    <div id="ringtype">响铃提醒</div>
+                    <div style="color:#ffffff;" id="ringtype">提醒方式（闹铃）</div>
                     <!-- <i class="aui-iconfont aui-icon-right" style="color:#ffffff;"></i> -->
                     <!-- <div class="aui-list-item-input">
                       <input type="checkbox" class="aui-switch" checked>
@@ -111,19 +94,7 @@
                 </div>
             </div>
 
-            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
-                <div >
-                </div>
-            </section>
-
-            <div class="aui-card-list-header aui-card-list-user">
-                <div class="aui-card-list-user-name" onclick="opentypeSelector();">
-                    <div id="alerttype">重复</div>
-                    <i class="aui-iconfont aui-icon-right"></i>
-                </div>
-            </div>
-
-            <section style="height:2px;width:100%;border-top: 1px solid #aaaaaa;">
+            <section style="height:2px;">
                 <div >
                 </div>
             </section>
@@ -137,34 +108,9 @@
         </div>
     </section>
 
-    <!-- <section class="aui-content-padded">
-        <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="sendsound();" style="background-color:#711173 !important;">
-          发送声音到手环
-        </div>
-    </section> -->
-
     <section class="aui-content-padded">
         <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode onclick="alertsend();" style="background-color:#711173 !important;">保存</div>
     </section>
-
-    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
-        <div class="aui-bar-tab-item aui-active">
-            <i class="aui-iconfont icon iconfont icon-rili" style="color:#711173;"></i>
-            <div class="aui-bar-tab-label" style="color:#711173;">日历</div>
-        </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenshouhuanWin();">
-            <i class="aui-iconfont icon iconfont icon-7yuyuedingdanwudingdan"></i>
-            <div class="aui-bar-tab-label">诊疗</div>
-        </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenriliWin();">
-            <i class="aui-iconfont icon iconfont icon-sound"></i>
-            <div class="aui-bar-tab-label">求助</div>
-        </div>
-        <div class="aui-bar-tab-item" onclick="fnOpenwoWin();">
-            <i class="aui-iconfont icon iconfont icon-shebei"></i>
-            <div class="aui-bar-tab-label">设备</div>
-        </div>
-    </footer>
 
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
@@ -197,7 +143,6 @@
         // alert( htmlStr );
         $api.html(el, audiotitle);
         timestamp = ret.value.timestamp;
-        $api.setStorage("timestamp",timestamp);
       });
 
       var el = $api.byId('ringtype');
@@ -217,49 +162,6 @@
           },
           styles:{
              bgCorner:15,
-             active:'#cccccc' ,
-             inActive:'#cccccc',
-             thumb:{
-                active:'#711173' ,
-                inActive:'#711173' ,
-                size:30,
-                corner:15
-             }
-          },
-          fixedOn: api.frameName,
-          fixed: false
-      }, function(ret) {
-          // alert(JSON.stringify(ret));
-          if(ret.state){
-            var htmlStr = "闹铃提醒";
-            var el = document.getElementById('ringtype');
-            $api.html(el, htmlStr);
-            rType = 0;
-          }else{
-            var htmlStr = "震动提醒";
-            var el = document.getElementById('ringtype');
-            $api.html(el, htmlStr);
-            rType = 1;
-          }
-      });
-
-
-
-      var switchBtn1 = api.require('UISwitchButton');
-      var elq = $api.byId('quantian');
-      var swtopq = $api.offset(elq);
-      switchBtn1.open({
-          id:'quanButton',
-          state:true,
-          rect: {
-            x: api.winWidth*0.73,
-            // y: 50,
-            y: swtopq.t-3,
-            w: 80,
-            h: 30
-          },
-          styles:{
-             bgCorner:15,
              active:'#ffffff' ,
              inActive:'#ffffff',
              thumb:{
@@ -274,13 +176,13 @@
       }, function(ret) {
           // alert(JSON.stringify(ret));
           if(ret.state){
-            var htmlStr = "全天事件";
-            var el = document.getElementById('quantian');
+            var htmlStr = "提醒方式（闹铃）";
+            var el = document.getElementById('ringtype');
             $api.html(el, htmlStr);
             rType = 0;
           }else{
-            var htmlStr = "非全天事件";
-            var el = document.getElementById('quantian');
+            var htmlStr = "提醒方式（震动）";
+            var el = document.getElementById('ringtype');
             $api.html(el, htmlStr);
             rType = 1;
           }
@@ -484,7 +386,7 @@
       });
     }
 
-    function openTimeFrame (elid) {
+    function openTimeFrame () {
 
 
         api.openPicker({
@@ -494,7 +396,7 @@
         }, function(ret, err) {
             if (ret) {
               var htmlStr = "提醒时间："+ret.hour+":"+ret.minute;
-              var el = document.getElementById(elid);
+              var el = document.getElementById('alerttime');
               stime = ret.hour+":"+ret.minute;
               shour = ret.hour;
               sminutes = ret.minute;
@@ -606,9 +508,6 @@
         // api.closeWin();
       });
     }
-
-
-
 
 </script>
 </html>
