@@ -27,5 +27,5 @@
 	<permission name="fileSystem" />
 	<permission name="internet" />
 	<permission name="bootCompleted" />
-	<permission name="hardware" />  <feature name="smsVerify">  <param name="android_app_key" value="290f6ab39317e"/>  <param name="android_app_secret" value="ea1ef7315127f6c3b277c39e33178c8e"/>  <param name="ios_app_key" value="290f6ab39317e"/>  <param name="ios_app_secret" value="ea1ef7315127f6c3b277c39e33178c8e"/></feature>
+	<permission name="hardware" />  <permission name="hardware" />  <preference name="urlScheme" value="myscheme"/>  <feature name="smsVerify">  <param name="android_app_key" value="290f6ab39317e"/>  <param name="android_app_secret" value="ea1ef7315127f6c3b277c39e33178c8e"/>  <param name="ios_app_key" value="290f6ab39317e"/>  <param name="ios_app_secret" value="ea1ef7315127f6c3b277c39e33178c8e"/></feature>
 </widget>
