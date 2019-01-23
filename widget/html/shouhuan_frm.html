@@ -473,7 +473,15 @@ function downloadsound () {
       networkTypes: 'all'
   }, function(ret, err) {
       if (ret) {
-          alert(JSON.stringify(ret));
+        downloadManager.query({
+          ids: [
+            ret.id
+            ]
+        }, function(ret,err) {
+          api.alert({ msg: JSON.stringify(ret) });
+          api.alert({ msg: JSON.stringify(err) });
+
+        });
       } else {
           alert(JSON.stringify(err));
       }
