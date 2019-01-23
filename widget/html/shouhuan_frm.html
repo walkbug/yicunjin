@@ -462,25 +462,14 @@ function playsound () {
 }
 
 function downloadsound () {
-  var downloadManager = api.require('downloadManager');
-  downloadManager.remove({
-      ids: [
-          '1'
-      ]
-  }, function(ret, err) {
-      if (ret) {
-          alert(JSON.stringify(ret));
-      } else {
-          alert(JSON.stringify(err));
-      }
-  });
+  
   // var timestamp = Date.parse(new Date());
   // timestamp = timestamp / 1000;
   alert("downloadsound");
   var downloadManager = api.require('downloadManager');
   downloadManager.enqueue({
       url: 'http://47.105.67.225/public/uploads/20181120/6fb2.wav',
-      // savePath: 'fs://'+timestamp+'.wav',
+      savePath: 'fs://'+timestamp+'.wav',
       cache: true,
       allowResume: true,
       title: '音频',
