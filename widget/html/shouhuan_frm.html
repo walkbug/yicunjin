@@ -463,13 +463,13 @@ function playsound () {
 
 function downloadsound () {
 
-  var timestama = Date.parse(new Date());
-  timestama = timestama / 1000;
+  // var timestama = Date.parse(new Date());
+  // timestama = timestama / 1000;
   // alert(timestama);
   var downloadManager = api.require('downloadManager');
   downloadManager.enqueue({
-      url: 'http://47.105.67.225/public/uploads/20181120/6fb2.wav',
-      savePath: 'fs://'+timestama+'.wav',
+      url: 'http://47.105.67.225/public/uploads/20181120/6fb2f2209497f69aad30156fa478160c.wav',
+      // savePath: 'fs://'+timestama+'.wav',
       cache: true,
       allowResume: true,
       title: '音频',
