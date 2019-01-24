@@ -85,8 +85,8 @@ timestamp = timestamp / 1000;
       // var el = document.getElementById('soundtxt');
       var iflyRecognition = api.require('iflyRecognition');
       iflyRecognition.record({
-          vadbos: 5000,
-          vadeos: 5000,
+          vadbos: 1000,
+          vadeos: 1000,
           rate: 8000,
           asrptt: 1,
           audioPath: 'fs://'+timestamp+'.wav'
