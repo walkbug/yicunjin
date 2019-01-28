@@ -223,9 +223,10 @@ function startble(){
             api.alert({ msg: "初始化成功" });
             // euowo();
             ble.scan({
-              // serviceUUIDs: []
-            }, function(ret) {
+              serviceUUIDs: []
+            }, function(ret,err) {
               api.alert({ msg: JSON.stringify(ret) });
+              api.alert({ msg: JSON.stringify(err) });
                 if (ret.status) {
 
                   getdevice();
