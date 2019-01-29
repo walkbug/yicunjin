@@ -92,6 +92,29 @@
 
           <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
+                <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <!-- <input type="text"  placeholder="" id="timenow" name="timenow" style="color:#ffffff;" value=""> -->
+                  <div style="color:#ffffff;" id="timenow"></div>
+                </div>
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="writeTime();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                    同步时间（ff21）
+                  </div>
+              </section>
+          </li>
+
+          <li class="aui-list-item">
+              <section class="aui-content-padded" style="width:100%;text-align:center;">
+                <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                  <div style="color:#ffffff;" id="clocknow"></div>
+                </div>
+                  <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="clockTime();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
+                    设置闹铃（ff21）
+                  </div>
+              </section>
+          </li>
+
+          <!-- <li class="aui-list-item">
+              <section class="aui-content-padded" style="width:100%;text-align:center;">
                 <div id="soundfile" name="soundfile" class="aui-btn aui-btn-block aui-btn-info aui-btn-sm" tapmode style="background-color: #711173 !important;width:100%;text-align:center;color:#ffffff;">
 
                 </div>
@@ -99,7 +122,7 @@
                     写入音频文件（ff21）
                   </div>
               </section>
-          </li>
+          </li> -->
 
           <!-- <li class="aui-list-item">
               <section class="aui-content-padded" style="width:100%;text-align:center;">
@@ -141,7 +164,7 @@
                 </section>
             </li>
 
-            <li class="aui-list-item">
+            <!-- <li class="aui-list-item">
                 <section class="aui-content-padded" style="width:100%;text-align:center;">
                     <div class="aui-btn aui-btn-block aui-btn-info aui-btn-sm"  onclick="downloadsound();" tapmode style="background-color: #711173 !important;width:100%;text-align:center;">
                       下载语音
@@ -163,7 +186,7 @@
                       查询并删除下载的语音
                     </div>
                 </section>
-            </li>
+            </li> -->
 
             <li class="aui-list-item">
                 <section class="aui-content-padded" style="width:100%;text-align:center;">
@@ -175,7 +198,7 @@
         </ul>
 
     </section>
-    <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
+    <!-- <footer class="aui-bar aui-bar-tab" style="position:fixed;bottom:0px;padding-left:0.8rem;">
         <div class="aui-bar-tab-item aui-active" style="line-height:1.4rem" onclick="fnOpenhomeWin();">
             <i class="aui-iconfont aui-icon-home" style="float:left;margin-left:0.2rem;color:#711173;"></i>
             <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">首页</div>
@@ -192,7 +215,7 @@
             <i class="aui-iconfont aui-icon-my" style="float:left;margin-left:0.2rem;color:#711173;"></i>
             <div class="aui-bar-tab-label" style="float:left;margin-left:0.2rem;color:#711173;">我</div>
         </div>
-    </footer>
+    </footer> -->
 </body>
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
@@ -214,6 +237,83 @@ if (timestamp) {
   filepath = 'fs://'+timestamp+'.wav';
   // $api.html(el, 'http://47.105.67.225/public/uploads/20181120/6fb2f2209497f69aad30156fa478160c.wav');
 }
+
+
+
+
+function writeTime(){
+
+  var myDate = new Date();
+          //时间 2016/3/29/00:20
+  var year = myDate.getFullYear();
+          //获取完整的年份(4位,1970-????)  2016
+  var month = myDate.getMonth()+1;
+          //获取当前月份(0-11,0代表1月)  2
+  var date = myDate.getDate();
+          //获取当前日(1-31) 29
+  var hours = myDate.getHours();
+          //获取当前小时数(0-23)  0
+  var minutes = myDate.getMinutes();
+          //获取当前分钟数(0-59)  20
+  var seconds = myDate.getSeconds();
+  // alert(date);
+  var timenow = document.getElementById('timenow');
+  $api.text(timenow,date);
+
+  var putStr = "01,02,"+year+","+month+","+date+","+hours+","+minutes+","+seconds;
+
+  api.alert({ msg: putStr });
+
+  var ble = api.require('myBle');
+  ble.writeValueSForCharacteristic({
+    peripheralUUID: uuid[deviceid],
+    serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
+    characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
+    value: putStr,
+    writeType:'auto'
+  }, function(ret,err) {
+    api.alert({ msg: JSON.stringify(ret) });
+  }
+);
+}
+
+
+function clockTime(){
+
+  var myDate = new Date();
+          //时间 2016/3/29/00:20
+  var year = myDate.getFullYear();
+          //获取完整的年份(4位,1970-????)  2016
+  var month = myDate.getMonth()+1;
+          //获取当前月份(0-11,0代表1月)  2
+  var date = myDate.getDate();
+          //获取当前日(1-31) 29
+  var hours = myDate.getHours();
+          //获取当前小时数(0-23)  0
+  var minutes = myDate.getMinutes()+10;
+          //获取当前分钟数(0-59)  20
+  var seconds = myDate.getSeconds();
+  // alert(date);
+  var timenow = document.getElementById('timenow');
+  $api.text(timenow,date);
+
+  var putStr = "01,05,01,"+myDate.getDay()+","+hours+","+minutes+","+seconds;
+
+  api.alert({ msg: putStr });
+
+  var ble = api.require('myBle');
+  ble.writeValueSForCharacteristic({
+    peripheralUUID: uuid[deviceid],
+    serviceUUID: "0000ff20-0000-1000-8000-00805f9b34fb",
+    characteristicUUID: "0000ff21-0000-1000-8000-00805f9b34fb",
+    value: putStr,
+    writeType:'auto'
+  }, function(ret,err) {
+    api.alert({ msg: JSON.stringify(ret) });
+  }
+);
+}
+
 
 function startble(){
   var ble = api.require('myBle');
