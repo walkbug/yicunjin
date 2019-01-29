@@ -294,8 +294,9 @@ function clockTime(){
           //获取当前分钟数(0-59)  20
   var seconds = myDate.getSeconds();
   // alert(date);
+  var dateS = year+"年"+month+"月"+date+"日"+hours+"时"+minutes+"分"+seconds+"秒"
   var timenow = document.getElementById('timenow');
-  $api.text(timenow,date);
+  $api.text(timenow,dateS);
 
   var putStr = "01,05,01,"+myDate.getDay()+","+hours+","+minutes+","+seconds;
 
