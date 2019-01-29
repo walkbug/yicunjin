@@ -300,7 +300,7 @@ function clockTime(){
   var timenow = document.getElementById('clocknow');
   $api.text(timenow,dateS);
 
-  var putStr = "01,05,01,"+myDate.getDay()+","+hours+","+minutes+","+seconds;
+  var putStr = "01,05,01,"+myDate.getDay()+","+hours+","+minutes+",01";
 
   api.alert({ msg: putStr });
 
