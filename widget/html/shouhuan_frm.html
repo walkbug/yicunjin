@@ -258,7 +258,9 @@ function writeTime(){
   var seconds = myDate.getSeconds();
   // alert(date);
   var timenow = document.getElementById('timenow');
-  $api.text(timenow,date);
+  var dateS = year+"年"+month+"月"+date+"日"+hours+"时"+minutes+"分"+seconds+"秒"
+  var timenow = document.getElementById('timenow');
+  $api.text(timenow,dateS);
 
   var putStr = "01,02,"+year+","+month+","+date+","+hours+","+minutes+","+seconds;
 
@@ -295,7 +297,7 @@ function clockTime(){
   var seconds = myDate.getSeconds();
   // alert(date);
   var dateS = year+"年"+month+"月"+date+"日"+hours+"时"+minutes+"分"+seconds+"秒"
-  var timenow = document.getElementById('timenow');
+  var timenow = document.getElementById('clocknow');
   $api.text(timenow,dateS);
 
   var putStr = "01,05,01,"+myDate.getDay()+","+hours+","+minutes+","+seconds;
